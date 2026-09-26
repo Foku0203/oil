@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Env
+.env
+
+# Data
+data/
+
+# dbt
+transform/target/
+transform/dbt_packages/
+transform/logs/
+logs/
+
+# Dagster
+.dagster_home/
+tmp*/
+
+# Node
+node_modules/
+web/.next/
+web/out/
+*.tsbuildinfo
+next-env.d.ts

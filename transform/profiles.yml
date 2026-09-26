@@ -1,0 +1,13 @@
+oil:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('DBT_HOST', 'localhost') }}"
+      port: "{{ env_var('DBT_PORT', '5433') | int }}"
+      user: "{{ env_var('DBT_USER', 'oil') }}"
+      password: "{{ env_var('DBT_PASSWORD', 'oil') }}"
+      dbname: "{{ env_var('DBT_DBNAME', 'oil') }}"
+      schema: public
+      sslmode: "{{ env_var('DBT_SSLMODE', 'prefer') }}"
+      threads: 4

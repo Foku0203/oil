@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_ptt__retail_prices
+    description: PTT price changes with zero/placeholder prices removed.
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [product_name, effective_at]}
+    columns:
+      - name: price_thb
+        data_tests:
+          - not_null
+          - value_between:
+              arguments: {min_value: 10, max_value: 150}
+
+  - name: stg_bangchak__retail_prices
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [product_name, as_of_date]}
+
+  - name: stg_frankfurter__fx_rates
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [rate_date, currency]}
+    columns:
+      - name: units_per_usd
+        data_tests: [not_null]
+
+  - name: stg_yahoo__crude_prices
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [price_date, benchmark]}
+    columns:
+      - name: benchmark
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments: {values: [brent, wti]}
+      - name: close_usd
+        data_tests:
+          - value_between:
+              arguments: {min_value: 1, max_value: 500}

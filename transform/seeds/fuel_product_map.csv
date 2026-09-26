@@ -1,0 +1,18 @@
+brand,product_name,fuel_code
+PTT,Diesel,diesel_b7
+PTT,Diesel B20,diesel_b20
+PTT,Premium Diesel,premium_diesel
+PTT,Gasohol 91,gasohol_91
+PTT,Gasohol 95,gasohol_95
+PTT,Gasohol E20,gasohol_e20
+PTT,Gasoline 95,benzine_95
+PTT,Super Power GSH95,premium_gasohol_95
+PTT,Super Power X99,premium_99
+Bangchak,ไฮดีเซล S,diesel_b7
+Bangchak,ดีเซล B20,diesel_b20
+Bangchak,ไฮ พรีเมียม ดีเซล พลัส,premium_diesel
+Bangchak,แก๊สโซฮอล์ 91 S EVO,gasohol_91
+Bangchak,แก๊สโซฮอล์ 95 S EVO,gasohol_95
+Bangchak,แก๊สโซฮอล์ E20 S EVO,gasohol_e20
+Bangchak,แก๊สโซฮอล์ E85 S EVO,gasohol_e85
+Bangchak,ไฮ พรีเมียม 98 พลัส,premium_98

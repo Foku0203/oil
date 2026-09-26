@@ -1,0 +1,32 @@
+# Production refresh without a long-running Dagster daemon: GitHub runs the same
+# ingest + dbt build against the cloud warehouse (Neon / Supabase) on the Bangkok schedule.
+name: Daily refresh
+
+on:
+  schedule:
+    - cron: "15 23 * * *"   # 06:15 Asia/Bangkok — new prices take effect at 05:00
+    - cron: "15 14 * * *"   # 21:15 Asia/Bangkok — next-day prices are announced in the evening
+  workflow_dispatch:
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DBT_HOST: ${{ secrets.DBT_HOST }}
+      DBT_PORT: ${{ secrets.DBT_PORT }}
+      DBT_USER: ${{ secrets.DBT_USER }}
+      DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+      DBT_DBNAME: ${{ secrets.DBT_DBNAME }}
+      DBT_SSLMODE: require
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+      - run: uv run oil run-daily
+      - name: Check source freshness
+        run: uv run dbt source freshness --project-dir transform --profiles-dir transform

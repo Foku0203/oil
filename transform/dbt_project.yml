@@ -1,0 +1,30 @@
+name: oil
+version: "1.0.0"
+config-version: 2
+profile: oil
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  litres_per_barrel: 158.987
+
+models:
+  oil:
+    staging:
+      +schema: staging
+      +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+
+seeds:
+  oil:
+    +schema: reference

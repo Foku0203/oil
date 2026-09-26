@@ -1,0 +1,12 @@
+fuel_code,name_th,name_en,fuel_group,sort_order
+diesel_b7,ดีเซล B7,Diesel B7,diesel,1
+diesel_b20,ดีเซล B20,Diesel B20,diesel,2
+premium_diesel,ดีเซลพรีเมียม,Premium Diesel,diesel,3
+gasohol_91,แก๊สโซฮอล์ 91,Gasohol 91,gasohol,10
+gasohol_95,แก๊สโซฮอล์ 95,Gasohol 95,gasohol,11
+gasohol_e20,แก๊สโซฮอล์ E20,Gasohol E20,gasohol,12
+gasohol_e85,แก๊สโซฮอล์ E85,Gasohol E85,gasohol,13
+benzine_95,เบนซิน 95,Benzine 95,benzine,20
+premium_gasohol_95,แก๊สโซฮอล์ 95 พรีเมียม,Premium Gasohol 95,premium,30
+premium_98,เบนซินพรีเมียม 98,Premium 98,premium,31
+premium_99,เบนซินพรีเมียม 99,Premium 99,premium,32

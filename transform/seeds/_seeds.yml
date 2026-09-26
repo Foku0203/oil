@@ -1,0 +1,27 @@
+version: 2
+
+seeds:
+  - name: fuels
+    description: Canonical fuel types shared across brands.
+    columns:
+      - name: fuel_code
+        data_tests: [unique, not_null]
+      - name: fuel_group
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [diesel, gasohol, benzine, premium]
+
+  - name: fuel_product_map
+    description: Maps each brand's own product name to a canonical fuel_code.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [brand, product_name]
+    columns:
+      - name: fuel_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('fuels')
+                field: fuel_code

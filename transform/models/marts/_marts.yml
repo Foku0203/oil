@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: dim_fuels
+    description: Canonical fuel types with the brands that sell them.
+    columns:
+      - name: fuel_code
+        data_tests: [unique, not_null]
+
+  - name: fct_retail_prices_daily
+    description: Daily retail price per brand and fuel (Bangkok), gap-filled, with day-over-day change.
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [brand, fuel_code, price_date]}
+    columns:
+      - name: fuel_code
+        data_tests:
+          - relationships:
+              arguments: {to: ref('dim_fuels'), field: fuel_code}
+      - name: price_thb
+        data_tests:
+          - not_null
+          - value_between:
+              arguments: {min_value: 10, max_value: 150}
+      - name: change_thb
+        description: Day-over-day move. Thai retail moves are usually under 2 THB; big jumps get flagged.
+        data_tests:
+          - value_between:
+              arguments: {min_value: -6, max_value: 6}
+              config: {severity: warn}
+
+  - name: fct_fx_rates_daily
+    description: THB per unit of foreign currency, every calendar day.
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [currency, rate_date]}
+    columns:
+      - name: thb_per_unit
+        data_tests: [not_null]
+
+  - name: fct_crude_prices_daily
+    description: Brent and WTI in USD/barrel and THB/litre, every calendar day.
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [benchmark, price_date]}
+    columns:
+      - name: thb_per_litre
+        data_tests: [not_null]
+
+  - name: mart_latest_prices
+    description: One row per brand and fuel for today's dashboard header.
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [brand, fuel_code]}
+
+  - name: mart_price_change_events
+    description: Every retail price change.
+
+  - name: mart_fuel_vs_crude_daily
+    description: PTT retail prices joined with Brent in THB/litre.
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [fuel_code, price_date]}
+
+  - name: mart_pass_through_lag
+    description: Lagged correlation between crude cost changes and pump price changes.
+    data_tests:
+      - unique_combination:
+          arguments: {columns: [fuel_code, lag_days]}
+    columns:
+      - name: correlation
+        data_tests:
+          - value_between:
+              arguments: {min_value: -1, max_value: 1}

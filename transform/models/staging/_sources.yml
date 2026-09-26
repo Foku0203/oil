@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: Landing tables written by the Python ingestion jobs (oil_pipeline.ingest).
+    config:
+      loaded_at_field: _ingested_at
+      freshness:
+        warn_after: {count: 36, period: hour}
+        error_after: {count: 72, period: hour}
+    tables:
+      - name: ptt_oil_prices
+        description: PTT OR Bangkok retail price lists, one row per product per price change.
+        meta: {dagster: {asset_key: ["raw", "ptt_oil_prices"]}}
+        columns:
+          - name: price_thb
+            description: Retail price in THB/litre. The API occasionally publishes 0 for unavailable products.
+            data_tests:
+              - value_between:
+                  arguments: {min_value: 0.01, max_value: 200}
+                  config: {severity: warn}
+      - name: bangchak_oil_prices
+        description: Daily snapshot of Bangchak's yesterday / today / tomorrow prices.
+        meta: {dagster: {asset_key: ["raw", "bangchak_oil_prices"]}}
+      - name: fx_rates
+        description: ECB reference rates against USD (Frankfurter API).
+        meta: {dagster: {asset_key: ["raw", "fx_rates"]}}
+      - name: crude_prices
+        description: Brent and WTI front-month futures daily bars (Yahoo Finance).
+        meta: {dagster: {asset_key: ["raw", "crude_prices"]}}
+      - name: ingestion_log
+        description: One row per ingestion job run.
+        config:
+          freshness: null
