@@ -1,0 +1,2107 @@
+{
+ "file": "ACO-02-Tooling-and-Automation.pptx",
+ "units": [
+  {
+   "id": "S001",
+   "texts": [
+    "Module 2: Tooling and Automation"
+   ],
+   "notes": [
+    "Welcome to Module 2: Tooling and Automation."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 2: Tooling and Automation"
+   ],
+   "img": "img/p-01.jpg"
+  },
+  {
+   "id": "S002",
+   "texts": [
+    "Module objectives",
+    "At the end of this module, you will be able to:",
+    "Describe the purpose and function of AWS Systems Manager and its related features.",
+    "Describe the purpose and function of AWS Tools for PowerShell.",
+    "Identify additional development tools used for tooling and automation, such as SDKs, AWS CloudFormation, and AWS OpsWorks.",
+    "Explain how Amazon S3 can be used to host a static website."
+   ],
+   "notes": [
+    "At the end of this module, you will be able to:",
+    "Describe the purpose and function of AWS Systems Manager and its related features.",
+    "Describe the purpose and function of AWS Tools for PowerShell.",
+    "Identify additional development tools used for tooling and automation, such as SDKs, AWS CloudFormation, and AWS OpsWorks.",
+    "Explain how Amazon S3 can be used to host a static website.",
+    "After this overview, you will have the opportunity to complete a Knowledge Check."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module objectives",
+    "At the end of this module, you will be able to:",
+    "• Describe the purpose and function of AWS Systems Manager and its",
+    "related features.",
+    "• Describe the purpose and function of AWS Tools for PowerShell.",
+    "• Identify additional development tools used for tooling and automation, such",
+    "as SDKs, AWS CloudFormation, and AWS OpsWorks.",
+    "• Explain how Amazon S3 can be used to host a static website.",
+    "reserved."
+   ],
+   "img": "img/p-02.jpg"
+  },
+  {
+   "id": "S003",
+   "texts": [
+    "Module overview",
+    "Topics:",
+    "AWS Systems Manager",
+    "Additional administration and development tools",
+    "Hosting a static website on Amazon S3",
+    "Knowledge check",
+    "Instructor Demo:",
+    "Features of AWS Systems Manager",
+    "Lab:",
+    "Lab 1: AWS Systems Manager",
+    "Activities / Project:",
+    "Activity 2: Create a Static Website on Amazon S3",
+    "Project time: Troubleshooting knowledge base"
+   ],
+   "notes": [
+    "This module discusses details of how to use the AWS Command Line Interface (AWS CLI). We will also look at the features provided by the AWS Systems Manager service.",
+    "This module will then provide an overview of some of the other administration and development tools available, including:",
+    "AWS software development kits (SDKs)",
+    "AWS CloudFormation",
+    "AWS OpsWorks",
+    "At the end of the module, you work on a hands-on lab where you complete four different tasks with AWS Systems Manager."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module overview",
+    "Topics:",
+    "Instructor Demo:",
+    "•",
+    "AWS Systems Manager",
+    "• Features of AWS Systems Manager",
+    "•",
+    "Additional administration",
+    "and development tools",
+    "Lab:",
+    "•",
+    "Hosting a static website on",
+    "Amazon S3",
+    "Knowledge check",
+    "• Lab 1: AWS Systems Manager",
+    "Activities / Project:",
+    "• Activity 2: Create a Static Website",
+    "on Amazon S3",
+    "• Project time: Troubleshooting",
+    "knowledge base"
+   ],
+   "img": "img/p-03.jpg"
+  },
+  {
+   "id": "S004",
+   "texts": [
+    "Troubleshooting knowledge base – module focus",
+    "Have your copy of the troubleshooting knowledge base template open for editing",
+    "Create new entries as you encounter troubleshooting situations",
+    "Category of focus for this module:",
+    "Automation and Optimization",
+    "Foundational IT"
+   ],
+   "notes": [
+    "Now that you have been introduced to the Troubleshooting Knowledge Base project, and you know how to create new knowledge base entries, you should be ready to create some entries based on the topics that will be covered in this module.",
+    "Since one of the key topics of this module is AWS Identity and Access Management (IAM), there will be opportunities to add Security & Compliance category entries your knowledge base. Also, during the hands-on activity that follows this module, you will install, configure, and make use of the AWS CLI, which may provide you with an opportunity to create entries related to Foundational IT, if you have to troubleshoot any installation or configuration issues in the Linux terminal."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Troubleshooting",
+    "knowledge base –",
+    "module focus",
+    "• Have your copy of the",
+    "troubleshooting knowledge",
+    "base template open for",
+    "editing",
+    "• Create new entries as you",
+    "encounter troubleshooting",
+    "situations",
+    "• Category of focus for this",
+    "module:",
+    "• Automation and Optimization",
+    "• Foundational IT",
+    "4 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved.",
+    "©",
+    "reserved."
+   ],
+   "img": "img/p-04.jpg"
+  },
+  {
+   "id": "S005",
+   "texts": [
+    "Module 2: Tooling and Automation",
+    "AWS Systems Manager"
+   ],
+   "notes": [
+    "The module will now explore AWS Systems Manager."
+   ],
+   "hidden": false,
+   "rendered": [
+    "M o d u l e 2 : To o l i n g a n d A u t o m a t i o n",
+    "AWS Systems Manager"
+   ],
+   "img": "img/p-05.jpg"
+  },
+  {
+   "id": "S006",
+   "texts": [
+    "AWS Systems Manager overview",
+    "Software",
+    "inventory",
+    "OS",
+    "patches",
+    "System",
+    "images",
+    "OS management",
+    "and configuration",
+    "Features:",
+    "Automation",
+    "Run Command",
+    "Session Manager",
+    "Patch Manager",
+    "Maintenance Windows",
+    "State Manager",
+    "Parameter Store",
+    "Inventory",
+    "Insights dashboard",
+    "AWS Systems Manager",
+    "Amazon Elastic Compute Cloud (Amazon EC2) instances"
+   ],
+   "notes": [
+    "AWS Systems Manager is a management service that helps a user:",
+    "Collect software inventory",
+    "Apply OS patches",
+    "Create system images",
+    "Configure Windows and Linux operating systems",
+    "AWS Systems Manager is designed to be highly automation-focused, which enables the configuration and management of systems running on-premises or in AWS. AWS Systems Manager lets a user select the instances they want to manage and define the management tasks they want to perform.",
+    "AWS Systems Manager offers many features and benefits that systems operations specialists should find useful.",
+    "For example, the Run Command feature allows you to remotely run scripts and programs, while State Manager ensures that your EC2 instances are bootstrapped with specific software at startup. You can use Inventory Manager to collect and query information about the configuration and inventory of your EC2 instances and the software installed on them. And with Maintenance Window, you can define a recurring window of time to run administrative and maintenance tasks across your instances."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager overview",
+    "Software",
+    "inventory",
+    "Features:",
+    "OS",
+    "patches",
+    "AWS",
+    "Systems",
+    "Manager",
+    "System",
+    "images",
+    "OS management",
+    "and configuration",
+    "Amazon Elastic",
+    "Compute",
+    "Cloud (Amazon",
+    "EC2) instances",
+    "•",
+    "Automation",
+    "•",
+    "Run Command",
+    "•",
+    "Session Manager",
+    "•",
+    "Patch Manager",
+    "•",
+    "Maintenance Windows",
+    "•",
+    "State Manager",
+    "•",
+    "Parameter Store",
+    "•",
+    "Inventory",
+    "•",
+    "Insights dashboard"
+   ],
+   "img": "img/p-06.jpg"
+  },
+  {
+   "id": "S007",
+   "texts": [
+    "AWS Systems Manager features",
+    "AWS Systems Manager",
+    "Automation",
+    "Documents",
+    "Patch Manager",
+    "Parameter Store",
+    "Inventory",
+    "Maintenance Windows",
+    "State Manager",
+    "Run Command"
+   ],
+   "notes": [
+    "In this next section, there is an instructor demo, followed by an explanation of some of the key AWS Systems Manager features and benefits.",
+    "After the demo, the next few slides take a closer look at each of the Systems Manager features that are listed here."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager features",
+    "AWS Systems",
+    "Manager",
+    "Automation",
+    "Documents",
+    "Patch",
+    "Manager",
+    "Parameter",
+    "Store",
+    "Inventory",
+    "Maintenance",
+    "Windows",
+    "State",
+    "Manager",
+    "Run",
+    "Command"
+   ],
+   "img": "img/p-07.jpg"
+  },
+  {
+   "id": "S008",
+   "texts": [
+    "Demo: Features of AWS Systems Manager"
+   ],
+   "notes": [
+    "The instructor may choose to demonstrate the features of AWS Systems Manager."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Demo: Features of AWS Systems",
+    "Manager"
+   ],
+   "img": "img/p-08.jpg"
+  },
+  {
+   "id": "S009",
+   "texts": [
+    "AWS Systems Manager: Automation",
+    "Safely automate common and repetitive IT operations and management tasks across AWS resources.",
+    "Automation"
+   ],
+   "notes": [
+    "The Automation feature in Systems Manager can define common IT tasks as a collection of steps in an AWS Systems Manager document (SSM document). The Automation feature can then run all document steps on an entire collection of AWS resources. For example, you could define an automation to remediate unreachable instances, create golden Amazon Machine Images (AMI) (AMIs), or patch instances. Custom automations can also be authored in JavaScript Object Notation (JSON). Amazon CloudWatch Events can also be configured to trigger Systems Manager automations.",
+    "A suggested approach to developing and testing a Systems Manager automation is to:",
+    "Create an automation document—or use an existing automation template—that includes sequential steps and parameters that Systems Manager runs.",
+    "Run the automation using Systems Manager, which will do things such as:",
+    "Launch an instance",
+    "Take a snapshot",
+    "Tag instances",
+    "Delete old images",
+    "Terminate an instance",
+    "Monitor the automation workflow (for example, using the AWS Management Console). After the automation finishes, confirm that the expected results were achieved. For example, you could launch a test instance from an Amazon Machine Image (AMI) that was updated by a Systems Manager automation to verify that it has the expected characteristics."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager:",
+    "Automation",
+    "Safely automate common and repetitive IT operations and",
+    "management tasks across AWS resources.",
+    "Automation",
+    "• Create an",
+    "automation",
+    "document",
+    "#1",
+    "#2",
+    "• Run the",
+    "automation",
+    "document",
+    "• Monitor",
+    "and test",
+    "automation",
+    "#3"
+   ],
+   "img": "img/p-09.jpg"
+  },
+  {
+   "id": "S010",
+   "texts": [
+    "AWS Systems Manager:  Run command",
+    "Example command types provided by Amazon",
+    "Run Command",
+    "Run Command:",
+    "Use predefined commands",
+    "Create your own",
+    "Choose instances or tags",
+    "Choose controls or schedules",
+    "Run the command"
+   ],
+   "notes": [
+    "The Systems Manager Run Command provides a simple way to run predefined commands against EC2 instances. A command that is run by Run Command reduces management overhead because a user can manage instances without setting up bastion hosts or managing Secure Shell (SSH) keys and certificates.",
+    "Through integration with AWS Identity and Access Management (IAM), you can apply granular permissions to control the actions that users can perform on instances. All actions taken with Systems Manager can also be recorded by AWS CloudTrail, which allows a user to audit changes throughout their environment."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: Run",
+    "command",
+    "Example command types provided by Amazon",
+    "Run",
+    "Command",
+    "Run Command:",
+    "• Use predefined commands",
+    "• Create your own",
+    "• Choose instances or tags",
+    "• Choose controls or schedules",
+    "• Run the command"
+   ],
+   "img": "img/p-10.jpg"
+  },
+  {
+   "id": "S011",
+   "texts": [
+    "AWS Systems Manager: Session Manager",
+    "Securely connect to instances without opening inbound ports, using bastion hosts, or maintaining SSH keys.",
+    "Secure session",
+    "Command Line interface",
+    "EC2 instance",
+    "Session logging",
+    "User",
+    "AWS Systems Manager",
+    "aws start-session --target",
+    "(Windows or Linux)",
+    "Secure session",
+    "EC2 instance",
+    "(Windows or Linux)",
+    "Amazon CloudWatch Logs",
+    "Amazon S3 Bucket"
+   ],
+   "notes": [
+    "The Session Manager feature in AWS Systems Manager lets a user manage their EC2 instances through an interactive browser-based shell that is accessible in the AWS Management Console.",
+    "Session Manager provides secure and auditable instance management without the need to open inbound ports in the security groups, maintain bastion host instances in EC2 subnets, or manage SSH keys.",
+    "Session Manager also makes it straightforward to comply with corporate policies that require controlled access to instances, strict security practices, and auditable logs that contain instance access details. A user can gain these benefits while still providing access to EC2 instances for end users."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: Session",
+    "Manager",
+    "Securely connect to instances",
+    "without opening inbound ports, using bastion hosts, or",
+    "maintaining SSH keys.",
+    "Secure session",
+    "User",
+    "awsAWS",
+    "Systems",
+    "startManager",
+    "session",
+    "-target",
+    "Command",
+    "Line",
+    "interface",
+    "Session logging",
+    "Secure session",
+    "Amazon S3",
+    "Bucket",
+    "EC2",
+    "instance",
+    "(Windows or Linux)",
+    "EC2",
+    "instance",
+    "(Windows or Linux)",
+    "Amazon",
+    "CloudWatch Logs"
+   ],
+   "img": "img/p-11.jpg"
+  },
+  {
+   "id": "S012",
+   "texts": [
+    "AWS Systems Manager: Patch Manager",
+    "Patch Manager",
+    "Deploy operating system and software patches automatically across large groups of Amazon EC2 or on-premises instances"
+   ],
+   "notes": [
+    "There are several challenges associated with patching servers and instances, including:",
+    "The time that it takes to patch multiple EC2 instances or on-premises machines",
+    "The repetitive nature of the task",
+    "How errors can result in downtime",
+    "Compliance issues",
+    "To use the Systems Manager Patch Manager to automate patching:",
+    "Create a patch baseline, which contains rules that automatically approve or reject patches.",
+    "Define a maintenance window, and group instances together for patching.",
+    "Apply patches in the maintenance window, and reboot every instance in the patch group.",
+    "Review the results and the details of patch compliance."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: Patch",
+    "Manager",
+    "1. Create",
+    "patch",
+    "baseline.",
+    "Patch",
+    "Manager",
+    "Deploy operating system",
+    "and software patches",
+    "automatically",
+    "across large groups of",
+    "Amazon EC2 or onpremises instances",
+    "4. Audit",
+    "results with",
+    "patch",
+    "compliance.",
+    "2. Create",
+    "maintenance",
+    "window for",
+    "patching.",
+    "3. Apply",
+    "patches",
+    "and reboot",
+    "instances."
+   ],
+   "img": "img/p-12.jpg"
+  },
+  {
+   "id": "S013",
+   "texts": [
+    "AWS Systems Manager: Maintenance Windows",
+    "Schedule windows of time to run administrative and maintenance tasks across your instances",
+    "Maintenance Windows"
+   ],
+   "notes": [
+    "The Systems Manager Maintenance Windows feature allows a user to schedule regular tasks—such as patching—to run automatically. A user can set limits for the simultaneous running of tasks and allowable error rates.",
+    "The steps to implement a Maintenance Window are:",
+    "Create a Maintenance Window.",
+    "Assign targets.",
+    "Assign tasks to be run on those targets. Types of tasks that can run include:",
+    "Commands run by Systems Manager Run Command",
+    "Systems Manager Automation workflows",
+    "AWS Step Function workflows",
+    "AWS Lambda functions",
+    "Review the status of the tasks after the running of the tasks is completed."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: Maintenance",
+    "Windows",
+    "Maintenanc",
+    "e Windows",
+    "Schedule windows of time to run administrative and",
+    "maintenance tasks across your instances",
+    "• Create a",
+    "Maintenance",
+    "Window",
+    "#2",
+    "• Assign tasks",
+    "• Assign",
+    "targets",
+    "#1",
+    "#3",
+    "#4",
+    "• Review",
+    "status after",
+    "tasks are",
+    "complete"
+   ],
+   "img": "img/p-13.jpg"
+  },
+  {
+   "id": "S014",
+   "texts": [
+    "AWS Systems Manager: State Manager",
+    "State Manager",
+    "Maintain consistent configuration of Amazon EC2 or on-premises instances"
+   ],
+   "notes": [
+    "AWS Systems Manager State Manager is a secure and scalable configuration management service that automates the process of keeping your EC2 and hybrid infrastructure in a state that you define.",
+    "You can install software when you create EC2 instances, download and update agents, configure network settings, join a Windows domain, patch instances with software updates, and run scripts on Linux and Windows managed instances.",
+    "Here’s how State Manager works:",
+    "First, create the AWS Systems Manager (SSM) document or identify an existing one that defines the actions that Systems Manager will perform on your managed instances. Documents are authored in JavaScript Object Notation (JSON) or YAML Ain’t Markup Language (YAML), and include the steps and parameters that you specify.",
+    "Next, associate your managed instances with the SSM document. When creating the association, you define the schedule for how often to apply the configured state. Finally, you can choose to write the output of the commands to an Amazon Simple Storage Service (Amazon S3) bucket when you create an association."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: State",
+    "Manager",
+    "Choose",
+    "predefined",
+    "SSM",
+    "document or",
+    "create one",
+    "State",
+    "Manager",
+    "Maintain consistent",
+    "configuration of Amazon",
+    "EC2 or on-premises",
+    "instances",
+    "Associate",
+    "your",
+    "instances",
+    "with",
+    "document",
+    "Output data",
+    "to Amazon",
+    "S3 (optional)",
+    "Specify a",
+    "schedule for",
+    "the state"
+   ],
+   "img": "img/p-14.jpg"
+  },
+  {
+   "id": "S015",
+   "texts": [
+    "AWS Systems Manager: Parameter Store",
+    "{",
+    "\"schemaVersion\": \"2.2\",",
+    "\"description\": \"Sample schema version 2.2 document v3.\",",
+    "\"parameters\": {",
+    "\"dbname\": {",
+    "\"type\": \"String\",",
+    "\"default\": \"{{ssm:/Dev/DB/UserName}}\"",
+    "}",
+    "},",
+    "\"mainSteps\": [{",
+    "\"action\": \"aws:runShellScript\",",
+    "\"name\": \"runShellScript\",",
+    "\"inputs\": {",
+    "\"runCommand\": [\"echo DBUserName: {{ dbname }}\"]",
+    "}",
+    "}]",
+    "}",
+    "Parameter Store",
+    "Parameter Store",
+    "Unique Parameter Name",
+    "Password",
+    "/Dev/DB/UserName",
+    "DE24xd0w",
+    "AWS Key Management Service"
+   ],
+   "notes": [
+    "Instead of storing sensitive data in configuration files or hard coding them into source code, you can use the Systems Manager Parameter Store to store these parameters, and then reference this information in applications or scripts. Use Parameter Store to store configuration information, such as:",
+    "Passwords",
+    "Keys",
+    "License codes",
+    "Database strings",
+    "In the example illustrated on the slide, a new parameter was created to store a password. The parameter name is then referenced in the code shown on the right. Parameter Store integrates with IAM to control parameter access, and then the stored information can be encrypted with AWS Key Management Service (AWS KMS).",
+    "SSM documents currently do not support references to SecureString parameters. This means that to use SecureString parameters with (for example) Run Command, it is necessary to retrieve the parameter value before passing it to Run Command."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: Parameter",
+    "Store",
+    "{",
+    "Parameter",
+    "Store",
+    "Parameter Store",
+    "Unique",
+    "Parameter",
+    "Name",
+    "/Dev/DB/UserName",
+    "AWS Key",
+    "Management",
+    "Service",
+    "\"schemaVersion\": \"2.2\",",
+    "\"description\": \"Sample schema version 2.2 document",
+    "v3.\",",
+    "\"parameters\": {",
+    "\"dbname\": {",
+    "\"type\": \"String\",",
+    "\"default\": \"{{ssm:/Dev/DB/UserName}}\"",
+    "}",
+    "Passwor",
+    "d",
+    "},",
+    "\"mainSteps\": [{",
+    "\"action\": \"aws:runShellScript\",",
+    "\"name\": \"runShellScript\",",
+    "\"inputs\": {",
+    "\"runCommand\": [\"echo DBUserName: {{ dbname",
+    "DE24xd0w",
+    "}}\"]",
+    "}",
+    "}]",
+    "}"
+   ],
+   "img": "img/p-15.jpg"
+  },
+  {
+   "id": "S016",
+   "texts": [
+    "AWS Systems Manager: Inventory",
+    "Collects information about instances and the software installed on them.",
+    "Inventory",
+    "Application data",
+    "Files",
+    "Network",
+    "configurations",
+    "Windows",
+    "services",
+    "Server roles",
+    "Updates",
+    "System properties"
+   ],
+   "notes": [
+    "The Systems Manager Inventory feature can collect inventory information about EC2 instances and the software installed on them, such as:",
+    "Application data",
+    "Network configurations",
+    "Server roles",
+    "Files",
+    "Updates",
+    "Windows services",
+    "System properties",
+    "The Systems Manager Inventory feature can help provide a comprehensive understanding of the system configurations and installed applications across multiple instances, without the need to log into each instance individually.",
+    "The gathered data supports managing application assets, tracking licenses, monitoring file integrity, discovering applications not installed by a traditional installer, and more."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: Inventory",
+    "Collects information about instances and the software installed on",
+    "them.",
+    "Inventory",
+    "Application",
+    "data",
+    "Server roles",
+    "Files",
+    "Network",
+    "configurations",
+    "Updates",
+    "Windows",
+    "services",
+    "System",
+    "properties"
+   ],
+   "img": "img/p-16.jpg"
+  },
+  {
+   "id": "S017",
+   "texts": [
+    "AWS Systems Manager: Insights",
+    "Insights dashboard is a display of operational data for each resource.",
+    "Examples:",
+    "API calls from AWS CloudTrail",
+    "Resource configuration changes from AWS Config",
+    "Software inventory",
+    "Patch compliance status by resource group"
+   ],
+   "notes": [
+    "The AWS Systems Manager Built-In Insights feature aggregates and displays operational data for each resource group through a dashboard. This dashboard eliminates the need to navigate across multiple AWS consoles to view operational data.",
+    "A user can view:",
+    "Application programming interface (API) calls from CloudTrail",
+    "Resource configuration changes from AWS Config",
+    "Software inventory",
+    "Patch compliance status by resource group",
+    "A user can also integrate their CloudWatch dashboards, Trusted Advisor notifications, and Personal Health Dashboard performance and availability alerts into the Insights dashboard."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Systems Manager: Insights",
+    "Insights dashboard is a display",
+    "of operational data for each",
+    "resource.",
+    "Examples:",
+    "• API calls from AWS CloudTrail",
+    "• Resource configuration changes",
+    "from AWS Config",
+    "• Software inventory",
+    "• Patch compliance status by",
+    "resource group",
+    "Trusted",
+    "Advisor",
+    "notification",
+    "s",
+    "CloudWatch",
+    "Dashboards",
+    "Personal",
+    "Health",
+    "Dashboard",
+    "Alerts",
+    "Integrates with",
+    "Systems Manager Insights"
+   ],
+   "img": "img/p-17.jpg"
+  },
+  {
+   "id": "S018",
+   "texts": [
+    "Key Takeaway",
+    "AWS Systems Manager supports automation of repetitive operations and tasks.",
+    "AWS Systems Manager provides a suite of features that help automate operational tasks across AWS and on-premises resources.",
+    "Patch Manager and maintenance window features could be used to apply operating system patches based on a predefined schedule."
+   ],
+   "notes": [
+    "Some key takeaways from this section include:",
+    "The AWS Systems Manager allows you to safely automate common and repetitive IT operations and management tasks across AWS resources.",
+    "AWS Systems Manager provides a suite of features that help automate operational tasks across AWS and on-premises resources.",
+    "Patch Manager and maintenance window features could be used to apply operating system patches based on a predefined schedule."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key Takeaway",
+    "•",
+    "AWS Systems Manager supports",
+    "automation of repetitive operations",
+    "and tasks.",
+    "• AWS Systems Manager provides a",
+    "suite of features that help",
+    "automate operational tasks across",
+    "AWS and on-premises resources.",
+    "• Patch Manager and maintenance",
+    "window features could be used to",
+    "apply operating system patches",
+    "based on a predefined schedule."
+   ],
+   "img": "img/p-18.jpg"
+  },
+  {
+   "id": "S019",
+   "texts": [
+    "Module 2: Tooling and Automation",
+    "Additional administration and development tools"
+   ],
+   "notes": [
+    "The module will now explore additional administration and development tools."
+   ],
+   "hidden": false,
+   "rendered": [
+    "M o d u l e 2 : To o l i n g a n d A u t o m a t i o n",
+    "Additional administration",
+    "and development tools"
+   ],
+   "img": "img/p-19.jpg"
+  },
+  {
+   "id": "S020",
+   "texts": [
+    "AWS Tools for PowerShell",
+    "Script operations from the PowerShell command line",
+    "AWS Tools and SDKs",
+    "Examples:",
+    "Create and configure security groups",
+    "Launch instances",
+    "Create and delete Amazon S3 buckets",
+    "Perform IAM tasks",
+    "Publish Amazon CloudWatch metrics"
+   ],
+   "notes": [
+    "The AWS Tools for PowerShell enable you to script operations on your AWS resources from the PowerShell command line. They let you perform many of the same actions that are available in the AWS SDK for .NET.",
+    "You can use the AWS Tools for PowerShell from the command line for quick tasks, such as:",
+    "Creating and configuring security groups",
+    "Launching instances",
+    "Creating and deleting S3 buckets",
+    "Performing IAM tasks, such as assigning a role to a user",
+    "Publishing CloudWatch metrics",
+    "The AWS Tools for Windows PowerShell provide a set of cmdlets, which are commands that are used in a Windows PowerShell environment to perform an action.",
+    "The AWS Tools for Windows PowerShell support the same set of services and Regions that are supported by the AWS SDKs.",
+    "You will review some PowerShell commands on the next five slides, which are used to:",
+    "Launch an instance",
+    "View EC2 instance details filtering on the previous reservation ID",
+    "Create a security group in Amazon Virtual Private Cloud (Amazon VPC)",
+    "View a new security group",
+    "Create a new S3 Bucket",
+    "Create an IAM group (-Path is optional)",
+    "Create a new IAM user (-Path is optional)",
+    "Add an IAM user to group"
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Tools for PowerShell",
+    "AWS Tools",
+    "and SDKs",
+    "Script operations from the PowerShell",
+    "command line",
+    "Examples:",
+    "• Create and configure security groups",
+    "• Launch instances",
+    "• Create and delete Amazon S3 buckets",
+    "• Perform IAM tasks",
+    "• Publish Amazon CloudWatch metrics"
+   ],
+   "img": "img/p-20.jpg"
+  },
+  {
+   "id": "S021",
+   "texts": [
+    "PowerShell - example command 1 of 5",
+    "Example PowerShell command to launch an EC2 instance:",
+    "PS C:\\> New-EC2Instance -ImageId ami-c49c0dac -MinCount 1 -MaxCount 1 -KeyName myPSKeyPair -SecurityGroups myPSSecurityGroup -InstanceType t1.micro"
+   ],
+   "notes": [
+    "This is an example PowerShell command to launch an EC2 instance.",
+    "Expected output:",
+    "ReservationId: r-b70a0ef1",
+    "OwnerId      : 123456789012",
+    "RequesterId\t :",
+    "Groups\t : {myPSSecurityGroup}",
+    "GroupName\t : {myPSSecurityGroup}",
+    "Instances\t : {}"
+   ],
+   "hidden": false,
+   "rendered": [
+    "PowerShell - example command 1 of 5",
+    "Example PowerShell command to launch an EC2 instance:",
+    "PS C:\\> New-EC2Instance -ImageId ami-c49c0dac -MinCount 1 MaxCount 1 -KeyName myPSKeyPair -SecurityGroups",
+    "myPSSecurityGroup -InstanceType t1.micro"
+   ],
+   "img": "img/p-21.jpg"
+  },
+  {
+   "id": "S022",
+   "texts": [
+    "PowerShell - example command 2 of 5",
+    "Example PowerShell command to view EC2 instance details filtering on the previous reservation ID:",
+    "PS C:\\> $reservation = New-Object 'collections.generic.list[string]'",
+    "$reservation.add(\"r-5caa4371\")",
+    "$filter_reservation = New-Object Amazon.EC2.Model.Filter -Property @{Name = \"reservation-id\"; Values = $reservation}",
+    "(Get-EC2Instance -Filter $filter_reservation).Instances"
+   ],
+   "notes": [
+    "This is an example PowerShell command to view EC2 instance details filtering on the previous reservation ID.  Expected output:",
+    "AmiLaunchIndex       \t: 0",
+    "Architecture\t\t: x86_64",
+    "BlockDeviceMappings\t: {/dev/sda1}",
+    "ClientToken           \t:",
+    "EbsOptimized\t\t: False",
+    "Hypervisor \t\t: xen",
+    "IamInstanceProfile\t:",
+    "ImageId\t\t: ami-c49c0dac",
+    "InstanceId\t\t: i-5203422c",
+    "InstanceLifecycle\t:",
+    "InstanceType\t\t: t1.micro",
+    "KernelId \t\t:",
+    "KeyName\t\t: myPSKeyPair",
+    "LaunchTime \t\t: 12/2/2014 3:38:52 PM",
+    "Monitoring \t\t: Amazon.EC2.Model.Monitoring",
+    "NetworkInterfaces \t: {}",
+    "Placement \t\t: Amazon.EC2.Model.Placement",
+    "Platform\t\t: Windows",
+    "PrivateDnsName\t:",
+    "PrivateIpAddress\t: 10.25.1.11",
+    "ProductCodes\t\t: {}",
+    "PublicDnsName\t:",
+    "PublicIpAddress\t: 198.51.100.245",
+    "RamdiskId\t\t:",
+    "RootDeviceName\t: /dev/sda1",
+    "RootDeviceType\t: ebs",
+    "SecurityGroups\t: {myPSSecurityGroup}",
+    "SourceDestCheck\t: True",
+    "SpotInstanceRequestId:",
+    "SriovNetSupport\t:",
+    "State\t\t\t: Amazon.EC2.Model.InstanceState",
+    "StateReason \t\t:",
+    "StateTransitionReason:",
+    "SubnetId\t\t:",
+    "Tags\t\t\t: {}",
+    "VirtualizationType\t: hvm",
+    "VpcId \t\t\t:"
+   ],
+   "hidden": false,
+   "rendered": [
+    "PowerShell - example command 2 of 5",
+    "Example PowerShell command to view EC2 instance details",
+    "filtering on the previous reservation ID:",
+    "PS C:\\> $reservation = New-Object",
+    "'collections.generic.list[string]'",
+    "$reservation.add(\"r-5caa4371\")",
+    "$filter_reservation = New-Object Amazon.EC2.Model.Filter Property @{Name = \"reservation-id\"; Values = $reservation}",
+    "(Get-EC2Instance -Filter $filter_reservation).Instances"
+   ],
+   "img": "img/p-22.jpg"
+  },
+  {
+   "id": "S023",
+   "texts": [
+    "PowerShell - example command 3 of 5",
+    "Example PowerShell command to create a security group in Amazon VPC:",
+    "PS C:\\> $groupid = New-EC2SecurityGroup -VpcId \"vpc-da0013b3\" -GroupName \"myPSSecurityGroup\" -GroupDescription \"EC2-VPC from PowerShell\"",
+    "Example PowerShell command to view a new security group:",
+    "PS C:\\> Get-EC2SecurityGroup -GroupId sg-5d293231"
+   ],
+   "notes": [
+    "This is an example PowerShell command to create a security group in Amazon VPC.",
+    "Expected output:",
+    "sg-5d293231",
+    "This is an example PowerShell command to view a new security group.",
+    "Expected output:",
+    "OwnerId\t\t: 123456789012",
+    "GroupName\t\t: myPSSecurityGroup",
+    "GroupId\t\t: sg-5d293231",
+    "Description\t\t: EC2-VPC from PowerShell",
+    "IpPermissions\t\t: {}",
+    "IpPermissionsEgress\t: {Amazon.EC2.Model.IpPermission}",
+    "VpcId \t\t\t: vpc-da0013b3",
+    "Tags \t\t\t: {}"
+   ],
+   "hidden": false,
+   "rendered": [
+    "PowerShell - example command 3 of 5",
+    "Example PowerShell command to create a security group in",
+    "Amazon VPC:",
+    "PS C:\\> $groupid = New-EC2SecurityGroup -VpcId \"vpc-da0013b3\"",
+    "-GroupName \"myPSSecurityGroup\" -GroupDescription \"EC2-VPC from",
+    "PowerShell\"",
+    "Example PowerShell command to view a new security group:",
+    "PS C:\\> Get-EC2SecurityGroup -GroupId sg-5d293231"
+   ],
+   "img": "img/p-23.jpg"
+  },
+  {
+   "id": "S024",
+   "texts": [
+    "PowerShell - example command 4 of 5",
+    "Example PowerShell command to create a new S3 Bucket:",
+    "PS C:\\> New-S3Bucket -BucketName website-example -Region us-west-1"
+   ],
+   "notes": [
+    "This is an example PowerShell command to create a new S3 Bucket.",
+    "Expected output:",
+    "BucketName                                            CreationDate",
+    "----------                                                  ------------",
+    "website-example                                     Mon, 26 Nov 2012 00:41:08 GMT"
+   ],
+   "hidden": false,
+   "rendered": [
+    "PowerShell - example command 4 of 5",
+    "Example PowerShell command to create a new S3 Bucket:",
+    "PS C:\\> New-S3Bucket -BucketName website-example -Region us-west-1"
+   ],
+   "img": "img/p-24.jpg"
+  },
+  {
+   "id": "S025",
+   "texts": [
+    "PowerShell - example command 5 of 5",
+    "Example PowerShell command to create an IAM group (-Path is optional):",
+    "PS C:\\> New-IAMGroup -Path \"/ps-created-groups/\" -GroupName \"powerUsers\"",
+    "Example PowerShell command to create a new IAM user (-Path is optional):",
+    "PS C:\\> New-IAMUser -Path \"/ps-created-users/\" -UserName \"myNewUser\"",
+    "Example PowerShell command to add an IAM user to a group:",
+    "PS C:\\> Add-IAMUserToGroup -UserName myNewUser -GroupName powerUsers"
+   ],
+   "notes": [
+    "This is an example PowerShell command to create an IAM group (-Path is optional).",
+    "Expected output:",
+    "Path\t: /ps-created-groups/",
+    "GroupName\t: powerUsers",
+    "GroupId\t: AGPAJPHUEYD5XPCGIUH3E",
+    "Arn\t: arn:aws:iam::455364113843:group/ps-created-groups/powerUsers",
+    "CreateDate\t: 11/20/2012 3:32:50 PM",
+    "This is an example PowerShell command to create a new IAM user (-Path is optional).",
+    "Expected output:",
+    "Path          \t: /ps-created-users/",
+    "UserName \t: myNewUser",
+    "UserId       \t: AIDAJOJSPSPXADHBT7IN6",
+    "Arn            \t: arn:aws:iam::455364113843:user/ps-created-users/myNewUser",
+    "CreateDate\t: 11/20/2012 3:26:31 PM",
+    "This is an example PowerShell command to add an IAM user to a group.",
+    "Expected output:",
+    "ServiceResponse",
+    "---------------",
+    "Amazon.IdentityManagement.Model.AddUserToGroupResponse"
+   ],
+   "hidden": false,
+   "rendered": [
+    "PowerShell - example command 5 of 5",
+    "Example PowerShell command to create an IAM group (-Path is optional):",
+    "PS C:\\> New-IAMGroup -Path \"/ps-created-groups/\" -GroupName \"powerUsers\"",
+    "Example PowerShell command to create a new IAM user (-Path is",
+    "optional):",
+    "PS C:\\> New-IAMUser -Path \"/ps-created-users/\" -UserName \"myNewUser\"",
+    "Example PowerShell command to add an IAM user to a group:",
+    "PS C:\\> Add-IAMUserToGroup -UserName myNewUser -GroupName powerUsers"
+   ],
+   "img": "img/p-25.jpg"
+  },
+  {
+   "id": "S026",
+   "texts": [
+    "SDKs",
+    "JavaScript",
+    "Python",
+    "PHP",
+    ".NET",
+    "Ruby",
+    "Go                            Node.js                           C++                        Java"
+   ],
+   "notes": [
+    "The concept of infrastructure as code is fundamental to cloud computing, and differentiates the cloud from more traditional IT environments. The AWS software development kits (SDKs) and the application programming interfaces (APIs) provide you the tools necessary for applications built on AWS to be managed as 'infrastructure as code.'",
+    "AWS provides SDKs that are language-specific. These SDKs also contain APIs for the languages shown on this slide. Both the SDKs and APIs allow a developer to incorporate the connectivity and functionality of the wide range of AWS services into their code without needing to write functions from scratch. The AWS SDKs have extensive documentation on how to use them, including guides on how to get started, developer guides, API references, and community forums or developer blogs.",
+    "For more information about the AWS SDKs, see https://aws.amazon.com/getting-started/tools-sdks."
+   ],
+   "hidden": false,
+   "rendered": [
+    "SDKs",
+    "JavaScript",
+    "Go",
+    "Python",
+    "PHP",
+    ".NET",
+    "Node.js",
+    "Ruby"
+   ],
+   "img": "img/p-26.jpg"
+  },
+  {
+   "id": "S027",
+   "texts": [
+    "AWS CloudFormation",
+    "AWS CloudFormation allows a user to create, update, and delete a set of resources spanning multiple AWS services as a single unit (stack).",
+    "AWS CloudFormation templates are written in JSON or YAML.",
+    "Key features include:",
+    "Preview how proposed changes with impact environment",
+    "Detect drift",
+    "Enable extensibility",
+    "AWS CloudFormation"
+   ],
+   "notes": [
+    "AWS CloudFormation is another useful tool that enables a user to create, update, or delete entire AWS infrastructure deployments predictably and repeatedly.",
+    "With AWS CloudFormation, an entire infrastructure can be modeled in a single text file written in JSON or YAML. The text file template can be used to define all the desired AWS resources for a stack. An AWS CloudFormation stack is a collection of AWS resources that can be managed as a single unit. In other words, you can create, update, or delete a collection of resources by creating, updating, or deleting stacks. Resources in the stack can include EC2 instances, Amazon Relational Database Service (Amazon RDS) instances, virtual private clouds (VPCs), and many other resources created from AWS services.",
+    "AWS CloudFormation also allows users to preview how proposed changes to a stack might impact their running resources, such as whether your changes will delete or replace any critical resources. AWS CloudFormation only makes the changes to the stack after the user decides to run them.",
+    "Another feature of AWS CloudFormation is drift detection. Performing a drift detection operation on a stack determines whether the stack has drifted from its expected template configuration. If the resource in the stack supports drift detection, the drift detection operation returns detailed information about the drift status of that resource."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS CloudFormation",
+    "AWS CloudFormation allows a user to create, update, and",
+    "delete a set of resources spanning multiple AWS services",
+    "as a single unit (stack).",
+    "• AWS CloudFormation templates are written in JSON or",
+    "YAML.",
+    "AWS",
+    "CloudFormation",
+    "• Key features include:",
+    "• Preview how proposed changes with impact",
+    "environment",
+    "• Detect drift",
+    "• Enable extensibility"
+   ],
+   "img": "img/p-27.jpg"
+  },
+  {
+   "id": "S028",
+   "texts": [
+    "AWS CloudFormation"
+   ],
+   "notes": [
+    "AWS CloudFormation supports custom extensions to your stack template that can be built using AWS Lambda. You could write custom provisioning in a Lambda function and configure an AWS CloudFormation stack to trigger the Lambda function when it creates the stack. For example, you could write custom provisioning logic for tasks such as looking up the most recent AMI IDs for use in your stacks."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS CloudFormation"
+   ],
+   "img": "img/p-28.jpg"
+  },
+  {
+   "id": "S029",
+   "texts": [
+    "AWS OpsWorks",
+    "AWS OpsWorks is a configuration management service.",
+    "Three offerings available:",
+    "AWS OpsWorks",
+    "Based on Chef and Puppet",
+    "Enables infrastructure as code",
+    "Automates:",
+    "Infrastructure",
+    "Application management",
+    "Compliance testing",
+    "Configuration tasks"
+   ],
+   "notes": [
+    "AWS OpsWorks is another useful tool. It is a configuration management service that provides managed instances of Chef and Puppet. Chef and Puppet are automation platforms that allow you to use code to automate the configurations of your servers. OpsWorks lets you use Chef and Puppet to automate how servers are configured, deployed, and managed across your EC2 instances or on-premises compute environments.",
+    "OpsWorks has three offerings: AWS OpsWorks for Chef Automate, AWS OpsWorks for Puppet Enterprise, and AWS OpsWorks Stacks.",
+    "For more information about AWS OpsWorks, see https://aws.amazon.com/opsworks/."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS OpsWorks",
+    "AWS",
+    "OpsWorks",
+    "AWS OpsWorks is a",
+    "configuration",
+    "management service.",
+    "• Based on Chef and Puppet",
+    "• Enables infrastructure as",
+    "code",
+    "• Automates:",
+    "• Infrastructure",
+    "• Application management",
+    "• Compliance testing",
+    "• Configuration tasks",
+    "Three offerings available:",
+    "AWS",
+    "OpsWork",
+    "s for",
+    "Chef",
+    "Automate",
+    "(Fully",
+    "managed)",
+    "AWS",
+    "OpsWork",
+    "s for",
+    "Puppet",
+    "Enterpris",
+    "e (Fully",
+    "AWS",
+    "OpsWork",
+    "s Stacks",
+    "managed)"
+   ],
+   "img": "img/p-29.jpg"
+  },
+  {
+   "id": "S030",
+   "texts": [
+    "Key Takeaway",
+    "AWS Tools for PowerShell supports scripting operations on AWS resources from the PowerShell command line.",
+    "AWS CloudFormation enables you to create, update, and delete AWS infrastructure deployments predictably and repeatedly.",
+    "AWS OpsWorks is a configuration management service for automation."
+   ],
+   "notes": [
+    "Some key takeaways from this section include:",
+    "AWS Tools for PowerShell enables you to script operations on your AWS resources from the PowerShell command line.",
+    "AWS CloudFormation enables a user to create, update, and delete entire AWS infrastructure deployments predictably and repeatedly.",
+    "AWS OpsWorks is a configuration management service that automates:",
+    "Infrastructure",
+    "Application management",
+    "Compliance testing",
+    "Configuration tasks"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key Takeaway",
+    "• AWS Tools for PowerShell supports",
+    "scripting operations on AWS",
+    "resources from the PowerShell",
+    "command line.",
+    "• AWS CloudFormation enables you to",
+    "create, update, and delete AWS",
+    "infrastructure deployments",
+    "predictably and repeatedly.",
+    "• AWS OpsWorks is a configuration",
+    "management service for automation."
+   ],
+   "img": "img/p-30.jpg"
+  },
+  {
+   "id": "S031",
+   "texts": [
+    "Module 2: Tooling and Automation",
+    "Hosting a static website on Amazon S3"
+   ],
+   "notes": [
+    "The module will now explore hosting a static website on Amazon S3."
+   ],
+   "hidden": false,
+   "rendered": [
+    "M o d u l e 2 : To o l i n g a n d A u t o m a t i o n",
+    "Hosting a static website on Amazon",
+    "S3"
+   ],
+   "img": "img/p-31.jpg"
+  },
+  {
+   "id": "S032",
+   "texts": [
+    "Hosting a static website on Amazon S3",
+    "4. Access the website at the assigned Amazon S3 endpoint:",
+    "http://mybucket-s3-website-us-west-2.amazonaws.com",
+    "Client",
+    "AWS Cloud",
+    "3. Upload the website content.",
+    "AWS Management Console",
+    "1. Create a bucket in Amazon S3.",
+    "2. Configure the bucket to:",
+    "- Enable website hosting.",
+    "- Grant public read permission.",
+    "mompopcafe.com Amazon S3 bucket",
+    "AWS Command Line Interface"
+   ],
+   "notes": [
+    "Amazon Simple Storage Service (Amazon S3) provides object storage, and it has many practical uses. One thing it can be used for is to host a static website. By using Amazon S3 for this purpose, the need to deploy a complex or costly runtime infrastructure can be avoided. A static website consists of individual webpages that include static content and optional client-side scripts, but these webpages do not rely on any server-side processing.",
+    "Hosting a static website on Amazon S3 involves a few steps:",
+    "First, create a bucket in Amazon S3 to store the content of the website.",
+    "Then, configure the S3 bucket to enable website hosting and grant public read permission to its content.",
+    "Finally, upload the website content to the bucket using the Amazon Management Console or the AWS Command-line Interface (CLI).",
+    "Access the website at the endpoint URL that Amazon S3 assigns to it. The endpoint URL includes the bucket name and the name of the Region that contains the bucket, as shown in the diagram."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Hosting a static website on Amazon S3",
+    "4. Access the website at the assigned",
+    "Amazon S3 endpoint:",
+    "http://mybucket-s3-website-us-west2.amazonaws.com",
+    "Client",
+    "AWS Cloud",
+    "AWS",
+    "Management",
+    "Console",
+    "3. Upload the website",
+    "content.",
+    "AWS",
+    "Command",
+    "Line",
+    "Interface",
+    "1. Create a bucket in Amazon S3.",
+    "2. Configure the bucket to:",
+    "mompopcafe.co",
+    "m Amazon S3",
+    "bucket",
+    "- Enable website hosting.",
+    "- Grant public read permission."
+   ],
+   "img": "img/p-32.jpg"
+  },
+  {
+   "id": "S033",
+   "texts": [
+    "Amazon S3 static website hosting: Characteristics",
+    "Note the difference in the website endpoint URL formats. The separator character before region is either a period or a dash depending on the Region that contains the S3 bucket.",
+    "http://bucket-name.s3-website-region.amazonaws.com",
+    "http://bucket-name.s3-website.region.amazonaws.com",
+    "The S3 bucket:",
+    "Should store the website in a folder hierarchy that reflects its content structure.",
+    "Must include an index document defined during bucket configuration.",
+    "Default name is index.html."
+   ],
+   "notes": [
+    "The endpoint URL assigned to a static website hosted in Amazon S3 conforms to one of the two formats shown in this slide. As previously mentioned, it contains the bucket name and the name of the Region where the bucket was created. The difference between the two formats is that the separator character before the Region name is either a period or a dash depending on the Region that contains the bucket. For example, if the bucket is created in the US West (Oregon) Region, the separator character is a dash; however, if the bucket is created in the EU (Frankfurt) Region, the separator character is a period.",
+    "NOTE: Uploaded web content should be stored in an Amazon S3 folder hierarchy that reflects the website content structure. In addition, when enabling a bucket for website hosting, the name of the index document must be provided. This document is the default webpage that Amazon S3 returns when a request is made to the root of the website or one of its subfolders. Make sure that the loaded web content includes this index document at the proper folder level."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Amazon S3 static website hosting:",
+    "Characteristics",
+    "Note the difference in the website endpoint URL formats. The",
+    "separator character before region is either a period or a dash",
+    "depending on the Region that contains the S3 bucket.",
+    "http://bucket-name.s3-website-region.amazonaws.com",
+    "http://bucket-name.s3-website.region.amazonaws.com",
+    "The S3 bucket:",
+    "• Should store the website in a folder hierarchy that reflects its content",
+    "structure.",
+    "• Must include an index document defined during bucket configuration.",
+    "• Default name is index.html."
+   ],
+   "img": "img/p-33.jpg"
+  },
+  {
+   "id": "S034",
+   "texts": [
+    "Using a custom domain",
+    "Client",
+    "http://www.mompopcafe.com",
+    "http://mompopcafe.com",
+    "Name | Alias Target",
+    "mompopcafe.com | http://mompopcafe.com-s3-website-us-west-2.amazonaws.com",
+    "www.mompopcafe.com | http://www.mompopcafe.com-s3-website-us-west-2.amazonaws.com",
+    "AWS Cloud",
+    "Redirect",
+    "www.mompopcafe.com Amazon S3 bucket",
+    "mompopcafe.com Amazon S3 bucket"
+   ],
+   "notes": [
+    "Instead of accessing a static website using its Amazon S3 endpoint URL, a user can optionally use the Amazon Route 53 service to map the user’s own domain name to the Amazon S3 endpoint. For example, a user could assign the mompopcafe.com domain name to it, or assign a subdomain name, such as www.mompopcafe.com.",
+    "In the example shown in this slide, the root domain, mompopcafe.com, and subdomain, www.mompopcafe.com, are used to access the website. To support this, two buckets are created and configured in Amazon S3, one for each name. One bucket contains the website content, and the other bucket redirects requests to the content bucket. Note that the bucket names must match the domain names that they use. In addition, alias records are created in Amazon Route 53 to map the domain and subdomain names to the corresponding S3 bucket endpoints."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Using a custom domain",
+    "Client",
+    "http://www.mompopcafe.com",
+    "http://mompopcafe.com",
+    "Name",
+    "AWS Cloud",
+    "Alias Target",
+    "mompopcafe.com",
+    "http://mompopcafe.com-s3-website-uswest-2.amazonaws.com",
+    "www.mompopcafe.com",
+    "http://www.mompopcafe.com-s3-websiteus-west-2.amazonaws.com",
+    "Redirect",
+    "www.mompopcafe.com",
+    "Amazon S3 bucket",
+    "mompopcafe.com",
+    "Amazon S3 bucket"
+   ],
+   "img": "img/p-34.jpg"
+  },
+  {
+   "id": "S035",
+   "texts": [
+    "Key Takeaway",
+    "Amazon S3 provides object storage, such as hosting a static website.",
+    "Amazon S3 helps users avoid complex or costly runtime infrastructures."
+   ],
+   "notes": [
+    "Some key takeaways from this section include:",
+    "Amazon S3 provides object storage, such as hosting a static website.",
+    "Amazon S3 helps users avoid complex or costly runtime infrastructures."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key Takeaway",
+    "• Amazon S3 provides object",
+    "storage, such as hosting a static",
+    "website.",
+    "• Amazon S3 helps users avoid",
+    "complex or costly runtime",
+    "infrastructures."
+   ],
+   "img": "img/p-35.jpg"
+  },
+  {
+   "id": "S036",
+   "texts": [
+    "Summary",
+    "Described the purpose and function of AWS Systems Manager and its related features.",
+    "Described the purpose and function of AWS Tools for PowerShell.",
+    "Identified additional development tools used for tooling and automation, such as SDKs, AWS CloudFormation, and AWS OpsWorks.",
+    "Explained how Amazon S3 can be used to host a static website.",
+    "To finish this module:",
+    "Complete:",
+    "Knowledge check"
+   ],
+   "notes": [
+    "In summary, this module discussed:",
+    "The purpose and function of AWS Systems Manager and its related features.",
+    "The purpose and function of AWS Tools for PowerShell.",
+    "Additional development tools used for tooling and automation, such as SDKs, AWS CloudFormation, and AWS OpsWorks.",
+    "How to host a static website on Amazon S3."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Summary",
+    "•",
+    "•",
+    "•",
+    "•",
+    "Described the purpose and function of AWS Systems Manager and its",
+    "related features.",
+    "Described the purpose and function of AWS Tools for PowerShell.",
+    "Identified additional development tools used for tooling and",
+    "automation, such as SDKs, AWS CloudFormation, and AWS",
+    "OpsWorks.",
+    "Explained how Amazon S3 can be used to host a static website.",
+    "To finish this module:",
+    "Knowledge check",
+    "Complete:"
+   ],
+   "img": "img/p-36.jpg"
+  },
+  {
+   "id": "S037",
+   "texts": [
+    "Test Strategies"
+   ],
+   "notes": [
+    "This section is intended to help refine your test taking skills by encouraging you to look for key words that are within the scenario and/or question. These keywords will help you rule out distractors and to narrow down the correct answer."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Test Strategies",
+    "erved."
+   ],
+   "img": "img/p-37.jpg"
+  },
+  {
+   "id": "S038",
+   "texts": [
+    "Module 2 Scenario",
+    "A financial company is working with AWS for their new website. Administrators update images and related content on a monthly basis. They have noticed that the website's images take a while to load, especially for some of the global customers.",
+    "Administrator has been tasked with updating this month's images, while archiving last month's images.",
+    "What tool should be selected to expedite this request?",
+    "AWS Command Line Interface (AWS CLI)",
+    "AWS Management Console",
+    "Software development kits (SDKs)",
+    "All of the above",
+    "None of the above"
+   ],
+   "notes": [
+    "It is important to fully understand the scenario and question being asked before even reading the answer choices. Here they are grayed out so we can find the keywords in this scenario and question that will help you find the correct answer."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 2 Scenario",
+    "A financial company is working with AWS for their new website.",
+    "Administrators update images and related content on a monthly basis.",
+    "They have noticed that the website's images take a while to load,",
+    "especially for some of the global customers.",
+    "Administrator has been tasked with updating this month's images, while",
+    "archiving last month's images.",
+    "What tool should be selected to expedite this request?",
+    "A. AWS Command Line Interface (AWS CLI)",
+    "B. AWS Management Console",
+    "C. Software development kits (SDKs)",
+    "D. All of the above",
+    "E. None of the above"
+   ],
+   "img": "img/p-38.jpg"
+  },
+  {
+   "id": "S039",
+   "texts": [
+    "Module 2 Keywords",
+    "A financial company is working with AWS for their new website. Administrators update images and related content on a monthly basis. They have noticed that the website's images take a while to load, especially for some of the global customers.",
+    "Administrator has been tasked with updating this month's images, while archiving last month's images.",
+    "What tool should be selected to expedite this request?",
+    "AWS Command Line Interface (AWS CLI)",
+    "AWS Management Console",
+    "Software development kits (SDKs)",
+    "All of the above",
+    "None of the above"
+   ],
+   "notes": [
+    "Now that we have the keywords in this scenario highlighted in purple, let us look at the answers."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 2 Keywords",
+    "A financial company is working with AWS for their new website.",
+    "Administrators update images and related content on a monthly basis.",
+    "They have noticed that the website's images take a while to load,",
+    "especially for some of the global customers.",
+    "Administrator has been tasked with updating this month's images, while",
+    "archiving last month's images.",
+    "What tool should be selected to expedite this request?",
+    "A. AWS Command Line Interface (AWS CLI)",
+    "B. AWS Management Console",
+    "C. Software development kits (SDKs)",
+    "D. All of the above",
+    "E. None of the above"
+   ],
+   "img": "img/p-39.jpg"
+  },
+  {
+   "id": "S040",
+   "texts": [
+    "Module 2 Answer",
+    "A financial company is working with AWS for their new website. Administrators update images and related content on a monthly basis. They have noticed that the website's images take a while to load, especially for some of the global customers.",
+    "Administrator has been tasked with updating this month's images, while archiving last month's images.",
+    "What tool should be selected to expedite this request?",
+    "AWS Command Line Interface (AWS CLI)",
+    "AWS Management Console",
+    "Software development kits (SDKs)",
+    "All of the above",
+    "None of the above"
+   ],
+   "notes": [
+    "Let’s look at the answer choices and rule them out based on the keywords we have previously highlighted."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 2 Answer",
+    "A financial company is working with AWS for their new website.",
+    "Administrators update images and related content on a monthly basis.",
+    "They have noticed that the website's images take a while to load,",
+    "especially for some of the global customers.",
+    "Administrator has been tasked with updating this month's images, while",
+    "archiving last month's images.",
+    "What tool should be selected to expedite this request?",
+    "A. AWS Command Line Interface (AWS CLI)",
+    "B. AWS Management Console",
+    "C. Software development kits (SDKs)",
+    "D. All of the above",
+    "E. None of the above"
+   ],
+   "img": "img/p-40.jpg"
+  },
+  {
+   "id": "S041",
+   "texts": [
+    "Lab 1: Using AWS Systems Manager",
+    "~ 30 min."
+   ],
+   "notes": [
+    "Now that you have learned about many tooling and automation features provided by AWS, it is time to gain some hands-on practice using Systems Manager."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Lab 1:",
+    "Using AWS Systems",
+    "Manager",
+    "~ 30 min."
+   ],
+   "img": "img/p-41.jpg"
+  },
+  {
+   "id": "S042",
+   "texts": [
+    "Lab 1: Using AWS Systems Manager",
+    "In this lab, you will:",
+    "Use AWS Systems Manager Inventory to verify configurations and permissions.",
+    "Use AWS Systems Manager Run Command to run tasks on multiple servers.",
+    "Use AWS Systems Manager Parameter Store to update application settings or configurations.",
+    "Use AWS Systems Manager Session Manager to access the command line on an instance."
+   ],
+   "notes": [
+    "This lab consists of four tasks.",
+    "Use the AWS Systems Manager Inventory feature set to verify configurations and permissions.",
+    "Use Systems Manager Run Command to run tasks on multiple servers.",
+    "Use the Systems Manager Parameter Store to store a configuration that will be used to activate a feature in an application.",
+    "Use Systems Manager Session Manager to access the command line on an instance through a browser interface."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Lab 1: Using AWS Systems",
+    "Manager",
+    "In this lab, you will:",
+    "• Use AWS Systems Manager Inventory to verify configurations and",
+    "permissions.",
+    "• Use AWS Systems Manager Run Command to run tasks on multiple",
+    "servers.",
+    "• Use AWS Systems Manager Parameter Store to update application",
+    "settings or configurations.",
+    "• Use AWS Systems Manager Session Manager to access the command",
+    "line on an instance."
+   ],
+   "img": "img/p-42.jpg"
+  },
+  {
+   "id": "S043",
+   "texts": [
+    "Lab 1: Using AWS Systems Manager – task 2",
+    "AWS Cloud",
+    "Region",
+    "VPC",
+    "Managed instance",
+    "EC2 instance",
+    "Apache HTTP Server",
+    "AWS Systems Manager",
+    "Install",
+    "PHP",
+    "AWS-RunShellScript Run Command",
+    "SysOps user",
+    "AWS SDK for PHP",
+    "Widget manufacturing application",
+    "Install script command parameter"
+   ],
+   "notes": [
+    "In this task, you use the AWS Systems Manager Run Command feature to install the Widget Manufacturing application and its required infrastructure software on an EC2 instance named Managed Instance.  Specifically, you use the AWS Systems Manager console to run the AWS-RunShellScript command. You configure the command to run a script that you pass as a parameter to it and which installs the following components:",
+    "Apache HTTP Server",
+    "PHP",
+    "AWS SDK for PHP",
+    "Widget Manufacturing application"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Lab 1: Using AWS Systems",
+    "Manager – task 2",
+    "AWS Cloud",
+    "Region",
+    "AWS Systems Manager",
+    "SysOps",
+    "user",
+    "AWSRunShellScript",
+    "Run Command",
+    "VPC",
+    "Managed instance",
+    "EC2 instance",
+    "Apache HTTP",
+    "Server",
+    "Install",
+    "PHP",
+    "AWS SDK for PHP",
+    "Widget",
+    "manufacturing",
+    "application",
+    "Install script",
+    "command",
+    "parameter"
+   ],
+   "img": "img/p-43.jpg"
+  },
+  {
+   "id": "S044",
+   "texts": [
+    "Lab 1: Using AWS Systems Manager – task 4",
+    "AWS Cloud",
+    "VPC",
+    "Start session",
+    "Subnet",
+    "SysOps user",
+    "Security group",
+    "AWS Systems Manager",
+    "Create session",
+    "Managed instance",
+    "Public subnet",
+    "Enter shell commands",
+    "Browser",
+    "command session"
+   ],
+   "notes": [
+    "In this task, you use the AWS Systems Manager Session Manager feature to open a browser command session to the Managed Instance EC2 instance.  Specifically:",
+    "You use the AWS Systems Manager console to start a new session to communicate with Managed Instance.",
+    "The Session Manager creates a new session into the instance and opens a browser window to allow you to enter commands.",
+    "You enter commands through the browser session window."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Lab 1: Using AWS Systems",
+    "Manager – task 4",
+    "AWS Cloud",
+    "1Start session",
+    "VPC",
+    "Subnet",
+    "SysOps",
+    "user",
+    "AWS Systems",
+    "Manager",
+    "Security",
+    "group",
+    "Create",
+    "sessio",
+    "n",
+    "Managed",
+    "instance",
+    "Enter shell",
+    "command",
+    "s",
+    "Public subnet",
+    "Browser",
+    "command",
+    "session"
+   ],
+   "img": "img/p-44.jpg"
+  },
+  {
+   "id": "S045",
+   "texts": [
+    "Systems Operations Project Scenario",
+    "Mom & Pop Café & Bakery"
+   ],
+   "notes": [
+    "Now, let’s look at our business case, Mom & Pop Café & Bakery."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Systems Operations Project Scenario",
+    "Mom & Pop Café & Bakery"
+   ],
+   "img": "img/p-45.jpg"
+  },
+  {
+   "id": "S046",
+   "texts": [
+    "AWS & the real world",
+    "Amazon Web Services (AWS) provides a broad array of service categories, such as:",
+    "Compute",
+    "Storage",
+    "Database",
+    "Analytics",
+    "AWS provides large organizations and small businesses cloud-based solutions to move their operations forward:",
+    "Faster",
+    "At reduced costs",
+    "With the ability to scale based on demand"
+   ],
+   "notes": [
+    "Amazon Web Services (AWS) provides a broad array of service categories, such as compute, storage, database, and analytics, that provide large organizations and small businesses the opportunity to use technology to move their operations forward faster, at reduced costs, and with the ability to scale based on demand."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS & the real world",
+    "Amazon Web Services (AWS)",
+    "provides a broad array of service",
+    "categories, such as:",
+    "• Compute",
+    "• Storage",
+    "• Database",
+    "• Analytics",
+    "AWS provides large organizations and",
+    "small businesses cloud-based solutions",
+    "to move their operations forward:",
+    "• Faster",
+    "• At reduced costs",
+    "• With the ability to scale based on demand"
+   ],
+   "img": "img/p-46.jpg"
+  },
+  {
+   "id": "S047",
+   "texts": [
+    "Project objectives",
+    "On completion of this project, you will be able to:",
+    "Experience the communication challenges faced when attempting to apply technology as the solution to business problems.",
+    "Translate customer requirements into a proposed technical solution.",
+    "Present the proposed solution to the customer.",
+    "Use AWS Best Practices for a frugal, resilient, and secure solution."
+   ],
+   "notes": [
+    "On completion of this project, you will be able to:",
+    "Experience the communication challenges faced when attempting to apply technology as the solution to business problems.",
+    "Translate customer requirements into a proposed technical solution.",
+    "Present the proposed solution to the customer.",
+    "Use AWS Best Practices for a frugal, resilient, and secure solution."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Project objectives",
+    "On completion of this project, you will be able to:",
+    "• Experience the communication challenges faced",
+    "when attempting to apply technology as the solution",
+    "to business problems.",
+    "• Translate customer requirements into a proposed",
+    "technical solution.",
+    "• Present the proposed solution to the customer.",
+    "• Use AWS Best Practices for a frugal, resilient, and",
+    "secure solution."
+   ],
+   "img": "img/p-47.jpg"
+  },
+  {
+   "id": "S048",
+   "texts": [
+    "Mom & Pop Café & BakeryCustomer Meeting Preparation"
+   ],
+   "notes": [
+    "We will now begin to prepare for our customer meeting, where a new problem will be proposed and where we will assist them in finding a solution."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café &",
+    "Bakery",
+    "Customer Meeting",
+    "Preparation"
+   ],
+   "img": "img/p-48.jpg"
+  },
+  {
+   "id": "S049",
+   "texts": [
+    "Mom & Pop Café & Bakery",
+    "Business website request"
+   ],
+   "notes": [
+    "The customer has requested to build a website."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café & Baker y",
+    "Business website request"
+   ],
+   "img": "img/p-49.jpg"
+  },
+  {
+   "id": "S050",
+   "texts": [
+    "Business need: Website",
+    "Sophie mentioned to Darsh that she wants a website that will showcase the café visually through images, and provide customers with business details.",
+    "Eventually, Sophie would like it to evolve to:",
+    "Allow customers to place orders online",
+    "Track order history, which could be used to predict supply chain needs",
+    "Implement reporting functionality (email delivery of reports)",
+    "Handle server outages with high availability and failover"
+   ],
+   "notes": [
+    "Darsh asked Sophie about the website idea she had mentioned to him earlier. She had told him that she wanted the website to showcase the café visually with images, and also show things like the Café’s contact information, and what menu items the Café offers to customers.",
+    "Sophie confirmed her interest in the website. She said she just did not have time to create it herself. She told Darsh that she could see the website eventually evolving so that they could:",
+    "Automate inventory based on the orders that customers make through the website",
+    "Log client information used for orders",
+    "Provide delivery notifications",
+    "Predict the increase of sales based on historical trends",
+    "Darsh responded that he thought that was a great idea."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Business need: Website",
+    "Sophie mentioned to Darsh that she wants a website that will",
+    "showcase the café visually through images, and provide",
+    "customers with business details.",
+    "Eventually, Sophie would like it to evolve",
+    "to:",
+    "• Allow customers to place orders online",
+    "• Track order history, which could be used to",
+    "predict supply chain needs",
+    "• Implement reporting functionality (email",
+    "delivery of reports)",
+    "• Handle server outages with high availability",
+    "and failover"
+   ],
+   "img": "img/p-50.jpg"
+  },
+  {
+   "id": "S051",
+   "texts": [
+    "Static website using AWS console",
+    "Darsh is excited to create a website for Sophie that will highlight the café's offerings and that they can also use for marketing.",
+    "He decides to create a static website by using the AWS Command Line Interface (AWS CLI). The website will consist of:",
+    "An Amazon Simple Storage Service(Amazon S3) bucket with HTML files and images",
+    "Darsh shows Sophie the new static website."
+   ],
+   "notes": [
+    "Darsh told Sophie that he was going to start work on a simple static version of the website.",
+    "He mentioned that he would use the AWS Command Line Interface (AWS CLI) to create an Amazon S3 bucket and upload the website files.",
+    "After he had built an early version of it, he asked Sophie if he could show her the website that he started creating for the Café."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Static website using AWS console",
+    "Darsh is excited to create a website for Sophie that will highlight",
+    "the café's offerings and that they can also use for marketing.",
+    "He decides to create a static website by using the AWS Command",
+    "Line Interface (AWS CLI). The website will consist of:",
+    "• An Amazon Simple Storage Service",
+    "(Amazon S3) bucket with HTML files and images",
+    "Darsh shows Sophie the new static website."
+   ],
+   "img": "img/p-51.jpg"
+  },
+  {
+   "id": "S052",
+   "texts": [
+    "Darsh’s static website"
+   ],
+   "notes": [
+    "Sophie took a look at the proof of concept version of the static website. Darsh explained how he used the AWS CLI and uploaded some HTML pages that include links to some photos that her dad took—and that the whole website was hosted on Amazon S3."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Darsh’s static website"
+   ],
+   "img": "img/p-52.jpg"
+  },
+  {
+   "id": "S053",
+   "texts": [
+    "Website customer requirements",
+    "Sophie and Darsh recently noticed that Pop has been taking a lot of photos of menu items. They realize that Pop will probably want frequent updates.",
+    "Sophie and Darsh know website files can be uploaded using the AWS Management Console or through the AWS CLI.",
+    "Using the AWS CLI would allow multiple images to be uploaded at one time and work programmatically."
+   ],
+   "notes": [
+    "Sophie told Darsh that he did a nice job. She asked if she could gain access to the website authoring area so that she could add some more images. She mentioned that lately her dad has been taking photos of his recipes. She told Darsh that with Darsh's graphic skills and her dad's photos, they could make the website even better.",
+    "Darsh mentioned that they could use the AWS CLI to update the website programmatically. He said it would save them time and effort.",
+    "Sophie liked the idea and she liked that she could use the programming skills she recently learned."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Website customer requirements",
+    "Sophie and Darsh recently noticed that Pop",
+    "has been taking a lot of photos of menu",
+    "items. They realize that Pop will probably",
+    "want frequent updates.",
+    "Sophie and Darsh know website files can",
+    "be uploaded using the AWS Management",
+    "Console or through the AWS CLI.",
+    "Using the AWS CLI would allow multiple",
+    "images to be uploaded at one time and",
+    "work programmatically."
+   ],
+   "img": "img/p-53.jpg"
+  },
+  {
+   "id": "S054",
+   "texts": [
+    "Sophie’s static website",
+    "Customer requirements include:",
+    "Create IAM user with S3 access for Sophie.",
+    "Create an S3 bucket.",
+    "Enable the bucket as a website.",
+    "Upload website files to the S3 bucket."
+   ],
+   "notes": [
+    "Darsh granted programmatic S3 access to Sophie's IAM user. Now Sophie cab do everything she wants to do with the website. They plan to create an Amazon S3 bucket, where they will upload the website files. They even sketched out the architecture for the website, and how it might evolve over time.",
+    "Sophie and Darsh started building and improving on the Café website that they hosted on Amazon S3, so that they could show it to Mom and Pop!"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Sophie’s static website",
+    "Customer requirements include:",
+    "1. Create IAM user with S3 access",
+    "for Sophie.",
+    "2. Create an S3 bucket.",
+    "3. Enable the bucket as a website.",
+    "4. Upload website files to the S3",
+    "bucket."
+   ],
+   "img": "img/p-54.jpg"
+  },
+  {
+   "id": "S055",
+   "texts": [
+    "Website custom updates",
+    "Now that new images have been updated, Emma (Mom) wants to update some of the colors on the website with Sophie’s help."
+   ],
+   "notes": [
+    "When Sophie and Darsh finished creating the static website, they showed it to Emma, Sophie's mom.",
+    "Emma thanked them for creating the website and letting her have a look. She told them that Pop had taken some more photos that could be used.",
+    "She also told them that she would like the color scheme to be updated so it matches the theme found in the Café.  Sophie agreed to update the colors on the website so that her mom would approve."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Website custom updates",
+    "Now that new images have been",
+    "updated, Emma (Mom) wants to",
+    "update some of the colors on the",
+    "website with Sophie’s help."
+   ],
+   "img": "img/p-55.jpg"
+  },
+  {
+   "id": "S056",
+   "texts": [
+    "Activity 2: Create a static website on Amazon S3"
+   ],
+   "notes": [
+    "In this activity, you will practice using AWS Command Line Interface (AWS CLI) commands to:",
+    "Create an Amazon Simple Storage Service (Amazon S3) bucket.",
+    "Create a new AWS Identity and Access Management (IAM) user that has full access to the Amazon S3 service.",
+    "Upload files to Amazon S3 to host a simple website for the Mom & Pop Café & Bakery.",
+    "Create a batch file that can be used to update the static website when you change any of the website files locally.",
+    "Once you have completed the activity, clients will be able to access the website you have deployed to Amazon S3 as shown in the diagram on the next slide."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Activity 2: Create a",
+    "static website on",
+    "Amazon S3"
+   ],
+   "img": "img/p-56.jpg"
+  },
+  {
+   "id": "S057",
+   "texts": [
+    "Activity #2 - Amazon S3 hosting topology diagram",
+    "AWS Cloud",
+    "http://<bucket-name>-s3-website-<region>.amazonaws.com",
+    "Amazon S3 bucket",
+    "Browser client",
+    "Region"
+   ],
+   "notes": [
+    "In activity 2, the static Mom & Pop Café website is hosted on Amazon S3. After the S3 bucket is created and properly configured for website hosting, a client browser can access the website directly by using the assigned Amazon S3 endpoint URL."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Activity #2 - Amazon S3 hosting",
+    "topology diagram",
+    "AWS Cloud",
+    "Region",
+    "http://<bucket-name>-s3-website<region>.amazonaws.com",
+    "Browser",
+    "client",
+    "Amazon S3",
+    "bucket"
+   ],
+   "img": "img/p-57.jpg"
+  },
+  {
+   "id": "S058",
+   "texts": [
+    "Begin activity #2: Create a static website on Amazon S3"
+   ],
+   "notes": [
+    "You may now begin the activity. Feel free to ask your instructor for assistance, as needed."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Begin activity",
+    "#2: Create a",
+    "static website",
+    "on Amazon S3"
+   ],
+   "img": "img/p-58.jpg"
+  },
+  {
+   "id": "S059",
+   "texts": [
+    "Static website with custom domain",
+    "What are the four steps to setting up a static website using a custom domain?",
+    "Step #4",
+    "Step #3",
+    "Step #1",
+    "Step #2"
+   ],
+   "notes": [
+    "What are the four steps to setting up a static website using a custom domain?"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Static website with custom domain",
+    "What are the four steps to",
+    "setting up a static website",
+    "using a custom domain?",
+    "Step #1",
+    "Step #2",
+    "reserved.",
+    "Step #3",
+    "Step #4"
+   ],
+   "img": "img/p-59.jpg"
+  },
+  {
+   "id": "S060",
+   "texts": [
+    "Static website with custom domain",
+    "What are the four steps to setting up a static website using a custom domain?",
+    "Step #4",
+    "Step #3",
+    "Step #1",
+    "Step #2",
+    "Register a domain",
+    "Add alias records",
+    "Create and configure a bucket and upload data",
+    "Test"
+   ],
+   "notes": [
+    "The four steps to setting up a static website with a custom domain are:",
+    "Register a domain.",
+    "Create and configure a bucket and upload data.",
+    "Add alias records.",
+    "Test."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Static website with custom domain",
+    "What are the four steps to",
+    "setting up a static website",
+    "using a custom domain?",
+    "Step #1",
+    "Step #2",
+    "Step #3",
+    "Step #4",
+    "Register",
+    "a domain",
+    "Create and",
+    "configure a",
+    "bucket and",
+    "upload",
+    "data",
+    "Add alias",
+    "records",
+    "Test",
+    "reserved."
+   ],
+   "img": "img/p-60.jpg"
+  },
+  {
+   "id": "S061",
+   "texts": [
+    "Project time: Troubleshooting knowledge base",
+    "~ 30 min."
+   ],
+   "notes": [
+    "Take some time to add entries to your Troubleshooting Knowledge Base.",
+    "Given the focus of this module, you should be able to create a few entries in the Automation category. You can always add details in the Foundational IT category as well."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Project time:",
+    "Troubleshooting",
+    "knowledge base",
+    "~ 30 min."
+   ],
+   "img": "img/p-61.jpg"
+  },
+  {
+   "id": "S062",
+   "texts": [
+    "Thank you"
+   ],
+   "notes": [
+    "Thank you for participating in Module 2: Tooling and automation."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Thank you",
+    "permission from Amazon Web Services, Inc. Commercial copying, lending, or selling is prohibited. Corrections or feedback on the course, please email us",
+    "at: aws-course-feedback@amazon.com. For all other questions, contact us at: https://aws.amazon.com/contact-us/aws-training/. All trademarks are the property",
+    "of their owners."
+   ],
+   "img": "img/p-62.jpg"
+  }
+ ]
+}

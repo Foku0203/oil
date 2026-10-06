@@ -1,0 +1,2822 @@
+{
+ "file": "ACO-01-Understanding-Systems-Operations-on-AWS.pptx",
+ "units": [
+  {
+   "id": "S001",
+   "texts": [
+    "Module 1: Understanding Systems Operations on AWS"
+   ],
+   "notes": [
+    "Welcome to Module 1: Understanding Systems Operations on AWS."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 1: Understanding Systems",
+    "Operations on AWS"
+   ],
+   "img": "img/p-01.jpg"
+  },
+  {
+   "id": "S002",
+   "texts": [
+    "Module objectives",
+    "At the end of this module, you will be able to:",
+    "Describe system operations in the cloud related to automated and repeatable deployments.",
+    "Explain Amazon Web Services (AWS) Regions and edge locations, and criteria for selecting them.",
+    "Describe core services related to system operations, including services for network, compute, and access.",
+    "Explain how AWS Identity and Access Management (IAM) provides security over AWS account resources.",
+    "Describe AWS Command Line Interface (AWS CLI) features"
+   ],
+   "notes": [
+    "At the end of this module, you will be able to:",
+    "Describe system operations in the cloud related to automated and repeatable deployments.",
+    "Explain Amazon Web Services (AWS) Regions and edge locations, and criteria for selecting them.",
+    "Describe core services related to system operations, including services for network, compute, and access.",
+    "Explain how AWS Identity and Access Management (IAM) provides security over AWS account resources.",
+    "Describe AWS Command Line Interface (AWS CLI) features.",
+    "After this overview, you will have the opportunity to complete a Knowledge Assessment."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module objectives",
+    "At the end of this module, you will be able to:",
+    "• Describe system operations in the cloud related to automated and",
+    "repeatable deployments.",
+    "• Explain Amazon Web Services (AWS) Regions and edge locations, and",
+    "criteria for selecting them.",
+    "• Describe core services related to system operations, including services",
+    "for network, compute, and access.",
+    "• Explain how AWS Identity and Access Management (IAM) provides",
+    "security over AWS account resources.",
+    "• Describe AWS Command Line Interface (AWS CLI) features",
+    "reserved."
+   ],
+   "img": "img/p-02.jpg"
+  },
+  {
+   "id": "S003",
+   "texts": [
+    "Module overview",
+    "Topics:",
+    "Systems operations in the cloud",
+    "Introduction to core services",
+    "AWS Identity and Access Management (IAM)",
+    "AWS Command Line Interface (AWS CLI)",
+    "Knowledge check",
+    "Instructor demos:",
+    "Create an IAM user and IAM Group",
+    "AWS CLI",
+    "Video:",
+    "Introduction to IAM Policy Simulator",
+    "Activity / Project:",
+    "Project Intro: Creating a troubleshooting knowledge base",
+    "Mom & Pop Café Use Case Introduction",
+    "Activity 1: Install and practice using the AWS CLI (Includes challenge)",
+    "Project time: Troubleshooting knowledge base"
+   ],
+   "notes": [
+    "This module introduces AWS infrastructures as it relates to system operations, such as the global infrastructure, core services, and account security.",
+    "This module will then provide an overview of these topics:",
+    "What is systems operations in the cloud?",
+    "AWS global infrastructure and core services",
+    "AWS Identity and Access Management (IAM)",
+    "Managing accounts, including AWS Organizations",
+    "At the end of the module, there is an activity and you will also be introduced to the use case that informs many of the course activities and you will be introduced to the course project."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module overview",
+    "Topics:",
+    "•",
+    "Systems operations in the cloud",
+    "•",
+    "Introduction to core services",
+    "•",
+    "AWS Identity and Access",
+    "Management (IAM)",
+    "•",
+    "AWS Command Line Interface",
+    "(AWS CLI)",
+    "Knowledge check",
+    "Instructor demos:",
+    "• Create an IAM user and IAM Group",
+    "• AWS CLI",
+    "Video:",
+    "• Introduction to IAM Policy Simulator",
+    "Activity / Project:",
+    "• Project Intro: Creating a troubleshooting",
+    "knowledge base",
+    "• Mom & Pop Café Use Case Introduction",
+    "• Activity 1: Install and practice using the AWS",
+    "CLI (Includes challenge)",
+    "• Project time: Troubleshooting knowledge base"
+   ],
+   "img": "img/p-03.jpg"
+  },
+  {
+   "id": "S004",
+   "texts": [
+    "Project introduction: Creating a troubleshooting knowledge base",
+    "~ 30 min."
+   ],
+   "notes": [
+    "This course includes a project that challenges you to build a troubleshooting knowledge base. The instructor will introduce the project to you now and provide the project details, which are included in the Build a Troubleshooting Knowledge Base document.",
+    "At the end of this project, learners will be able to:",
+    "Describe common technical challenges that users face when they attempt to deploy, upgrade, and maintain AWS Cloud deployments.",
+    "Explain how to overcome specific technical challenges by confirming and adjusting deployment configurations as necessary.",
+    "Present troubleshooting techniques to stakeholders.",
+    "This experience will allow you the opportunity to hone in your skills with listening for key issues and concerns that indicate an technical issue and to then document the troubleshooting steps as you progress through the course to create a reference guide for future use."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Project",
+    "introduction:",
+    "Creating a",
+    "troubleshooting",
+    "knowledge base",
+    "~ 30 min."
+   ],
+   "img": "img/p-04.jpg"
+  },
+  {
+   "id": "S005",
+   "texts": [
+    "Troubleshooting knowledge base – module focus",
+    "Have your copy of the troubleshooting knowledge base template open for editing",
+    "Create new entries as you encounter troubleshooting situations",
+    "Categories of focus for this module:",
+    "Security & Compliance",
+    "Foundational IT"
+   ],
+   "notes": [
+    "Now that you have been introduced to the Troubleshooting Knowledge Base project, and you know how to create new knowledge base entries, you should be ready to create some entries based on the topics that will be covered in this module.",
+    "Since one of the key topics of this module is AWS Identity and Access Management (IAM), there will be opportunities to add Security & Compliance category entries your knowledge base. Also, during the hands-on activity that follows this module, you will install, configure, and make use of the AWS CLI, which may provide you with an opportunity to create entries related to Foundational IT, if you have to troubleshoot any installation or configuration issues in the Linux terminal."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Troubleshooting",
+    "knowledge base –",
+    "module focus",
+    "• Have your copy of the",
+    "troubleshooting knowledge",
+    "base template open for",
+    "editing",
+    "• Create new entries as you",
+    "encounter troubleshooting",
+    "situations",
+    "• Categories of focus for this",
+    "module:",
+    "• Security & Compliance",
+    "• Foundational IT",
+    "5 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved.",
+    "©",
+    "reserved."
+   ],
+   "img": "img/p-05.jpg"
+  },
+  {
+   "id": "S006",
+   "texts": [
+    "Module 1: Understanding Systems Operations on AWS",
+    "Systems operations in the cloud"
+   ],
+   "notes": [
+    "The module will now explore systems operations in the cloud."
+   ],
+   "hidden": false,
+   "rendered": [
+    "M o d u l e 1 : U n d e r s t a n d i n g S y s t e m s O p e r a t i o n s o n AW S",
+    "Systems operations in the cloud"
+   ],
+   "img": "img/p-06.jpg"
+  },
+  {
+   "id": "S007",
+   "texts": [
+    "Systems operations",
+    "System operations responsibilities and tasks"
+   ],
+   "notes": [
+    "Let’s begin by defining systems operations. Systems operations involves the responsibilities tasks required to build (create), test, deploy, monitor, maintain, and safeguard complex computing systems.",
+    "The system operation activity build includes the development of reusable infrastructure templates, which are then tested, deployed, monitored, maintained, and safeguarded. The development of reusable infrastructure templates describes the create systems operations activity."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Systems operations",
+    "Complex computing systems",
+    "Build",
+    "Test",
+    "Deploy",
+    "Monitor",
+    "Maintain",
+    "Safeguar",
+    "d",
+    "System operations responsibilities and tasks"
+   ],
+   "img": "img/p-07.jpg"
+  },
+  {
+   "id": "S008",
+   "texts": [
+    "Systems operations in the cloud",
+    "Automation of system operations enables:",
+    "Repeatable deployment of infrastructure and applications on demand.",
+    "Creation of self-describing systems.",
+    "Building well tested secure systems.",
+    "Script, program, or template",
+    "Development",
+    "Test",
+    "Production"
+   ],
+   "notes": [
+    "Consider automation instead of building all the pieces of a complex computing system deployment by hand. It is a best practice to use a file or application to package the description of the network and the components that will run in that network. This course will cover some of the possibilities for packaging reusable infrastructure in depth.",
+    "For the purposes of this conversation, keep in mind that varying degrees of automation can be accomplished by creating scripts, programs, or templates such as:",
+    "A Linux shell script",
+    "A Python or Ruby application",
+    "A C# application",
+    "A template format, such as AWS CloudFormation (discussed in depth in this course)",
+    "By specifying the infrastructure either declaratively or programmatically, a user can create as many deployments of it as needed, when needed.  The goal is to make the creation of the infrastructure repeatable. You can easily deploy an infrastructure you define once, into different Regions, or create development and test environments that consistently match the production environment."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Systems operations in the cloud",
+    "Automation of system operations enables:",
+    "• Repeatable deployment of infrastructure and applications on demand.",
+    "• Creation of self-describing systems.",
+    "• Building well tested secure systems.",
+    "Script, program, or template",
+    "Development",
+    "Test",
+    "Production"
+   ],
+   "img": "img/p-08.jpg"
+  },
+  {
+   "id": "S009",
+   "texts": [
+    "Module 1: Understanding Systems Operations on AWS",
+    "Introduction to core services"
+   ],
+   "notes": [
+    "The module will now explore AWS core services that are used in systems operations."
+   ],
+   "hidden": false,
+   "rendered": [
+    "M o d u l e 1 : U n d e r s t a n d i n g S y s t e m s O p e r a t i o n s o n AW S",
+    "Introduction to core services"
+   ],
+   "img": "img/p-09.jpg"
+  },
+  {
+   "id": "S010",
+   "texts": [
+    "Key AWS services for systems operations: Network",
+    "Network",
+    "Compute",
+    "Access",
+    "AWS Identity and Access",
+    "Management (IAM)",
+    "Amazon Virtual Private Cloud (Amazon VPC)",
+    "Amazon Elastic Compute Cloud (Amazon EC2)",
+    "Manage access and authentication",
+    "Users, groups, roles, and policies",
+    "Identity federation",
+    "Virtual networks",
+    "Logically isolated",
+    "Configurable key features:",
+    "IP ranges, routing, gateways, and security settings",
+    "Virtual computing environments",
+    "Amazon Machine Images (AMIs)",
+    "Scalable",
+    "Optimizable",
+    "*Services will be discussed in more detail later"
+   ],
+   "notes": [
+    "Three key areas of interest to systems operations are network, compute, and controlling access.",
+    "When a user configures a network environment in the cloud, Amazon Virtual Private Cloud (Amazon VPC) is the service used to do it. The virtual private cloud, or VPC, is the network environment into which resources will be launched, such as EC2 instances. The VPC is designed to provide greater control over the isolation of the environment and its resources from each other.",
+    "Each VPC is defined within a Region. You can have multiple VPCs in each Region, and you can have VPCs in as many Regions as you want. The subnets you define inside of a VPC can be either public or private."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key AWS services for systems",
+    "operations: Network",
+    "Network",
+    "Amazon Virtual Private",
+    "Cloud (Amazon VPC)",
+    "• Virtual networks",
+    "• Logically isolated",
+    "• Configurable key",
+    "features:",
+    "• IP ranges, routing,",
+    "gateways, and security",
+    "settings",
+    "Compute",
+    "Amazon Elastic Compute",
+    "Cloud (Amazon EC2)",
+    "• Virtual computing",
+    "environments",
+    "• Amazon Machine",
+    "Images (AMIs)",
+    "• Scalable",
+    "• Optimizable",
+    "Access",
+    "AWS Identity and",
+    "Access",
+    "Management (IAM)",
+    "• Manage access and",
+    "authentication",
+    "• Users, groups,",
+    "roles, and policies",
+    "• Identity federation",
+    "*Services will be discussed in more detail",
+    "later"
+   ],
+   "img": "img/p-10.jpg"
+  },
+  {
+   "id": "S011",
+   "texts": [
+    "Key AWS services for systems operations: Compute",
+    "Network",
+    "Compute",
+    "Access",
+    "AWS Identity and Access",
+    "Management (IAM)",
+    "Amazon Virtual Private Cloud (Amazon VPC)",
+    "Amazon Elastic Compute Cloud (Amazon EC2)",
+    "Manage access and authentication",
+    "Users, groups, roles, and policies",
+    "Identity federation",
+    "Virtual networks",
+    "Logically isolated",
+    "Configurable key features:",
+    "IP ranges, routing, gateways, and security settings",
+    "Virtual computing environments",
+    "Amazon Machine Images (AMIs)",
+    "Scalable",
+    "Optimizable",
+    "*Services will be discussed in more detail later"
+   ],
+   "notes": [
+    "AWS provides a number of compute options. Amazon EC2 lets you provision virtual computing environments in the cloud. Virtually anything that can be done with a server can be done with an Amazon EC2 instance.",
+    "Most server operating systems are supported, including Windows, Red Hat, SUSE, Ubuntu, and Amazon Linux. A user can create images of the servers at any time with a few clicks or a simple API call. These images are referred to as Amazon Machine Images (AMIs), and can be reused to launch instances in the future. Amazon EC2 is highly scalable, which means that it will add more instances when needed, and terminate these instances when they are not needed. Amazon EC2 is also optimizable, as the instance types can be selected to optimize CPU, memory, storage, networking capacity, or graphics, and general purpose. Each optimized instance type comes in a variety of sizes."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key AWS services for systems",
+    "operations: Compute",
+    "Network",
+    "Amazon Virtual Private",
+    "Cloud (Amazon VPC)",
+    "• Virtual networks",
+    "• Logically isolated",
+    "• Configurable key",
+    "features:",
+    "• IP ranges, routing,",
+    "gateways, and security",
+    "settings",
+    "Compute",
+    "Amazon Elastic Compute",
+    "Cloud (Amazon EC2)",
+    "• Virtual computing",
+    "environments",
+    "• Amazon Machine",
+    "Images (AMIs)",
+    "• Scalable",
+    "• Optimizable",
+    "Access",
+    "AWS Identity and",
+    "Access",
+    "Management (IAM)",
+    "• Manage access and",
+    "authentication",
+    "• Users, groups,",
+    "roles, and policies",
+    "• Identity federation",
+    "*Services will be discussed in more 11detail"
+   ],
+   "img": "img/p-11.jpg"
+  },
+  {
+   "id": "S012",
+   "texts": [
+    "Key AWS services for systems operations: Access",
+    "Network",
+    "Compute",
+    "Access",
+    "AWS Identity and Access",
+    "Management (IAM)",
+    "Amazon Virtual Private Cloud (Amazon VPC)",
+    "Amazon Elastic Compute Cloud (Amazon EC2)",
+    "Manage access and authentication",
+    "Users, groups, roles, and policies",
+    "Identity federation",
+    "Virtual networks",
+    "Logically isolated",
+    "Configurable key features:",
+    "IP ranges, routing, gateways, and security settings",
+    "Virtual computing environments",
+    "Amazon Machine Images (AMIs)",
+    "Scalable",
+    "Optimizable",
+    "*Services will be discussed in more detail later"
+   ],
+   "notes": [
+    "Finally, access can be managed. AWS Identity and Access Management (IAM) is a service that helps a user securely control access to AWS resources for users and for programs. A user uses IAM to control who can use the AWS resources (authentication), what resources they can use and in what ways (authorization).",
+    "IAM supports granular control over access permissions, not just based on resource, but all the way down to determining which API calls for each service can be made.",
+    "Use IAM to create additional users and assign permissions to these users, following the least-privilege principle. With IAM, you can securely control access to AWS services and resources for users in an AWS account. For example, if you require administrator-level permissions, you can create an IAM user, grant that user full access, and then use those credentials to interact with AWS. Later, if there is a need to revoke or modify permissions, you can remove or modify any policies that are associated with that IAM user. Additionally, if there are multiple users that require access to an AWS account, you can create unique credentials for each user and define who has access to which resources. In other words, there is no need to share credentials. For example, you can create IAM users with read-only access to resources in an AWS account, and distribute those credentials to users that require read access.",
+    "Identity federation is another useful tool that can be used with IAM. With federation, a user can use single sign-on (SSO) to access AWS accounts using credentials from the corporate directory. Federation uses open standards, such as Security Assertion Markup Language 2.0 (SAML), to exchange identity and security information between an identity provider (IdP) and an application."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key AWS services for systems",
+    "operations: Access",
+    "Network",
+    "Amazon Virtual Private",
+    "Cloud (Amazon VPC)",
+    "• Virtual networks",
+    "• Logically isolated",
+    "• Configurable key",
+    "features:",
+    "• IP ranges, routing,",
+    "gateways, and security",
+    "settings",
+    "Compute",
+    "Amazon Elastic Compute",
+    "Cloud (Amazon EC2)",
+    "• Virtual computing",
+    "environments",
+    "• Amazon Machine",
+    "Images (AMIs)",
+    "• Scalable",
+    "• Optimizable",
+    "Access",
+    "AWS Identity and",
+    "Access",
+    "Management (IAM)",
+    "• Manage access and",
+    "authentication",
+    "• Users, groups,",
+    "roles, and policies",
+    "• Identity federation",
+    "*Services will be discussed in more12detail"
+   ],
+   "img": "img/p-12.jpg"
+  },
+  {
+   "id": "S013",
+   "texts": [
+    "Scope of Amazon Web Services",
+    "Global",
+    "Region",
+    "IAM users, groups, and roles",
+    "Amazon Route 53 hosted zones and record sets",
+    "Amazon CloudFront distributions",
+    "Amazon Simple Storage Service (Amazon S3) buckets",
+    "Amazon Machine Images (AMIs)",
+    "Amazon CloudWatch metrics",
+    "Amazon Elastic Block Store (Amazon EBS) snapshots",
+    "Amazon ElastiCache clusters",
+    "Amazon Virtual Private Cloud (VPC)",
+    "Availability Zone",
+    "Amazon EC2 instances",
+    "Amazon EBS volumes",
+    "Amazon Relational Database Service (Amazon RDS) database instances",
+    "Subnets"
+   ],
+   "notes": [
+    "Some AWS service features are Regional, others are global, and others exist only in the Availability Zone in which they are created. It is important to understand the scope of the various features.",
+    "For example, when a user defines an S3 bucket, they must specify the Region where that bucket will exist. Similarly, when they capture an EC2 instance as an AMI, that AMI is available only in the Region in which it was captured. If a user wants to instantiate an instance from that AMI in a different Region, they must first copy the AMI to that other Region. AWS CloudWatch metrics, Amazon Block Store (Amazon EBS) snapshots, Amazon ElastiCache clusters, and VPCs are also all Regional. Factors that influence the selection of a region include:",
+    "Consideration of cost that vary by Region",
+    "Consideration of legal requirements that are associated with data governance",
+    "A country's laws and regulations can affect what information can cross geographical boundaries and services that are offered.",
+    "Reduce latency with geographical proximity to customers",
+    "Some resources are global. For example, when you define IAM users, groups, and roles, those resources can be referenced across all Regions in an AWS account. Hosted zones that are defined in Amazon Route 53 are also global, as are Amazon CloudFront distributions.",
+    "Some AWS service features only exist at the level of the Availability Zone. Every Region has at least two Availability Zones. For example, if a user launches an EC2 instance in the us-west-1 Region, it will be launched into an Availability Zone, such as us-west-1b. If they then want to attach a new EBS volume to that instance, they must create the volume in the same Availability Zone (us-west-1b). Otherwise, the user will not be able to attach it to that instance. Subnets and Amazon Relational Database Service (Amazon RDS) database instances are other examples of objects or constructs that are defined within an Availability Zone."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Scope of Amazon Web Services",
+    "Region",
+    "• Amazon Simple Storage Service",
+    "(Amazon S3) buckets",
+    "• Amazon Machine Images (AMIs)",
+    "• Amazon CloudWatch metrics",
+    "• Amazon Elastic Block Store",
+    "(Amazon EBS) snapshots",
+    "• Amazon ElastiCache clusters",
+    "• Amazon Virtual Private Cloud",
+    "(VPC)",
+    "Global",
+    "• IAM users, groups, and roles",
+    "• Amazon Route 53 hosted zones and",
+    "record sets",
+    "• Amazon CloudFront distributions",
+    "Availability Zone",
+    "• Amazon EC2 instances",
+    "• Amazon EBS volumes",
+    "• Amazon Relational Database",
+    "Service (Amazon RDS) database",
+    "instances",
+    "• Subnets"
+   ],
+   "img": "img/p-13.jpg"
+  },
+  {
+   "id": "S014",
+   "texts": [
+    "Service limits on AWS",
+    "Limit potential excessive charges and keep the AWS network healthy"
+   ],
+   "notes": [
+    "When a user creates a new AWS account, default service limits are applied. Some of these limits are soft limits. For example, if they want to run many t2.large EC2 instances in one Region as On-Demand Instances, the per-Region soft limit on those instances is 20. If they try to run a 21st instance when 20 instances are already running, they will get a capacity error. A user can create a case in the AWS Support Center and request a Service Limit Increase for their account. These requests are often approved.",
+    "There are also some hard limits. For example, The Amazon Simple Notification Service (Amazon SNS) API has a throttling feature, and it has a limit of 100 Subscribe transactions per second. Hard limits cannot be changed.",
+    "For all the details, check out the documentation page at  http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Service limits on AWS",
+    "Soft limits: Can be",
+    "changed on request to",
+    "AWS Support",
+    "Exceeding some soft",
+    "limits might result in",
+    "performance",
+    "degradation",
+    "Limit potential",
+    "excessive charges and",
+    "keep the AWS network",
+    "healthy",
+    "Hard limits: Cannot",
+    "be changed"
+   ],
+   "img": "img/p-14.jpg"
+  },
+  {
+   "id": "S015",
+   "texts": [
+    "Module 1: Understanding Systems Operations on AWS",
+    "AWS Identity and Access Management (IAM)"
+   ],
+   "notes": [
+    "The module will now explore AWS Identity and Access Management (IAM) and its role in systems operations."
+   ],
+   "hidden": false,
+   "rendered": [
+    "M o d u l e 1 : U n d e r s t a n d i n g S y s t e m s O p e r a t i o n s o n AW S",
+    "AWS Identity and Access",
+    "Management (IAM)"
+   ],
+   "img": "img/p-15.jpg"
+  },
+  {
+   "id": "S016",
+   "texts": [
+    "Introduction to IAM",
+    "AWS Identity and Access Management (IAM) allows you to centrally manage authentication and access to AWS resources.",
+    "Offered as a feature of an AWS account at no charge",
+    "Create users, groups, and roles",
+    "Apply policies to them to control their access to AWS resources",
+    "AWS Identity and Access Management"
+   ],
+   "notes": [
+    "AWS Identity and Access Management (IAM) is a service that helps securely control access to AWS resources.",
+    "Use IAM to configure authentication, which is the first step, as this controls who can access AWS resources based on that authentication. IAM is not only used for user authentication. It is also used by applications and other AWS services for access.",
+    "IAM is used to configure authorization, based on knowing who the user is, is what resources users can access and what they can do to or with those resources.",
+    "IAM eliminates the need to share passwords or access keys when granting access rights to other people or systems. It also makes it easy to enable or disable a user’s access over time, and as appropriate.",
+    "Think of IAM as the tool to centrally manage access who can launch, configure, manage, and terminate the resources.  It provides granular control over access permissions, not just for people, but for systems or other applications that might make programmatic calls to other AWS resources.",
+    "Manage not just what resources can be accessed, but what action can be performed.",
+    "For example, who can terminate Amazon EC2 instances?",
+    "Define required credentials based on context, such as:",
+    "Who can access which AWS service?",
+    "What is the user or system allowed to do with the service?"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Introduction to IAM",
+    "AWS Identity and Access Management (IAM)",
+    "allows you to centrally manage authentication",
+    "and access to AWS resources.",
+    "• Offered as a feature of an AWS account at no",
+    "charge",
+    "• Create users, groups, and roles",
+    "AWS Identity and Access",
+    "Management",
+    "• Apply policies to them to control their access to",
+    "AWS resources"
+   ],
+   "img": "img/p-16.jpg"
+  },
+  {
+   "id": "S017",
+   "texts": [
+    "IAM: Authentication",
+    "AWS CLI",
+    "AWS Management Console",
+    "AWS Cloud",
+    "Console access:",
+    "Uses account ID or alias, IAM user name and password",
+    "If enabled, MFA prompts for authentication code",
+    "Programmatic access:",
+    "Authenticates access key ID and secret access key",
+    "Provides access to API, AWS CLI, SDK, and other development tools",
+    "Access to",
+    "AWS services",
+    "SDK"
+   ],
+   "notes": [
+    "When you create IAM users, you can decide which method(s) they can use to access AWS services. You can give programmatic access, AWS Management Console access, or both.",
+    "To provide programmatic access, create an access key ID and a secret access key, and provide them to the user. With these two items, the user will have access to:",
+    "AWS application programming interfaces (APIs)",
+    "AWS Command Line Interface (AWS CLI)",
+    "AWS software development kits (SDKs)",
+    "To provide AWS Management Console access, assign the user a user name and password. The AWS Management Console provides a simple web interface for AWS. If the IAM user account has multi-factor authentication (MFA) enabled — which we recommend for added security—the user will be prompted for an additional authentication code after providing their user name and password."
+   ],
+   "hidden": false,
+   "rendered": [
+    "IAM: Authentication",
+    "AWS CLI",
+    "Programmatic",
+    "SDK",
+    "access:",
+    "• Authenticates",
+    "access key ID and",
+    "secret access key",
+    "• Provides access to",
+    "API, AWS CLI, SDK,",
+    "and other",
+    "development",
+    "tools",
+    "Inc. or its Affiliates. All rights",
+    "reserved.",
+    "AWS",
+    "Cloud",
+    "Access",
+    "to",
+    "AWS",
+    "services",
+    "Console access:",
+    "• Uses account ID or",
+    "alias, IAM user name",
+    "and password",
+    "• If enabled, MFA",
+    "prompts for",
+    "authentication code",
+    "AWS",
+    "Management",
+    "Console"
+   ],
+   "img": "img/p-17.jpg"
+  },
+  {
+   "id": "S018",
+   "texts": [
+    "Types of security credentials",
+    "|",
+    "Email address and password | Associated with AWS account (root)",
+    "IAM user name and password | Used for accessing the  AWS Management Console",
+    "Access keys | Typically used with the AWS CLI and programmatic requests like APIs and SDKs",
+    "Multi-factor authentication (MFA) | Extra layer of security Can be enabled for root account and IAM users",
+    "Key pairs | Used only for specific AWS services like Amazon EC2"
+   ],
+   "notes": [
+    "Here is a summary of the different types of security credentials.",
+    "Every AWS account has an assigned root user through the root account. This root account has an assigned email address for the purposes of account recovery and communication. However, we recommend that you not use the root user for everyday tasks, even administrative ones. Instead, adhere to the best practice of using the root user only to create an IAM user first. Then, securely lock away the root user credentials, and use them only when needed to perform the few account and service management tasks that cannot be accomplished in other ways.",
+    "As mentioned in the previous slide, the IAM user name and password security credentials are used to access the AWS Management Console, which is also known as the console. Access keys can be used for programmatic access when they are generated for a user.",
+    "Finally, for added security, we recommend that you apply multi-factor authentication (MFA) on the root account and on any IAM users that are defined."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Types of security credentials",
+    "Email address and password",
+    "Associated with AWS account",
+    "(root)",
+    "IAM user name and password",
+    "Used for accessing the",
+    "AWS Management Console",
+    "Access keys",
+    "Multi-factor authentication (MFA)",
+    "Key pairs",
+    "Typically used with the AWS CLI",
+    "and programmatic requests like",
+    "APIs and SDKs",
+    "Extra layer of security",
+    "Can be enabled for root account",
+    "and IAM users",
+    "Used only for specific AWS",
+    "services like Amazon EC2"
+   ],
+   "img": "img/p-18.jpg"
+  },
+  {
+   "id": "S019",
+   "texts": [
+    "Policies and permissions (1 of 2)",
+    "Permission Policies | Permission Boundaries | Managed Policies | Inline Policies",
+    "|  |  |",
+    "|  |  |",
+    "|  |  |",
+    "|  |  |",
+    "Policy Types",
+    "Order of Frequency of Use"
+   ],
+   "notes": [
+    "The four policy types, which indicate the type of permissions that are defined for the assigned users, are listed here in order of popular usage:",
+    "Identity-based policies allow a user to attach managed and inline policies to IAM identities, such as users or the groups to which users belong. A user can also attach identity-based policies to roles. Policy categories, to IAM identities that include:",
+    "Users",
+    "Groups that users belong to",
+    "Roles",
+    "Resource-based policies allow a user to attach inline policies to resources. The most common examples of resource-based policies are Amazon S3 bucket policies and IAM role trust policies. Resource-based policies are JavaScript Object Notation (JSON) policy documents.",
+    "Resource-level permissions are only available for some AWS services and resources and provide granular access control over specific objects within an AWS service.",
+    "For example, the role’s permissions policy can list specific EC2 instances and specific EBS volumes.",
+    "Resource-level permissions do not always allow all actions.",
+    "For EC2 instances, actions such as Reboot, Start, Stop, and Terminate can be specified.",
+    "Actions such as RunInstances cannot be specified, because you do not know the InstanceID before the RunInstances call is complete. Therefore, RunInstances applies to EC2 as a whole service, but not as a specific resource.",
+    "AWS Organizations service control policies (SCPs) apply permissions boundaries to AWS Organizations or organizational units (OUs).",
+    "Access control lists (ACLs) can also be used to control which principals can access a resource. ACLs are similar to resource-based policies, although they are the only policy type that does not use the JSON policy document structure. ACLs do not use the JSON policy document structure."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Inline Policies",
+    "Permission",
+    "Boundaries",
+    "Identity-based",
+    "Managed Policies",
+    "Order of Frequency of Use",
+    "Policy Types",
+    "Permission Policies",
+    "Policies and permissions (1 of 2)",
+    "Resource-based",
+    "Organization Service",
+    "Control Policy (SCP)",
+    "Access Control",
+    "Lists (ACLs)"
+   ],
+   "img": "img/p-19.jpg"
+  },
+  {
+   "id": "S020",
+   "texts": [
+    "Policies and permissions (2 of 2)",
+    "Example IAM policy:",
+    "{",
+    "\"Version\": \"2012-10-17\",",
+    "\"Statement\": [",
+    "{",
+    "\"Sid\": \"MFA-Access\",",
+    "\"Effect\": \"Allow\",",
+    "\"Action\": \"ec2:*\",",
+    "\"Resource\": \"*\",",
+    "\"Condition\": {",
+    "\"BoolIfExists\": {",
+    "\"aws:MultiFactorAuthPresent\": \"true\"",
+    "},",
+    "\"IpAddress\": {",
+    "\"aws:SourceIp\": \"1.2.3.4/32\"",
+    "}",
+    "}",
+    "}",
+    "]",
+    "}"
+   ],
+   "notes": [
+    "Remember: Policies evaluate the following logic:",
+    "Authenticate principal",
+    "Process request context:",
+    "Environment data",
+    "Resources data",
+    "Actions",
+    "Resources",
+    "Principal",
+    "Evaluate Policies based on:",
+    "Policy type",
+    "Policy category",
+    "Allow or deny request",
+    "NOTE: The evaluation order of the policies has no effect on outcome.",
+    "For example, a user has an explicit DENY that is associated with their IAM rule policy; that DENY overrides any ALLOW."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Policies and permissions (2 of 2)",
+    "Example IAM policy:",
+    "{",
+    "\"Version\": \"2012-10-17\",",
+    "\"Statement\": [",
+    "{",
+    "\"Sid\": \"MFA-Access\",",
+    "\"Effect\": \"Allow\",",
+    "\"Action\": \"ec2:*\",",
+    "\"Resource\": \"*\",",
+    "\"Condition\": {",
+    "\"BoolIfExists\": {",
+    "\"aws:MultiFactorAuthPresent\": \"true\"",
+    "},",
+    "\"IpAddress\": {",
+    "\"aws:SourceIp\": \"1.2.3.4/32\"",
+    "}",
+    "}",
+    "}",
+    "]",
+    "}"
+   ],
+   "img": "img/p-20.jpg"
+  },
+  {
+   "id": "S021",
+   "texts": [
+    "Using IAM roles"
+   ],
+   "notes": [
+    "There are three ways to use a role:",
+    "Interactively in the IAM section of the AWS Management Console",
+    "Programmatically with the AWS CLI",
+    "Via the AWS SDKs (API calls)",
+    "An application or a service such as Amazon EC2 can assume a role by requesting temporary security credentials for a role that the service can use to make programmatic requests to AWS.",
+    "IAM roles also support single sign-on solutions. For example, an IAM administrator could configure SAML 2.0 federation instead of creating IAM users in an AWS account. With an identity provider, user identities can be managed outside of AWS, and these external user identities could be granted permissions to access resources in the AWS account.",
+    "For additional information see the following resources:",
+    "AWS Identity and Access Management: IAM Roles (Delegation and Federation): http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
+    "AWS Identity and Access Management: How Roles Differ from Resource-Based Policies: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html",
+    "AWS Identity and Access Management: Overview of IAM Policies: http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Using IAM roles",
+    "• AWS services with",
+    "access to other AWS",
+    "resources",
+    "• Access for single sign-on",
+    "(SAML 2.0, OAuth 2.0)",
+    "Using IAM roles, a",
+    "user can provide:",
+    "• An AWS account",
+    "• Other AWS accounts",
+    "(cross-account access)",
+    "Switch roles to",
+    "access resources",
+    "in:"
+   ],
+   "img": "img/p-21.jpg"
+  },
+  {
+   "id": "S022",
+   "texts": [
+    "IAM user assume role",
+    "User-Based",
+    "Permissions",
+    "Resource-Based",
+    "Permissions",
+    "Who has access to a particular resource?",
+    "What does a particular entity have access to?",
+    "| Read | Write | List",
+    "Bob |  |  | ",
+    "Doug |  |  | ",
+    "Jim |  |  | ",
+    "Sara |  |  | ",
+    "Resource X",
+    "| Read | Write | List",
+    "Resource X |  |  | ",
+    "Bob",
+    "| Read | Write | List",
+    "Resource Y |  |  |",
+    "Resource Z |  |  |",
+    "Larry",
+    "| Read | Write | List",
+    "Bob |  |  | ",
+    "Larry |  |  |",
+    "Sam |  |  | ",
+    "Resource Y",
+    "| Read | Write | List",
+    "Resource X |  |  | ",
+    "Resource Y |  |  | ",
+    "Resource Z |  |  | ",
+    "Managers"
+   ],
+   "notes": [
+    "IAM users in the account can assume an IAM role to temporarily use the permissions of the role in the console. The user gives up their original permissions and takes on the permissions assigned to the role. When the user exits the role, their original permissions are restored. A user can switch roles to access resources in the AWS account, or even switch roles to access resources in other AWS accounts, which is called cross-account access.",
+    "Cross-account access grants access from another AWS account. This could be an account you own, or an account owned by another person. If the account is owned by another person or organization, it is a best practice to also provide a shared secret called an external ID. This stops one AWS account from guessing the role ARN for a different account and handing that to a common deputized AWS account. By configuring roles, an IAM administrator can grant the needed access without sharing the permanent AWS security credentials. For more information, see https://blogs.aws.amazon.com/security/post/Tx2Q5SSG3SFRRHO/How-to-Use-External-ID-When-Granting-Access-to-Your-AWS-Resources",
+    "A role has a permissions policy that defines what the role can do with these temporary security credentials. These permissions can specify AWS services and the respective actions, such as “CreateSubnet” in the Amazon VPC service. Additionally, conditions can be used to provide restrictions that can be based on time, date, source IP, and other factors.",
+    "AWS provides managed policies that can be attached to a role; whereas, inline policies can also be used where needed. The use of managed policies will usually make ongoing management easier. See the following for more information: http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html"
+   ],
+   "hidden": false,
+   "rendered": [
+    "IAM user assume role",
+    "User-Based",
+    "Permissions",
+    "Resource-Based",
+    "Permissions",
+    "What does a particular entity have access to?",
+    "Who has access to a particular resource?",
+    "Bob",
+    "Resource X",
+    "Read",
+    "Write",
+    "List",
+    "",
+    "",
+    "",
+    "Read",
+    "Larry",
+    "Resource Y",
+    "",
+    "Resource Z",
+    "",
+    "Read",
+    "Managers",
+    "Write",
+    "Read",
+    "Write",
+    "List",
+    "Bob",
+    "",
+    "",
+    "",
+    "Doug",
+    "",
+    "",
+    "",
+    "Jim",
+    "",
+    "Resource X",
+    "List",
+    "",
+    "",
+    "Sara",
+    "Write",
+    "List",
+    "Resource X",
+    "",
+    "Resource Y",
+    "",
+    "Resource Z",
+    "",
+    "Read",
+    "Write",
+    "List",
+    "Bob",
+    "",
+    "",
+    "",
+    "Larry",
+    "",
+    "",
+    "",
+    "Resource Y",
+    "Sam"
+   ],
+   "img": "img/p-22.jpg"
+  },
+  {
+   "id": "S023",
+   "texts": [
+    "IAM best practices"
+   ],
+   "notes": [
+    "Here are some best practices for IAM:",
+    "Avoid using the root account credentials for daily administration. Instead, when setting up a new account, define at least one new IAM user. Then, grant the user or users access so that most day-to-day tasks can be done using the IAM user credentials.",
+    "Delegate administration functions following the principle of least-privilege. Only grant access to services that are needed, and limit permissions within those services to only the parts needed. Additional rights can always be granted over time if the need arises.",
+    "Use IAM roles to provide cross-account access. Other best practices for IAM that were mentioned earlier in this module include configuring strong password policies, enabling MFA for any privileged users, and rotating credentials regularly. A full list of best practices for IAM can be found at https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html.",
+    "MFA is a good practice to implement for security purposes."
+   ],
+   "hidden": false,
+   "rendered": [
+    "IAM best practices",
+    "Best practice Avoid using root credentials for daily administration.",
+    "Best practice",
+    "Delegate administration functions with leastprivilege.",
+    "Best practice",
+    "Use IAM roles to provide cross-account access.",
+    "Best practice",
+    "Implement MFA to provide an additional level of",
+    "account security."
+   ],
+   "img": "img/p-23.jpg"
+  },
+  {
+   "id": "S024",
+   "texts": [
+    "Demo: Create IAM user and IAM group"
+   ],
+   "notes": [
+    "The instructor may choose to demonstrate how to create an IAM User and an IAM Group using the AWS Management Console."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Demo: Create IAM user and IAM",
+    "group"
+   ],
+   "img": "img/p-24.jpg"
+  },
+  {
+   "id": "S025",
+   "texts": [
+    "Video: Introduction to IAM policy simulator"
+   ],
+   "notes": [
+    "With the IAM policy simulator, you can test and troubleshoot IAM and resource-based policies.",
+    "The Introduction to IAM Policy Simulator video which is approximately six minutes long, can be viewed on the Amazon Web Service YouTube channel at https://www.youtube.com/watch?time_continue=2&v=1IIhVcXhvcE"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Video:",
+    "Introduction to IAM",
+    "policy simulator",
+    "reserved.",
+    "reserved."
+   ],
+   "img": "img/p-25.jpg"
+  },
+  {
+   "id": "S026",
+   "texts": [
+    "Key Takeaway",
+    "IAM roles can be assigned to EC2 instances to grant application access to other AWS services and resources.",
+    "Access keys provide programmatic access for AWS CLI and SDKs."
+   ],
+   "notes": [
+    "Some key takeaways from this section include:",
+    "IAM roles can be assigned to EC2 instances to grant application access to other AWS services and resources.",
+    "Access keys provide programmatic access for AWS CLI and SDKs. Access keys are distinct from the user name and password combination provided for AWS Management Console access."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key Takeaway",
+    "• IAM roles can be assigned to EC2",
+    "instances to grant application",
+    "access to other AWS services",
+    "and resources.",
+    "• Access keys provide",
+    "programmatic access for AWS",
+    "CLI and SDKs."
+   ],
+   "img": "img/p-26.jpg"
+  },
+  {
+   "id": "S027",
+   "texts": [
+    "Module 1: Understanding Systems Operations on AWS",
+    "AWS Command Line Interface (AWS CLI)"
+   ],
+   "notes": [
+    "The module will now explore using the AWS Command Line Interface (AWS CLI)."
+   ],
+   "hidden": false,
+   "rendered": [
+    "M o d u l e 1 : U n d e r s t a n d i n g S y s t e m s O p e r a t i o n s o n AW S",
+    "AWS Command Line Interface (AWS",
+    "CLI)"
+   ],
+   "img": "img/p-27.jpg"
+  },
+  {
+   "id": "S028",
+   "texts": [
+    "Three ways to use AWS",
+    "AWS Management Console",
+    "Command Line Interface (CLI)",
+    "Software Development Kits (SDKs)"
+   ],
+   "notes": [
+    "There are three options for accessing AWS services. All three options are built on a common, REST-like API that serves as the foundation of AWS.",
+    "The AWS Management Console provides a rich graphical interface for a majority of the products and services offered by AWS. Occasionally, new features might not have all of their capabilities exposed through the console when the feature initially launches.",
+    "The AWS Command Line Interface (AWS CLI) provides a suite of utilities that can be run from a command program in Linux, MacOS, or Windows.",
+    "The software development kits (SDKs) are packages provided by AWS that enable access to AWS services using popular programming languages, such as Python, Ruby, .NET, or Java. The SDKs make it straightforward to use AWS in existing applications, and they also enable creating applications to deploy and monitor complex systems entirely via code.",
+    "The AWS CLI and the SDKs provide flexibility. They enable AWS users to create their own tools specific to their business and also to customize existing AWS features. For example, a user might create their own scripts or applications for launching Amazon EC2 instances that enforce using a specific set of AMIs, or add a standard set of tags to apply to resources that are created in the account.",
+    "The AWS CLI provides a programming language-agnostic way to automate and repeat the deployment of AWS resources, such as through Linux shell scripts or Windows batch files.",
+    "NOTE: All three modes of access can be used interchangeably. For example, an Amazon EC2 server created via an SDK call could be described using the appropriate command line call (aws ec2 describe-instances). This EC2 instance could later be terminated with a few clicks inside the AWS Management Console.",
+    "Note: Changes made via the AWS CLI or the API might take a few seconds or a few minutes to appear in the AWS Management Console."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Three ways to use AWS",
+    "AWS Management Console",
+    "AWS Management Console",
+    "• Easy-to-use graphical interface for AWS.",
+    "Command",
+    "Line Interface",
+    "(CLI) CLI)",
+    "AWS Command",
+    "Line Interface",
+    "(AWS",
+    "• Access to AWS services via a Linux, Windows, or Mac command line.",
+    "Software development kits (SDKs)",
+    "Software",
+    "Development",
+    "Kits",
+    "• Call AWS services",
+    "APIs from",
+    "most major programming",
+    "languages.",
+    "(SDKs)"
+   ],
+   "img": "img/p-28.jpg"
+  },
+  {
+   "id": "S029",
+   "texts": [
+    "Install AWS CLI on Linux",
+    "1. To install the AWS CLI using pip, run the following command:",
+    "$ pip3 install awscli --upgrade –-user",
+    "The --user switch is used to place the AWS CLI install in ~/.local/bin",
+    "2. To verify the installation, run the following command:",
+    "$ aws --version",
+    "The expected result is:",
+    "aws-cli/1.16.137 Python/3.7.3 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.127"
+   ],
+   "notes": [
+    "To install the AWS CLI (Linux), use pip3 to ensure the latest AWS CLI version is obtained.",
+    "To install the AWS CLI using pip, use the following command:  $ pip3 install awscli --upgrade –user",
+    "The --user switch is used to place the AWS CLI install in ~/.local/bin",
+    "To verify the installation, run the following command:  $ aws --version",
+    "The expected result should look like:  $ aws --version aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.106",
+    "To upgrade the AWS CLI to the latest version, use the following command:  $ pip3 install awscli --upgrade –user",
+    "Additional troubleshooting and command information can be found on the AWS website: https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Install AWS CLI on Linux",
+    "1. To install the AWS CLI using pip, run the following command:",
+    "$ pip3 install awscli --upgrade –-user",
+    "The --user switch is used to place the AWS CLI install in ~/.local/bin",
+    "2. To verify the installation, run the following command:",
+    "$ aws --version",
+    "The expected result is:",
+    "aws-cli/1.16.137 Python/3.7.3 Linux/4.14.77-81.59amzn2.x86_64 botocore/1.12.127"
+   ],
+   "img": "img/p-29.jpg"
+  },
+  {
+   "id": "S030",
+   "texts": [
+    "Introduction to AWS CLI",
+    "AWS Command Line Interface (CLI):",
+    "Available for Linux, Windows, and Mac",
+    "Use the aws configure command to specify defaults",
+    "CLI output format options",
+    "$ aws configure",
+    "AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE",
+    "AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+    "Default region name [None]: us-west-2",
+    "Default output format [None]: json"
+   ],
+   "notes": [
+    "Here is a review of some basic information about the AWS CLI. The AWS CLI is available for use on Linux, Windows, and Mac platforms. It can also be installed on Linux and Windows EC2 instances, and it comes installed by default on Amazon Linux instances.",
+    "After installing the AWS CLI, the aws configure command can be used to set some defaults for all AWS CLI commands. The main defaults are the access key ID and the secret access key associated with the IAM account that you will use to access AWS resources. You can also specify a default Region for all commands.",
+    "The default output data format is a JSON document, which is best used in situations where the output will be handled programmatically. JSON is a de facto standard for data formatting and interchange on the internet that can be both easily read by humans, and it can be easily parsed by machines. Nearly all major programming languages and frameworks provide a way to convert JSON responses into objects or associative arrays.",
+    "However, there are also two other output formats that are supported by the AWS CLI:",
+    "ASCII-formatted table – The table output format is the most readable format because the data has human-readable representations within a tabular form. The command would be: $ export AWS_DEFAULT_OUTPUT=\"table\"",
+    "Tab-delimited text – This text format displays data as text in tab-delimited lines, and it works well with Unix text processing tools, such as PowerShell scripts. The command would be: output=text",
+    "Additional information for controlling the command output when using the AWS CLI can be found at https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output.html."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Introduction to AWS CLI",
+    "AWS Command Line Interface",
+    "(CLI):",
+    "• Available for Linux, Windows, and",
+    "Mac",
+    "• Use the aws configure command",
+    "to specify defaults",
+    "CLI output format options",
+    "Table",
+    "JSON",
+    "Text",
+    "• Human",
+    "Readable",
+    "• Tabular Form",
+    "• Default",
+    "format",
+    "• Useful",
+    "output for",
+    "programmatic",
+    "usage",
+    "• Tabdelimited",
+    "lines",
+    "• Useful in",
+    "bash or",
+    "Power Shell",
+    "scripts",
+    "$ aws configure",
+    "AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE",
+    "AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+    "Default region name [None]: us-west-2",
+    "Default output format [None]: json"
+   ],
+   "img": "img/p-30.jpg"
+  },
+  {
+   "id": "S031",
+   "texts": [
+    "Command-line format",
+    "Service",
+    "Operation",
+    "Parameters",
+    "Options",
+    "aws ec2 stop-instances -–instance-id i-1234567890abcdef0 --output json",
+    "aws ec2 run-instances –-cli-input-json file://webserver.json",
+    "Amazon",
+    "EC2",
+    "$ aws help",
+    "$ aws ec2 help",
+    "$ aws ec2 describe-instances help"
+   ],
+   "notes": [
+    "The command-line format can be broken down into several parts. Each part specifies an action that will occur.",
+    "Use the aws command, which is the basic structure of an AWS command-line call. You are now ready to specify additional actions to occur.",
+    "Specify the top-level service to be called. For example, to invoke Amazon EC2, you would enter the command ec2, as shown in the diagram. A list of supported services can be found at http://docs.aws.amazon.com/cli/latest/reference/.",
+    "Specify the operation to be called. This is the operation that will be performed on the service specified in Step #2, such as stop-instances or run-instances. In the second example on the slide, the run-instances subcommand is being used to request the creation of a new Amazon EC2 instance.",
+    "Specify the parameters. One or more parameters can be specified depending on the operation that is called. Parameters are arguments or details that are used to perform the operation. Some operations have required parameters, while other operations do not require parameters. Most operations offer a few or many optional parameters as well. In the first example shown on the slide, the stop-instances operation requires an instance-id parameter (otherwise, it would be unclear which instance or instances should be stopped).",
+    "NOTE: Parameter names are preceded by two dashes (--). For example, to run the Amazon EC2 run-instances operation, several required parameters—and potentially some optional parameters—are specified. Required parameters include the AMI ID that is used to create the instance.",
+    "Lastly, specify the options. For example, after calling aws ec2 stop-instances use the --output option to specify the format of the response."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Command-line format",
+    "Service",
+    "Operation",
+    "Parameters",
+    "Options",
+    "aws ec2 stop-instances -–instance-id i-1234567890abcdef0 --output json",
+    "Amazon",
+    "EC2",
+    "aws ec2 run-instances –-cli-input-json file://webserver.json",
+    "$ aws help",
+    "$ aws ec2 help",
+    "$ aws ec2 describe-instances help"
+   ],
+   "img": "img/p-31.jpg"
+  },
+  {
+   "id": "S032",
+   "texts": [
+    "AWS CLI help",
+    "All commands in the AWS CLI have syntax and available command examples that can be accessed with the help command.",
+    "Example: $ aws ec2 help",
+    "Name: ec2 –",
+    "Available Commands:",
+    "attach-volume",
+    "copy-snapshot",
+    "create-image",
+    "delete-snapshot",
+    "start-instances",
+    "stop-instances"
+   ],
+   "notes": [
+    "All commands in the AWS CLI have syntax and available command examples that can be accessed with the help command.",
+    "Example: $ aws ec2 help",
+    "Name: ec2 –",
+    "Description: Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing capacity in the AWS Cloud. Using Amazon EC2 eliminates the need to invest in hardware up front, so you can develop and deploy applications faster.",
+    "Available Commands:",
+    "attach-volume",
+    "copy-snapshot",
+    "create-image",
+    "delete-snapshot",
+    "start-instances",
+    "stop-instances",
+    "Additional syntax and a list of available commands can be found in the AWS CLI Command Reference documentation: https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws"
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS CLI help",
+    "All commands in the AWS CLI have syntax and available command",
+    "examples that can be accessed with the help command.",
+    "Example: $ aws ec2 help",
+    "Name: ec2 –",
+    "Available Commands:",
+    "•",
+    "•",
+    "•",
+    "•",
+    "•",
+    "•",
+    "attach-volume",
+    "copy-snapshot",
+    "create-image",
+    "delete-snapshot",
+    "start-instances",
+    "stop-instances"
+   ],
+   "img": "img/p-32.jpg"
+  },
+  {
+   "id": "S033",
+   "texts": [
+    "AWS CLI output (in JSON format)",
+    "$ aws ec2 describe-instances",
+    "{",
+    "\"Reservations\": [",
+    "{",
+    "\"Groups\":[],",
+    "\"Instances\":[",
+    "{",
+    "\"ImageId\":\"ami-423bec20\",",
+    "\"InstanceId\": \"i-068035fce1e9abcc9\",",
+    "\"InstanceType\": \"m5.large\",",
+    "\"KeyName\": \"mykeypair\",",
+    "\"LaunchTime\": \"2019-06-15T 11:55:16.000Z\",",
+    "\"Placement\": {",
+    "\"AvailabilityZone\": \"us-west-2a\"",
+    "}",
+    "\"State\":{",
+    "\"Code\": 16,",
+    "\"Name\": \"running\"},",
+    "\"PublicIPAddress\": \"54.252.186.255\",",
+    "\"PublicDnsName\": \"ec2-54-252-186-255.us-west-2.compute.amazonaws.com\",",
+    "\"PrivateIPAddress\": \"10.0.50.14\",",
+    "describe-instances",
+    "Requests details of all Amazon EC2 instances that exist in the account",
+    "\"Instances\":[",
+    "Multiple items returned as arrays of values",
+    "\"AvailabilityZone\": Colon-separated name-value pairs"
+   ],
+   "notes": [
+    "On the slide, the first line shows an AWS CLI command that was just run (aws ec2 describe-instances). The rest of the lines below that show the result of the AWS CLI command.",
+    "The results of the aws ec2 describe-instances command are returned as an array of Reservations. Each reservation has an array of one or more Instances associated with it. NOTE: Both reservations and instances are returned using JSON array syntax. Later, this course will discuss using array notation to filter responses.",
+    "The properties associated with each instance—the public DNS name, the instance state, etc.—are returned as simple name-value pairs in quotes, separated by colons.",
+    "More details about the aws ec2 describe-instances command can be found at https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html"
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS CLI output (in JSON format)",
+    "$ aws ec2 describe-instances",
+    "{",
+    "describe-instances",
+    "\"Reservations\": [",
+    "Requests details of all Amazon",
+    "{",
+    "EC2 instances that exist in the",
+    "\"Groups\":[],",
+    "\"Instances\":[",
+    "account",
+    "{",
+    "\"ImageId\":\"ami-423bec20\",",
+    "\"InstanceId\": \"i-068035fce1e9abcc9\",",
+    "\"Instances\":[",
+    "\"InstanceType\": \"m5.large\",",
+    "Multiple items returned as arrays",
+    "\"KeyName\": \"mykeypair\",",
+    "of values",
+    "\"LaunchTime\": \"2019-06-15T 11:55:16.000Z\",",
+    "\"Placement\": {",
+    "\"AvailabilityZone\": \"us-west-2a\"",
+    "}",
+    "\"State\":{",
+    "\"AvailabilityZone\": Colon\"Code\": 16,",
+    "separated name-value pairs",
+    "\"Name\": \"running\"},",
+    "\"PublicIPAddress\": \"54.252.186.255\",",
+    "\"PublicDnsName\": \"ec2-54-252-186-255.us-west-2.compute.amazonaws.com\",",
+    "\"PrivateIPAddress\": \"10.0.50.14\","
+   ],
+   "img": "img/p-33.jpg"
+  },
+  {
+   "id": "S034",
+   "texts": [
+    "Limiting results: --query option",
+    "Use the --query option to limit fields displayed in the result set.",
+    "Show only the first Amazon EC2 instance in list:",
+    "Service",
+    "Operation",
+    "Parameters",
+    "aws ec2 describe-instances –-query 'Reservations[0].Instances[0]'",
+    "Show the named state of first instance:",
+    "aws ec2 describe-instances --query 'Reservations[0].Instances[0].State.Name'",
+    "Show the named state of all instances using the wildcard (*):",
+    "aws ec2 describe-instances --query 'Reservations[*].Instances[*].State.Name'",
+    "'",
+    "i"
+   ],
+   "notes": [
+    "The --query option can optionally be included in most commands to limit the results that are returned. Results are filtered on the client side.",
+    "You should format queries according to the JMESPath specification, which defines a syntax for searching JSON documents. For more information about JMESPath, see http://jmespath.org/specification.html.",
+    "Queries are constructed by designating the subsection of the response that you want to see. You can specify the subsection by addressing the full path to that section, starting from the top-most element of the response.",
+    "Array elements can be referenced using zero-based indexing. For example, to describe only the first instance returned by the Amazon EC2 describe-instances operation, use the path Reservations[0].Instances[0] in the query, which says: “For the first reservation, return the details about the first instance.” You could further specify that you want to see only specific attributes of this instance, such as its current operating state.",
+    "For another example, to view the states of all instances, you can use wildcards instead of indexes to return results from all reservations and all instances. The [*] syntax can be used in any array to specify that you want to view the specified property or child element for all members of that array."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Limiting results: --query option",
+    "• Use the --query option to limit fields displayed in the result set.",
+    "Show only the first Amazon EC2 instance in list:",
+    "Service",
+    "Operation",
+    "Parameters",
+    "aws ec2 describe-instances –-query 'Reservations[0].Instances[0]'",
+    "Show the named state of first instance:",
+    "aws ec2 describe-instances --query 'Reservations[0].Instances[0].State.Name'",
+    "Show the named state of all instances using the wildcard",
+    "(*): aws ec2 describe-instances --query 'Reservations[*].Instances[*].State.Name'",
+    "'"
+   ],
+   "img": "img/p-34.jpg"
+  },
+  {
+   "id": "S035",
+   "texts": [
+    "Limiting results: --filter option",
+    "The --filter option is used to restrict result set filtered on the server side.",
+    "Show only Windows instances:",
+    "Find the instanceIds of all instances in the account, but display only the instanceIds of t2.micro and t2.small instances:",
+    "aws ec2 describe-instances –-filter \"Name=platform,Values=windows\"",
+    "aws ec2 describe-instances \\",
+    "--query \"Reservations[*].Instances[*].InstanceId” \\",
+    "–-filter “Name=instance-type,Values=t2.micro,t2.small”"
+   ],
+   "notes": [
+    "The --filter option is used to restrict result set filtered on the server side.",
+    "The examples illustrate the use of --filter with the aws ec2 describe-instances command.",
+    "In the first example, the returned results are filtered so that only instances running Windows Server are displayed.",
+    "The second example shows a command that includes both the –query option and the –filter option. This command finds the instanceIds of all instances in the account, but then displays only the instanceIds of t2.micro and t2.small instances."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Limiting results: --filter option",
+    "• The --filter option is used to restrict result set filtered on the",
+    "server side.",
+    "• Show only Windows instances:",
+    "aws ec2 describe-instances –-filter \"Name=platform,Values=windows\"",
+    "• Find the instanceIds of all instances in the account, but display",
+    "only the instanceIds of t2.micro and t2.small instances:",
+    "aws ec2 describe-instances \\",
+    "--query \"Reservations[*].Instances[*].InstanceId” \\",
+    "–-filter “Name=instance-type,Values=t2.micro,t2.small”"
+   ],
+   "img": "img/p-35.jpg"
+  },
+  {
+   "id": "S036",
+   "texts": [
+    "How does query work?",
+    "--query 'Reservations[0].Instances[0]'",
+    "\"Reservations\": [",
+    "{",
+    "\"OwnerId\": \"230357233174\",",
+    "\"ReservationId\": \"r-c242341e\",",
+    "\"Groups\": [],",
+    "\"Instances\": [",
+    "{",
+    "\"Monitoring\": {",
+    "\"State\": \"disabled\"",
+    "},",
+    "\"PublicDnsName\": \"\",",
+    "\"Platform\": \"windows\",",
+    "\"State\": {",
+    "\"Code\": 48,",
+    "\"Name\": \"terminated\"",
+    "},",
+    "\"EbsOptimized\": false,",
+    "aws ec2 describe-instances –-query 'Reservations[0].Instances[0]'"
+   ],
+   "notes": [
+    "The --query option limits what is displayed from the returned results.",
+    "For example, consider what happens when aws ec2 describe-instances is called with the --query option.",
+    "The query specifies Reservations[0]; therefore, only the first reservation is returned.",
+    "The query specifies Instances[0]; therefore, only the details about the first EC2 instance in the first reservation are returned."
+   ],
+   "hidden": false,
+   "rendered": [
+    "How does query work?",
+    "--query 'Reservations[0].Instances[0]'",
+    "\"Reservations\": [",
+    "{",
+    "\"OwnerId\": \"230357233174\",",
+    "\"ReservationId\": \"r-c242341e\",",
+    "\"Groups\": [],",
+    "\"Instances\": [",
+    "{",
+    "\"Monitoring\": {",
+    "\"State\": \"disabled\"",
+    "},",
+    "\"PublicDnsName\": \"\",",
+    "\"Platform\": \"windows\",",
+    "\"State\": {",
+    "\"Code\": 48,",
+    "\"Name\": \"terminated\"",
+    "},",
+    "\"EbsOptimized\": false,",
+    "aws ec2 describe-instances –-query 'Reservations[0].Instances[0]'"
+   ],
+   "img": "img/p-36.jpg"
+  },
+  {
+   "id": "S037",
+   "texts": [
+    "How does query work?",
+    "--query 'Reservations[0].Instances[0].State.Name'",
+    "\"Reservations\": [",
+    "{",
+    "\"OwnerId\": \"230357233174\",",
+    "\"ReservationId\": \"r-c242341e\",",
+    "\"Groups\": [],",
+    "\"Instances\": [",
+    "{",
+    "\"Monitoring\": {",
+    "\"State\": \"disabled\"",
+    "},",
+    "\"PublicDnsName\": \"\",",
+    "\"Platform\": \"windows\",",
+    "\"State\": {",
+    "\"Code\": 48,",
+    "\"Name\": “terminated\"",
+    "},",
+    "\"EbsOptimized\": false,",
+    "aws ec2 describe-instances –-query 'Reservations[0].Instances[0]'"
+   ],
+   "notes": [
+    "In this example, the query is more specific than on the previous slide. Here, the query also specifies that the only item to be returned should be the value of the state name of the first instance from the first reservation.",
+    "The bold parts of the JSON document shown on the slide are what matched the query. The actual result set returned by running this command would be a single line: terminated",
+    "When querying a large collection of instances in an account, use the --query option. This option is useful for identifying only the instances that match a set of characteristics of interest."
+   ],
+   "hidden": false,
+   "rendered": [
+    "How does query work?",
+    "--query 'Reservations[0].Instances[0].State.Name'",
+    "\"Reservations\": [",
+    "{",
+    "\"OwnerId\": \"230357233174\",",
+    "\"ReservationId\": \"r-c242341e\",",
+    "\"Groups\": [],",
+    "\"Instances\": [",
+    "{",
+    "\"Monitoring\": {",
+    "\"State\": \"disabled\"",
+    "},",
+    "\"PublicDnsName\": \"\",",
+    "\"Platform\": \"windows\",",
+    "\"State\": {",
+    "\"Code\": 48,",
+    "\"Name\": “terminated\"",
+    "},",
+    "\"EbsOptimized\": false,",
+    "aws ec2 describe-instances –-query 'Reservations[0].Instances[0]'"
+   ],
+   "img": "img/p-37.jpg"
+  },
+  {
+   "id": "S038",
+   "texts": [
+    "Other CLI options: --dry-run",
+    "The --dry-run option:",
+    "Checks for required permissions without making a request",
+    "Provides an error response if unauthorized",
+    "aws ec2 run-instances --image-id ami-1a2b3c4d --count 1 --instance-type c5.large --key-name MyKeyPair --security-groups MySecurityGroup --dry-run"
+   ],
+   "notes": [
+    "Another CLI option is --dry-run. It is used for testing purposes because it checks whether the required permissions for the action are present without actually making the request.",
+    "In addition, it will usually provide an error response:",
+    "If the required permissions are present, the error response is DryRunOperation.",
+    "If the permissions are not present, the command would have failed without including the –dry-run option, which would make the error response UnauthorizedOperation."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Other CLI options: --dry-run",
+    "The --dry-run option:",
+    "•",
+    "Checks for required permissions without making a",
+    "request",
+    "•",
+    "Provides an error response if unauthorized",
+    "aws ec2 run-instances --image-id ami-1a2b3c4d --count 1",
+    "--instance-type c5.large --key-name MyKeyPair",
+    "--security-groups MySecurityGroup --dry-run"
+   ],
+   "img": "img/p-38.jpg"
+  },
+  {
+   "id": "S039",
+   "texts": [
+    "Common CLI commands",
+    "Amazon EC2",
+    "aws ec2 run-instances",
+    "aws ec2 describe-instances",
+    "aws ec2 create-volume",
+    "aws ec2 create-vpc",
+    "Amazon S3",
+    "aws s3 ls",
+    "aws s3 cp",
+    "aws s3 mv",
+    "aws s3 rm",
+    "Amazon EC2",
+    "Amazon S3"
+   ],
+   "notes": [
+    "Here is a short list of some common AWS CLI commands. These commands are related to two of the most popular AWS services: Amazon Elastic Compute Cloud (Amazon EC2) and Amazon Simple Storage Solution (Amazon S3).",
+    "NOTE: Amazon Virtual Private Cloud (VPC) and Amazon Elastic Block Store (Amazon EBS) actions are accomplished using the aws ec2 command.",
+    "Here’s a brief description of each of the commands shown on the slide and their respective actions:",
+    "Commands based on Amazon EC2:",
+    "aws ec2 run-instances: This command launches the specified number of instances from an AMI.",
+    "aws ec2 describe-instances: Describes any instances that exist in the account.",
+    "aws ec2 create-volume: Creates an Amazon EBS volume that can be attached to an instance in the same Availability Zone.",
+    "aws ec2 create-vpc: Creates a VPC with the Classless Inter-Domain Routing (CIDR) block specified.",
+    "Commands based on Amazon S3:",
+    "aws s3 ls: Lists Amazon S3 objects and common prefixes under a prefix or all Amazon S3 buckets. Optionally specify a specific bucket in the account, and the ls command will list the contents of the specified bucket.",
+    "aws s3 cp: Copies a file to, from, or between Amazon S3 locations. Use it to copy local files to Amazon S3, to copy a file from Amazon S3 to a laptop, or to copy Amazon S3 files to other Amazon S3 locations.",
+    "aws s3 mv: Moves a local file or Amazon S3 object to another location locally or in Amazon S3.",
+    "aws s3 rm: Deletes an Amazon S3 object."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Common CLI commands",
+    "Amazon EC2",
+    "Amazon S3",
+    "aws ec2 run-instances",
+    "aws s3 ls",
+    "aws ec2 describe-instances",
+    "aws s3 cp",
+    "aws ec2 create-volume",
+    "aws s3 mv",
+    "aws ec2 create-vpc",
+    "aws s3 rm",
+    "Amazon EC2",
+    "Amazon S3"
+   ],
+   "img": "img/p-39.jpg"
+  },
+  {
+   "id": "S040",
+   "texts": [
+    "Demo: AWS CLI"
+   ],
+   "notes": [
+    "The instructor may choose to demonstrate how to configuring the AWS CLI."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Demo: AWS CLI"
+   ],
+   "img": "img/p-40.jpg"
+  },
+  {
+   "id": "S041",
+   "texts": [
+    "Key Takeaway",
+    "The --filter option is a server-side operation that specifies the scope of details about resources that will be returned.",
+    "The --query option is a client-side operation that limits how much of what was returned by the server will be displayed.",
+    "The --dry-run option checks for required permissions without a request being made."
+   ],
+   "notes": [
+    "Some key takeaways from this section include:",
+    "CLI output formats include:",
+    "JSON",
+    "Text",
+    "Table",
+    "The --filter option is used to restrict what is included in the result set returned to the client by the server.",
+    "The --query option does filtering on the client side. NOTE: The query and filter options can be used in combination with each other.",
+    "The --dry-run option checks for required permissions without a request being made."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Key Takeaway",
+    "• The --filter option is a server-side",
+    "operation that specifies the scope of",
+    "details about resources that will be",
+    "returned.",
+    "• The --query option is a client-side",
+    "operation that limits how much of what",
+    "was returned by the server will be",
+    "displayed.",
+    "• The --dry-run option checks for",
+    "required permissions without a request",
+    "being made."
+   ],
+   "img": "img/p-41.jpg"
+  },
+  {
+   "id": "S042",
+   "texts": [
+    "Summary",
+    "Systems operations in the cloud",
+    "AWS global infrastructure and core services",
+    "AWS Identity and Access Management (IAM)",
+    "AWS Command Line Interface (AWS CLI)",
+    "To finish this module:",
+    "Complete:",
+    "Knowledge check"
+   ],
+   "notes": [
+    "In summary, this module discussed:",
+    "The systems operations that are in the cloud",
+    "AWS global infrastructure and core services",
+    "AWS Identity and Access Management (IAM)",
+    "Managing accounts, including AWS Organizations"
+   ],
+   "hidden": false,
+   "rendered": [
+    "Summary",
+    "•",
+    "•",
+    "•",
+    "•",
+    "Systems operations in the cloud",
+    "AWS global infrastructure and core services",
+    "AWS Identity and Access Management (IAM)",
+    "AWS Command Line Interface (AWS CLI)",
+    "To finish this module:",
+    "Complete:",
+    "Knowledge check"
+   ],
+   "img": "img/p-42.jpg"
+  },
+  {
+   "id": "S043",
+   "texts": [
+    "Test Strategies"
+   ],
+   "notes": [
+    "This section is intended to help refine your test taking skills by encouraging you to look for key words that are within the scenario and/or question. These keywords will help you rule out distractors and to narrow down the correct answer."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Test Strategies"
+   ],
+   "img": "img/p-43.jpg"
+  },
+  {
+   "id": "S044",
+   "texts": [
+    "Module 1 scenario",
+    "A federal contractor located in Seattle is expanding their cloud presence to Germany. Germany has strict data sovereignty rules on data that originated in Germany leaving the region. The contractor has thousands of staff, many AWS accounts, and uses a directory service to manage their AWS account access. Auditors will need access to all systems that store and process German data to validate it is being correctly managed.",
+    "How should access be provided to auditors ?",
+    "Identity federation",
+    "Root account",
+    "IAM Role",
+    "IAM User",
+    "IAM Group"
+   ],
+   "notes": [
+    "It is important to fully understand the scenario and question being asked before even reading the answer choices. Here they are grayed out so we can find the keywords in this scenario and question that will help you find the correct answer."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 1 scenario",
+    "A federal contractor located in Seattle is expanding their cloud",
+    "presence to Germany. Germany has strict data sovereignty rules on",
+    "data that originated in Germany leaving the region. The contractor",
+    "has thousands of staff, many AWS accounts, and uses a directory",
+    "service to manage their AWS account access. Auditors will need",
+    "access to all systems that store and process German data to validate",
+    "it is being correctly managed.",
+    "How should access be provided to auditors ?",
+    "A. Identity federation",
+    "B. Root account",
+    "C. IAM Role",
+    "D. IAM User",
+    "E. IAM Group"
+   ],
+   "img": "img/p-44.jpg"
+  },
+  {
+   "id": "S045",
+   "texts": [
+    "Module 1 keywords",
+    "A federal contractor located in Seattle is expanding their cloud presence to Germany. Germany has strict data sovereignty rules on data that originated in Germany leaving the region. The contractor has thousands of staff, many AWS accounts, and uses a directory service to manage their AWS account access. Auditors will need access to all systems that store and process German data to validate it is being correctly managed.",
+    "How should access be provided to auditors ?",
+    "Identity federation",
+    "Root account",
+    "IAM Role",
+    "IAM User",
+    "IAM Group"
+   ],
+   "notes": [
+    "Now that we have the keywords in this scenario highlighted in purple, let us look at the answers."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 1 keywords",
+    "A federal contractor located in Seattle is expanding their cloud",
+    "presence to Germany. Germany has strict data sovereignty rules on",
+    "data that originated in Germany leaving the region. The contractor",
+    "has thousands of staff, many AWS accounts, and uses a directory",
+    "service to manage their AWS account access. Auditors will need",
+    "access to all systems that store and process German data to validate",
+    "it is being correctly managed.",
+    "How should access be provided to auditors ?",
+    "A. Identity federation",
+    "B. Root account",
+    "C. IAM Role",
+    "D. IAM User",
+    "E. IAM Group"
+   ],
+   "img": "img/p-45.jpg"
+  },
+  {
+   "id": "S046",
+   "texts": [
+    "Module 1 answer",
+    "A federal contractor located in Seattle is expanding their cloud presence to Germany. Germany has strict data sovereignty rules on data that originated in Germany leaving the region. The contractor has thousands of staff, many AWS accounts, and uses a directory service to manage their AWS account access. Auditors will need access to all systems that store and process German data to validate it is being correctly managed.",
+    "How should access be provided to auditors ?",
+    "Create a federated identity for each auditor in the directory. Assign each auditor a role in each account with appropriate permissions.",
+    "Because they are external users, create them an IAM User in each account with the appropriate polices attached.",
+    "Give them SSH keys to EC2 instances running in the US and the German regions, so they can explore the environment from those hosts.",
+    "As auditors they will need root access to see everything in the AWS accounts, so give them the account root passwords."
+   ],
+   "notes": [
+    "Let’s look at the answer choices and rule them out based on the keywords we have previously highlighted."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Module 1 answer",
+    "A federal contractor located in Seattle is expanding their cloud",
+    "presence to Germany. Germany has strict data sovereignty rules on",
+    "data that originated in Germany leaving the region. The contractor",
+    "has thousands of staff, many AWS accounts, and uses a directory",
+    "service to manage their AWS account access. Auditors will need",
+    "access to all systems that store and process German data to validate",
+    "it is being correctly managed.",
+    "How should access be provided to auditors ?",
+    "A. Create a federated identity for each auditor in the directory. Assign each auditor a role in each account",
+    "with appropriate permissions.",
+    "B. Because they are external users, create them an IAM User in each account with the appropriate polices",
+    "attached.",
+    "C. Give them SSH keys to EC2 instances running in the US and the German regions, so they can explore the",
+    "environment from those hosts.",
+    "D. As auditors they will need root access to see everything in the AWS accounts, so give them the account",
+    "root passwords."
+   ],
+   "img": "img/p-46.jpg"
+  },
+  {
+   "id": "S047",
+   "texts": [
+    "Systems Operations Project Scenario",
+    "Mom & Pop Café & Bakery"
+   ],
+   "notes": [
+    "Now, let’s look at our business case, Mom & Pop Café & Bakery."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Systems Operations Project Scenario",
+    "Mom & Pop Café & Bakery"
+   ],
+   "img": "img/p-47.jpg"
+  },
+  {
+   "id": "S048",
+   "texts": [
+    "Mom & Pop Cafe use case introduction"
+   ],
+   "notes": [
+    "Throughout each module, there will be a business case problem that will be solved by you using AWS services and the concepts from the respective module.",
+    "Let’s take a look at how the business case can be assisted with AWS services."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Cafe",
+    "use case",
+    "introduction"
+   ],
+   "img": "img/p-48.jpg"
+  },
+  {
+   "id": "S049",
+   "texts": [
+    "AWS and the real world",
+    "Amazon Web Services (AWS) provides a broad array of service categories, such as:",
+    "Compute",
+    "Storage",
+    "Database",
+    "Analytics",
+    "AWS provides large organizations and small businesses cloud-based solutions to move their operations forward:",
+    "Faster",
+    "At reduced costs",
+    "With the ability to scale based on demand"
+   ],
+   "notes": [
+    "Amazon Web Services (AWS) provides a broad array of service categories, such as compute, storage, database, and analytics, that provide large organizations and small businesses the opportunity to use technology to move their operations forward faster, at reduced costs, and with the ability to scale based on demand."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS and the real world",
+    "Amazon Web Services (AWS)",
+    "provides a broad array of service",
+    "categories, such as:",
+    "• Compute",
+    "• Storage",
+    "• Database",
+    "• Analytics",
+    "AWS provides large organizations and",
+    "small businesses cloud-based solutions",
+    "to move their operations forward:",
+    "• Faster",
+    "• At reduced costs",
+    "• With the ability to scale based on demand"
+   ],
+   "img": "img/p-49.jpg"
+  },
+  {
+   "id": "S050",
+   "texts": [
+    "Project objectives",
+    "On completion of this project, you will be able to:",
+    "Experience the communication challenges faced when attempting to apply technology as the solution to business problems.",
+    "Translate customer requirements into a proposed technical solution.",
+    "Present the proposed solution to the customer.",
+    "Use AWS Best Practices for a frugal, resilient, and secure solution."
+   ],
+   "notes": [
+    "On completion of this project, you will be able to:",
+    "Experience the communication challenges faced when attempting to apply technology as the solution to business problems.",
+    "Translate customer requirements into a proposed technical solution.",
+    "Present the proposed solution to the customer.",
+    "Use AWS Best Practices for a frugal, resilient, and secure solution."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Project objectives",
+    "On completion of this project, you will be able to:",
+    "• Experience the communication challenges faced",
+    "when attempting to apply technology as the solution",
+    "to business problems.",
+    "• Translate customer requirements into a proposed",
+    "technical solution.",
+    "• Present the proposed solution to the customer.",
+    "• Use AWS Best Practices for a frugal, resilient, and",
+    "secure solution."
+   ],
+   "img": "img/p-50.jpg"
+  },
+  {
+   "id": "S051",
+   "texts": [
+    "Mom & Pop Café & BakeryCustomer Meeting Preparation"
+   ],
+   "notes": [
+    "You are preparing to meet with your new customer, Mom & Pop Café & Bakery. The café is a new AWS customer and wants to explore using AWS services. You are now going to review the business introduction so you know more about your customer when determining a solution."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café &",
+    "Bakery",
+    "Customer Meeting",
+    "Preparation"
+   ],
+   "img": "img/p-51.jpg"
+  },
+  {
+   "id": "S052",
+   "texts": [
+    "Mom & Pop Café & Bakery",
+    "Business introduction"
+   ],
+   "notes": [
+    "Let’s take a deeper look at our customer."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café & Baker y",
+    "Business introduction"
+   ],
+   "img": "img/p-52.jpg"
+  },
+  {
+   "id": "S053",
+   "texts": [
+    "Mom & Pop Café & Bakery",
+    "My retirement dream became a reality…..",
+    "Mom & Pop",
+    "Café & Bakery",
+    "Est. 2016"
+   ],
+   "notes": [
+    "The Mom & Pop Café & Bakery had its start from a retirement dream. The owners, Phillip and Emma, were not yet ready to sit around the house, and they wanted to do something that included their love of baking and supplemented their income. They love interacting with their local community and supporting military events across town with their baked goods and coffees.",
+    "Philip and Emma decided to open a café and bakery at the base of their flat in 2016. Their daughter, Sophie, and a secondary school student, Darsh, also work at the cafe. Since then, they have experienced an increase in local business and inquiries from people who travel through the area either for business or as a tourist."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café & Bakery",
+    "My retirement",
+    "dream became a",
+    "reality…..",
+    "Mom & Pop",
+    "Café & Bakery",
+    "Est. 2016"
+   ],
+   "img": "img/p-53.jpg"
+  },
+  {
+   "id": "S054",
+   "texts": [
+    "Café & Bakery clientele",
+    "Mom & Pop Café & Bakery caters to:",
+    "Early morning customers",
+    "Afternoon lunch traffic / commuters",
+    "Saturday morning coffee lovers",
+    "Vintage",
+    "Rustic",
+    "AWS",
+    "Coffee",
+    "Global",
+    "Beans",
+    "Wood",
+    "Cafe",
+    "Industrial",
+    "Solution"
+   ],
+   "notes": [
+    "Mom & Pop Café & Bakery caters to different customers. Some customers are looking for an early breakfast and want to enjoy the atmosphere. Others need to hurry out with an order to go, whether they are busy workers who are part of the afternoon lunch traffic or London commuters. Some customers want to spend a lazy Saturday morning people-watching over a good espresso and conversation.",
+    "The interior of the café is unique. It has rustic, handmade wooden benches and tables finished with industrial elements. The ambience is softened by greenery, cozy lighting, and vintage signage from Phillip’s travels."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Café & Bakery clientele",
+    "• Afternoon lunch traffic / commuters",
+    "• Saturday morning coffee lovers",
+    "Vintage",
+    "Coffee",
+    "Rustic",
+    "AWS",
+    "Global",
+    "• Early morning customers",
+    "Bean",
+    "s",
+    "Mom & Pop Café & Bakery caters to:",
+    "Wood",
+    "Cafe",
+    "Industrial",
+    "Solution"
+   ],
+   "img": "img/p-54.jpg"
+  },
+  {
+   "id": "S055",
+   "texts": [
+    "Café & Bakery recipe history",
+    "Globally sourced beans and ingredients",
+    "Phillip uses his mother’s recipes",
+    "Guarded secret and highly sought-out",
+    "Often sells out 30 minutes after opening"
+   ],
+   "notes": [
+    "Phillip’s mother developed her recipes long ago. Her recipes are uniquely delicious, and they are also healthful. The recipes use simple ingredients and are based on seasonal availability. They have been carefully passed down and are a guarded secret.",
+    "The café is filled with the scent of globally sourced, fresh-ground coffee and the light, sweet aroma of Phillip’s cinnamon pastries. These pastries often disappear within 30 minutes after opening."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Café & Bakery recipe history",
+    "Globally sourced beans and",
+    "ingredients",
+    "• Phillip uses his mother’s",
+    "recipes",
+    "• Guarded secret and highly",
+    "sought-out",
+    "• Often sells out 30 minutes",
+    "after opening"
+   ],
+   "img": "img/p-55.jpg"
+  },
+  {
+   "id": "S056",
+   "texts": [
+    "Café & Bakery atmosphere",
+    "Farm-direct, small-batch-roasted beans",
+    "Café customer purchases help two communities"
+   ],
+   "notes": [
+    "The café’s menu options are listed on a chalkboard that sits behind the counter. Baked goods are enticingly arranged in counter-based displays and a glass case. Café music plays softly, punctuated by the periodic sound of coffee grinding.",
+    "The chalkboard highlights a monthly changing menu of single-origin espressos made with beans that come directly from a coffee farm and are roasted in small batches. Phillip loves the idea that the farmer gets a financial benefit that also boosts their local economy. Café customers know that they are helping two communities with their purchase: their own community and the farmer’s community."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Café & Bakery atmosphere",
+    "Farm-direct, small-batch-roasted",
+    "beans",
+    "Café customer",
+    "purchases help two",
+    "communities"
+   ],
+   "img": "img/p-56.jpg"
+  },
+  {
+   "id": "S057",
+   "texts": [
+    "Phillip Evans",
+    "Likes | Dislikes",
+    "Being Retired | Sitting at Home",
+    "Family Time | Computers",
+    "Watching sports | Shopping",
+    "Dessert | Vegetables",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: Retired Military, Navy"
+   ],
+   "notes": [
+    "Phillip (pop) likes to bake and use his mother’s recipes. He is not a technology expert, so he tries to avoid computers.",
+    "He has traveled all over the world. his travel experiences led him to source some of the finest coffees from around the world, and many are ground fresh onsite. He has met many of the farmers who grow the beans he uses, and he has even met some farmers who grow some of the baking ingredients. He is interested in expanding the global presence of the café with the help of Sophie.",
+    "Owning a café is a good fit with his lifestyle, since he always woken up early, ever since he joined the Navy when he was 19. He is recently realizing however that he cannot do everything. His daughter Sophie reminds him of this every day. She says technology might be a benefit if he could learn more about it."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Phillip Evans",
+    "Likes",
+    "Dislikes",
+    "Being Retired",
+    "Sitting at Home",
+    "Family Time",
+    "Computers",
+    "Watching sports",
+    "Shopping",
+    "Dessert",
+    "Vegetables",
+    "Technology",
+    "Computer Skills",
+    "Occupation: Retired",
+    "Military, Navy",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-57.jpg"
+  },
+  {
+   "id": "S058",
+   "texts": [
+    "Emma Evans",
+    "Likes | Dislikes",
+    "Organization | Searching for Things",
+    "Nature | Administration Tasks",
+    "Yoga | Running",
+    "Biscotti | Cooking",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: Retired Accountant"
+   ],
+   "notes": [
+    "Emma (mom) is a retired accountant and she uses her skills for the café’s books. She knows how to use basic technology and she is really good with an Excel spreadsheet.",
+    "She does not mind helping Phillip in the kitchen, but she prefers to use her accounting skills to reinvest in the café. She want to enjoy more of her retirement, and she does not want to start a second career when she reaches retirement age.",
+    "While she enjoys working at the café, she would like to spend less time doing administrative tasks. She wants to head off to more yoga retreats with her best friend. Looking ahead, she wants time to enjoy being with her future grandchildren."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Emma Evans",
+    "Likes",
+    "Dislikes",
+    "Organization",
+    "Searching for",
+    "Things",
+    "Nature",
+    "Administration",
+    "Tasks",
+    "Yoga",
+    "Running",
+    "Biscotti",
+    "Cooking",
+    "Technology",
+    "Computer Skills",
+    "Occupation: Retired",
+    "Accountant",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-58.jpg"
+  },
+  {
+   "id": "S059",
+   "texts": [
+    "Sophie Evans",
+    "Likes | Dislikes",
+    "Programming | Designing",
+    "Efficiency | Administration Work",
+    "Yoga | Cardio",
+    "Brownies | Sugar-Free",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: Cafe Manager and Future Business Student"
+   ],
+   "notes": [
+    "Sophie will be attending university next month to study Business. She currently runs the café and manages the supply orders and ingredient inventory. She also makes sure that deliveries across town are completed. Her customers call her the caffeine connoisseur.",
+    "She also likes programming. She took some programming classes in secondary school and thinks they would fit in well with a graduate degree in business.",
+    "Sophie just learned about Amazon Web Services and told her parents that their services could be used to automate the business. She knows that AWS services could help her parents focus more on what they want to do with the shop and reduce their administrative work.",
+    "She heard about AWS from one of her customers, Alejandro. He drops in daily for his usual cinnamon roll and handed her a business card in case she had any questions."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Sophie Evans",
+    "Likes",
+    "Dislikes",
+    "Programming",
+    "Designing",
+    "Efficiency",
+    "Administration",
+    "Work",
+    "Yoga",
+    "Cardio",
+    "Brownies",
+    "Sugar-Free",
+    "Technology",
+    "Occupation: Cafe",
+    "Manager and Future",
+    "Business Student",
+    "Computer Skills",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-59.jpg"
+  },
+  {
+   "id": "S060",
+   "texts": [
+    "Darsh Patel",
+    "Likes | Dislikes",
+    "Art | Math",
+    "Sports | Chores",
+    "Soccer | Sitting Around",
+    "Flan | Tea",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: Secondary School Student"
+   ],
+   "notes": [
+    "Darsh is completing secondary school in the spring. He has worked at the café for almost a year now. He is in charge of store upkeep and bicycle deliveries. He has been recently working behind the counter more, serving customers at Sophie’s direction. She told hime that because she is going to the university next month, it would be good for him to learn more about the café. He is eager to help out more.",
+    "Darsh likes art, and he wants to be a graphic artist after he completes school. He likes technology as well."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Darsh Patel",
+    "Likes",
+    "Dislikes",
+    "Art",
+    "Math",
+    "Sports",
+    "Chores",
+    "Soccer",
+    "Sitting Around",
+    "Flan",
+    "Tea",
+    "Technology",
+    "Computer Skills",
+    "Occupation:",
+    "Secondary School",
+    "Student",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-60.jpg"
+  },
+  {
+   "id": "S061",
+   "texts": [
+    "Mom & Pop Café & Bakery",
+    "AWS team introduction"
+   ],
+   "notes": [
+    "Now, let’s look at the AWS team that will be assisting the Mom & Pop Bakery & Café."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café & Baker y",
+    "AWS team introduction"
+   ],
+   "img": "img/p-61.jpg"
+  },
+  {
+   "id": "S062",
+   "texts": [
+    "Alejandro Dimitriou",
+    "Likes | Dislikes",
+    "Efficiency | Tedious Tasks",
+    "Small Talk | Exaggeration",
+    "Traveling | Office Cubes",
+    "Cinnamon Rolls | Biscuits",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: AWS Technical Account Manager (TAM)"
+   ],
+   "notes": [
+    "Alejandro is an AWS Technical Account Manager (TAM). He is also one of the café’s favorite customers, because he is there every day getting those delicious cinnamon rolls. He has to get there early, though, because they sell out quickly. He recently asked Sophie about the café’s website. He would like to help them expand their AWS presence and help their café do more, especially because they want to go global.",
+    "He gave his business card to Sophie so she could get in touch if she had any questions. He offered to meet with her and introduce her to the rest of my team so they could talk about the café’s business needs."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Alejandro Dimitriou",
+    "Likes",
+    "Dislikes",
+    "Efficiency",
+    "Tedious Tasks",
+    "Small Talk",
+    "Exaggeration",
+    "Traveling",
+    "Office Cubes",
+    "Cinnamon Rolls",
+    "Biscuits",
+    "Technology",
+    "Computer Skills",
+    "Occupation: AWS",
+    "Technical Account",
+    "Manager (TAM)",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-62.jpg"
+  },
+  {
+   "id": "S063",
+   "texts": [
+    "Raquel Kaplan",
+    "Likes | Dislikes",
+    "Databases | Spreadsheets",
+    "Designing | Re-Work",
+    "Resorts | Camping",
+    "Cake | Yogurt",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: AWS Solutions Architect (SA)"
+   ],
+   "notes": [
+    "Raquel is an AWS Solutions Architect (SA) and she recently moved to London from Seattle. She used to be a network engineer and she has a strong background with advanced networking. She likes troubleshooting technical issues and creating frugal, resilient, and secure solutions for her customers.",
+    "It is a bonus that she also enjoys a good piece of cake when is designing a technical solution."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Raquel Kaplan",
+    "Likes",
+    "Dislikes",
+    "Databases",
+    "Spreadsheets",
+    "Designing",
+    "Re-Work",
+    "Resorts",
+    "Camping",
+    "Cake",
+    "Yogurt",
+    "Technology",
+    "Occupation: AWS",
+    "Solutions Architect",
+    "(SA)",
+    "Computer Skills",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-63.jpg"
+  },
+  {
+   "id": "S064",
+   "texts": [
+    "Matt Walker",
+    "Likes | Dislikes",
+    "Open Source Software | Losing Data",
+    "Programming | Laziness",
+    "Office Confines | Board Meetings",
+    "Biscuits | Cake",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: AWS Sr. Systems Operations (SysOps) Engineer"
+   ],
+   "notes": [
+    "Matt is an experienced AWS SysOps Engineer. He has been told that he is exceptionally good at bringing automation and fault tolerance to a solution. Through his work, he has become well-versed in security policies and providing options for disaster recovery.",
+    "He previously worked as a developer, and has been mentoring Natalia since she started as an intern with AWS. She is now working on obtaining additional certifications. Matt is happy to help Natalia and anyone who is interested in learning."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Matt Walker",
+    "Likes",
+    "Dislikes",
+    "Open Source",
+    "Software",
+    "Losing Data",
+    "Programming",
+    "Laziness",
+    "Office Confines",
+    "Board Meetings",
+    "Biscuits",
+    "Cake",
+    "Technology",
+    "Occupation: AWS Sr.",
+    "Systems Operations",
+    "(SysOps) Engineer",
+    "Computer Skills",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-64.jpg"
+  },
+  {
+   "id": "S065",
+   "texts": [
+    "Natalia Petrova",
+    "Likes | Dislikes",
+    "Open Source Software | Losing Work",
+    "Programming | Limitations",
+    "Nature | Office Confines",
+    "Brownies | Fruit Cake",
+    "Technology",
+    "Computer Skills",
+    "Computer",
+    "AWS Knowledge",
+    "Novice\t       \t\t        Expert",
+    "Novice\t       \t\t        Expert",
+    "Linux\t               MacOS                      Windows",
+    "1      2      3      4      5      6      7      8      9     10",
+    "Occupation: AWS Developer"
+   ],
+   "notes": [
+    "Natalia is an AWS Developer. She just completed an internal AWS internship program. She likes to thinks that she bring fresh ideas to development, and she likes working with her team to apply the appropriate technology to a business problem.",
+    "She just passed her AWS certification exam for the Security certification specialty. She is now studying to add the Big Data certification to her resume. She sees many business use cases for data analytics and likes to consider how data analytics can impact other areas of development."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Natalia Petrova",
+    "Likes",
+    "Dislikes",
+    "Open Source",
+    "Software",
+    "Losing Work",
+    "Programming",
+    "Limitations",
+    "Nature",
+    "Office Confines",
+    "Brownies",
+    "Fruit Cake",
+    "Technology",
+    "Computer Skills",
+    "Occupation: AWS",
+    "Developer",
+    "Computer",
+    "Novice",
+    "Expert",
+    "Novice",
+    "Expert",
+    "Linux",
+    "Windows",
+    "MacOS",
+    "AWS Knowledge"
+   ],
+   "img": "img/p-65.jpg"
+  },
+  {
+   "id": "S066",
+   "texts": [
+    "Mom & Pop Café & Bakery & AWS",
+    "Mom & Pop Café & Bakery has a business need that can be solved by AWS.",
+    "Let’s explore the problem more."
+   ],
+   "notes": [
+    "Sophie has a lot of AWS support right here in her café, and they are all specialists in different areas. She sees this as a perfect opportunity to enhance the café’s internet presence, especially on a global scale. Through her interaction with an AWS Technical Program Manager, she has the opportunity to engage with an AWS Solutions Architect, a SysOps Engineer, and a Developer to design the right solution for Mom & Pop Café & Bakery."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café & Bakery & AWS",
+    "Mom & Pop Café & Bakery has a",
+    "business need that can be solved by",
+    "AWS.",
+    "Let’s explore the problem more."
+   ],
+   "img": "img/p-66.jpg"
+  },
+  {
+   "id": "S067",
+   "texts": [
+    "Mom & Pop Café & BakeryCustomer Meeting Preparation"
+   ],
+   "notes": [
+    "We will now begin to prepare for our customer meeting, where a new problem will be proposed and where we will assist them in finding a solution."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café &",
+    "Bakery",
+    "Customer Meeting",
+    "Preparation"
+   ],
+   "img": "img/p-67.jpg"
+  },
+  {
+   "id": "S068",
+   "texts": [
+    "Mom & Pop Café & Bakery",
+    "Request to install AWS CLI"
+   ],
+   "notes": [
+    "The customer has a request to install the AWS CLI."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Mom & Pop Café & Baker y",
+    "Request to install AWS CLI"
+   ],
+   "img": "img/p-68.jpg"
+  },
+  {
+   "id": "S069",
+   "texts": [
+    "Business need: AWS CLI and IAM",
+    "Matt picks up his morning coffee from Sophie. He inquires if she needs any help with establishing her new AWS account so she can get started."
+   ],
+   "notes": [
+    "Matt asked Sophie, how the new AWS account coming along. He wondered if she needed any assistance."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Business need: AWS CLI and IAM",
+    "Matt picks up his morning coffee from",
+    "Sophie. He inquires if she needs any help",
+    "with establishing her new AWS account so",
+    "she can get started."
+   ],
+   "img": "img/p-69.jpg"
+  },
+  {
+   "id": "S070",
+   "texts": [
+    "Sophie’s request to Matt",
+    "While giving his coffee to Matt, Sophie mentions she could use some help with:",
+    "Installing the AWS Command Line Interface (AWS CLI)",
+    "Establishing AWS Identity and Access Management (IAM) controls for Darsh and herself."
+   ],
+   "notes": [
+    "Sophie thanked Matt for asking. She said she did have some questions about the AWS CLI and how to get it installed on her laptop. She asked if Matt would mind helping her out with that at lunch."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Sophie’s request to Matt",
+    "While giving his coffee to Matt,",
+    "Sophie mentions she could use",
+    "some help with:",
+    "• Installing the AWS Command Line",
+    "Interface (AWS CLI)",
+    "• Establishing AWS Identity and",
+    "Access Management (IAM)",
+    "controls for Darsh and herself."
+   ],
+   "img": "img/p-70.jpg"
+  },
+  {
+   "id": "S071",
+   "texts": [
+    "Activity 1: Install and practice using the AWS CLI"
+   ],
+   "notes": [
+    "In this activity, you will practice installing the AWS CLI. A Red Hat Linux instance—that does not have the AWS CLI installed on it—is provided for you on Amazon EC2."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Activity 1:",
+    "Install and practice",
+    "using the AWS CLI"
+   ],
+   "img": "img/p-71.jpg"
+  },
+  {
+   "id": "S072",
+   "texts": [
+    "Activity 1: Install, Configure, and Practice Using the AWS CLI",
+    "AWS Cloud",
+    "VPC",
+    "User",
+    "EC2 instance contents",
+    "1. Manually install and configure the AWS CLI on a machine",
+    "2. Interact with AWS service using AWS CLI",
+    "SSH connection",
+    "AWS Identity and Access Management (IAM)",
+    "AWS Command",
+    "Line Interface (AWS CLI)",
+    "Red Hat EC2 instance"
+   ],
+   "notes": [
+    "The diagram above summarizes the activities you will complete in this activity.",
+    "You will establish a Secure Shell (SSH) connection to the instance. Then, you will configure the installation with an access key that can connect to an AWS account. Finally, you will practice using the AWS CLI to interact with AWS Identity Access and Management (IAM)."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Activity 1: Install, Configure, and",
+    "Practice Using the AWS CLI",
+    "AWS Cloud",
+    "VPC",
+    "User",
+    "SSH",
+    "connection",
+    "EC2 instance contents",
+    "1. Manually install and",
+    "configure the AWS CLI on a",
+    "machine",
+    "2. Interact with AWS",
+    "service using AWS CLI",
+    "AWS Command",
+    "Line Interface (AWS CLI)",
+    "AWS Identity and",
+    "Access Management",
+    "(IAM)",
+    "Red Hat EC2 instance"
+   ],
+   "img": "img/p-72.jpg"
+  },
+  {
+   "id": "S073",
+   "texts": [
+    "Begin Activity 1: Install and configure the AWS CLI"
+   ],
+   "notes": [
+    "You may now begin the activity. Feel free to ask your instructor for assistance, as needed."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Begin Activity",
+    "1: Install and",
+    "configure the",
+    "AWS CLI"
+   ],
+   "img": "img/p-73.jpg"
+  },
+  {
+   "id": "S074",
+   "texts": [
+    "AWS Management Console versus AWS CLI",
+    "Why would you use the AWS CLI instead of the AWS Management Console?",
+    "Does the solution architecture change by using the AWS CLI instead of the console?",
+    "Reason #1",
+    "Reason #2"
+   ],
+   "notes": [
+    "Why would you use the AWS CLI instead of the AWS Management Console?"
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Management Console versus AWS CLI",
+    "Why would you use the AWS",
+    "CLI instead of the AWS",
+    "Management Console?",
+    "Reason #1",
+    "reserved.",
+    "Reason #2",
+    "Does the",
+    "solution",
+    "architecture",
+    "change by",
+    "using the",
+    "AWS CLI",
+    "instead of",
+    "the console?"
+   ],
+   "img": "img/p-74.jpg"
+  },
+  {
+   "id": "S075",
+   "texts": [
+    "AWS Management Console versus AWS CLI",
+    "Why would you use the AWS CLI instead of the AWS Management Console?",
+    "Does the solution architecture change by using the AWS CLI instead of the console?",
+    "Reason #1",
+    "Reason #2",
+    "Expedite tasks related to administration by running hundreds of commands via a script.",
+    "Automate the creation and building of an infrastructure."
+   ],
+   "notes": [
+    "The AWS CLI allows you to:",
+    "Automate the creation and building of an infrastructure.",
+    "Expedite tasks related to administration by running hundreds of commands via a file."
+   ],
+   "hidden": false,
+   "rendered": [
+    "AWS Management Console versus AWS CLI",
+    "Why would you use the AWS",
+    "CLI instead of the AWS",
+    "Management Console?",
+    "Reason #1",
+    "Reason #2",
+    "Automate the creation",
+    "and building of an",
+    "infrastructure.",
+    "Expedite tasks related to",
+    "administration by running",
+    "hundreds of commands",
+    "via a script.",
+    "reserved.",
+    "Does the",
+    "solution",
+    "architecture",
+    "change by",
+    "using the",
+    "AWS CLI",
+    "instead of",
+    "the console?"
+   ],
+   "img": "img/p-75.jpg"
+  },
+  {
+   "id": "S076",
+   "texts": [
+    "Project time: Troubleshooting knowledge base",
+    "~ 30 min."
+   ],
+   "notes": [
+    "Take some time to add entries to your troubleshooting knowledge base.",
+    "Given the focus of this module, you should be able to create a few entries in the Security and Automation categories."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Project time:",
+    "Troubleshooting",
+    "knowledge base",
+    "~ 30 min."
+   ],
+   "img": "img/p-76.jpg"
+  },
+  {
+   "id": "S077",
+   "texts": [
+    "Thank you"
+   ],
+   "notes": [
+    "Thank you for participating in this module."
+   ],
+   "hidden": false,
+   "rendered": [
+    "Thank you",
+    "permission from Amazon Web Services, Inc. Commercial copying, lending, or selling is prohibited. Corrections or feedback on the course, please email us",
+    "at: aws-course-feedback@amazon.com. For all other questions, contact us at: https://aws.amazon.com/contact-us/aws-training/. All trademarks are the property",
+    "of their owners."
+   ],
+   "img": "img/p-77.jpg"
+  }
+ ]
+}

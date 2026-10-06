@@ -1,0 +1,1393 @@
+{
+ "file": "ACO-03-Computing-Servers.pdf",
+ "units": [
+  {
+   "id": "P001",
+   "texts": [
+    "Module 3: Computing (Servers)"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-01.jpg"
+  },
+  {
+   "id": "P002",
+   "texts": [
+    "Module objectives",
+    "At the end of this module, you will be able to:",
+    "• Describe Amazon Elastic Compute Cloud (Amazon EC2) virtualization.",
+    "• Differentiate between the instance types and storage options available for EC2 instances.",
+    "• Understand the networking components that must be specified when you launch an EC2 instance.",
+    "• Explain Amazon EC2 user data and metadata.",
+    "• Differentiate the lifecycle states for an EC2 instance.",
+    "• Explain the shared responsibility model.",
+    "• Create Amazon EC2 instances."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-02.jpg"
+  },
+  {
+   "id": "P003",
+   "texts": [
+    "Module overview",
+    "Topics:",
+    "Demo:",
+    "• Launch an Amazon EC2 instance, view",
+    "system log, get instance screenshot",
+    "•",
+    "Computing on AWS",
+    "•",
+    "Managing your AWS instances",
+    "Lab:",
+    "•",
+    "Securing your AWS instances",
+    "• Lab 2: Creating Amazon EC2 instances",
+    "•",
+    "Pricing for Amazon EC2 instances",
+    "Exercises / Project:",
+    "Knowledge check",
+    "• Activity 3: Troubleshoot creating a",
+    "LAMP instance via AWS CLI",
+    "• Project time: Troubleshooting",
+    "knowledge base"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-03.jpg"
+  },
+  {
+   "id": "P004",
+   "texts": [
+    "Troubleshooting",
+    "knowledge Base –",
+    "Module 3 focus",
+    "• Have your copy of the",
+    "troubleshooting knowledge base",
+    "template open for editing",
+    "• Create new entries as you encounter",
+    "troubleshooting situations",
+    "• Categories of focus for this module:",
+    "• Compute",
+    "• Foundational IT"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-04.jpg"
+  },
+  {
+   "id": "P005",
+   "texts": [
+    "Module 3: Computing (Servers)",
+    "Computing on AWS"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-05.jpg"
+  },
+  {
+   "id": "P006",
+   "texts": [
+    "Amazon EC2 virtualization",
+    "Amazon EC2 instances",
+    "Internet",
+    "Hypervisor",
+    "CPUs",
+    "Amazon EC2",
+    "Network",
+    "RAM",
+    "Instance store",
+    "(ephemeral)",
+    "Amazon Simple Storage",
+    "Service (Amazon S3)",
+    "EBSoptimized",
+    "Amazon Elastic Block Store",
+    "(Amazon EBS) 6"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-06.jpg"
+  },
+  {
+   "id": "P007",
+   "texts": [
+    "Instance types",
+    "t3.nano",
+    "Variations",
+    "CPU type",
+    "Storage type",
+    "CPU or core count",
+    "Storage amount",
+    "Memory amount",
+    "Network performance",
+    "Categories",
+    "General purpose",
+    "Accelerated computing",
+    "Compute optimized",
+    "Storage optimized",
+    "Memory optimized",
+    "Families",
+    "Collections of types within a category",
+    "Types",
+    "Unique selections of virtual hardware capability",
+    "x1e.32xlarge"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-07.jpg"
+  },
+  {
+   "id": "P008",
+   "texts": [
+    "Provisioning an instance",
+    "Block storage:",
+    "Instance Store or Amazon EBS",
+    "Network placement",
+    "and addressing",
+    "Amazon Elastic Block Store (EBS)",
+    "User data",
+    "VPC",
+    "Security group",
+    "Server role",
+    "Instance",
+    "AMI",
+    "Tenancy",
+    "key pair"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-08.jpg"
+  },
+  {
+   "id": "P009",
+   "texts": [
+    "Amazon Machine Image (AMI)",
+    "AMIs consist",
+    "of:",
+    "Template for",
+    "instance",
+    "volumes",
+    "Launch",
+    "permissions",
+    "Block device",
+    "mappings",
+    "AMI choices:",
+    "AWS",
+    "Provided",
+    "User Built",
+    "Community",
+    "Marketplace"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-09.jpg"
+  },
+  {
+   "id": "P010",
+   "texts": [
+    "Block storage for EC2 instances",
+    "Amazon Elastic Block Store (Amazon EBS)",
+    "Solid state drives (SSD):",
+    "Provisioned IOPS",
+    "SSD (io1) volumes",
+    "General purpose",
+    "SSD (gp2) volumes",
+    "Hard disk drives (HDD):",
+    "Throughput",
+    "optimized HDD",
+    "(st1) volumes",
+    "Cold HDD (sc1)",
+    "volumes"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-10.jpg"
+  },
+  {
+   "id": "P011",
+   "texts": [
+    "Amazon EC2 networking",
+    "AWS Cloud",
+    "VPC",
+    "Availability Zone 2",
+    "Subnet",
+    "Security group",
+    "Internet",
+    "gateway",
+    "EC2 instances",
+    "Client",
+    "Public Subnet",
+    "Subnet",
+    "Security",
+    "group",
+    "Security",
+    "group",
+    "EC2 instance",
+    "EC2 instance",
+    "Private subnet",
+    "Corporate data center",
+    "VPN",
+    "gateway",
+    "Customer",
+    "gateway",
+    "Corporate",
+    "client"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-11.jpg"
+  },
+  {
+   "id": "P012",
+   "texts": [
+    "Private, public, and elastic IP addresses",
+    "• Public IP addresses change when an instance is stopped and restarted.",
+    "• Use Elastic IP addresses for static, public IP addresses.",
+    "54.183.34.127",
+    "Public IP address (transient)",
+    "VPC",
+    "Public subnet",
+    "172.31.22.16",
+    "Private IP address",
+    "Instance 1",
+    "Instance 2",
+    "54.77.95.100",
+    "Elastic IP address (static)",
+    "Internet"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-12.jpg"
+  },
+  {
+   "id": "P013",
+   "texts": [
+    "Security groups",
+    "• Restrict access to instances by:",
+    "Example security group settings:",
+    "• Port range",
+    "• IP address range",
+    "• Resource ID",
+    "• Instances can be associated with multiple security groups",
+    "Remote Access on port 22",
+    "Security group",
+    "NAT",
+    "Remote Access on port 22 and",
+    "Web traffic 80",
+    "Security group",
+    "Web",
+    "servers",
+    "• Allow data ingress and egress",
+    "Port 3306",
+    "Security group",
+    "• Can be added or modified after launch",
+    "DB"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-13.jpg"
+  },
+  {
+   "id": "P014",
+   "texts": [
+    "Security groups: Examples",
+    "Allow HTTP port access from anywhere:",
+    "ID",
+    "Port Range",
+    "Source",
+    "sg-dfc83cba",
+    "80 (HTTP)",
+    "0.0.0.0/0",
+    "Allow SSH access from a specific computer:",
+    "ID",
+    "Port Range",
+    "Source",
+    "sg-4ad3712f",
+    "22 (SSH)",
+    "10.50.2.133/32",
+    "Allow SSH access from members of a security group:",
+    "ID",
+    "Port Range",
+    "Source",
+    "sg-d1cd6fb4",
+    "22 (SSH)",
+    "sg-4ad3712f"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-14.jpg"
+  },
+  {
+   "id": "P015",
+   "texts": [
+    "Instance profile",
+    "• Avoid storing access key and secret key locally on EC2",
+    "• Allows you to attach an IAM role to an EC2 instance",
+    "• Automatic propagation of access keys to instances",
+    "• Automatic rotation of access keys multiple times daily",
+    "• Use across multiple instances (e.g., Auto Scaling group)",
+    "Example: Grant EC2 instances permission to access the Amazon S3 buckets",
+    "where application data is stored.",
+    "Best Practice",
+    "Do not store permanent access keys on EC2 instances,",
+    "because credentials could be compromised."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-15.jpg"
+  },
+  {
+   "id": "P016",
+   "texts": [
+    "Example of instance profile",
+    "Role",
+    "Get file from",
+    "mybucket",
+    "Yes: allow access",
+    "Instance",
+    "Amazon EC2 instance",
+    "(with the MyS3Role role",
+    "attached)",
+    "IAM policy",
+    "(MyS3Role permissions to bucket)",
+    "Amazon S3 bucket",
+    "(mybucket)"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-16.jpg"
+  },
+  {
+   "id": "P017",
+   "texts": [
+    "User data",
+    "• Script that runs at launch:",
+    "• Linux script",
+    "• Windows batch or PowerShell scripts",
+    "• Script is run by:",
+    "• Cloud-init on Linux",
+    "• EC2Launch service on Windows"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-17.jpg"
+  },
+  {
+   "id": "P018",
+   "texts": [
+    "User data on Linux",
+    "Linux Shell Script",
+    "#!/bin/bash",
+    "yum update -y",
+    "yum groupinstall -y",
+    "\"Web Server\" \"PHP Support\"",
+    "yum install -y php-mysql",
+    "service httpd start",
+    "chkconfig httpd on",
+    "cloud-init directives",
+    "#cloud-config",
+    "repo_update: true",
+    "repo_upgrade: all",
+    "packages:",
+    "- httpd",
+    "- php",
+    "- php-mysql",
+    "runcmd:",
+    "- chkconfig httpd on"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-18.jpg"
+  },
+  {
+   "id": "P019",
+   "texts": [
+    "User data on Windows",
+    "Batch file",
+    "<script>",
+    "winrm quickconfig -q",
+    "winrm set winrm/config/winrs",
+    "@{MaxMemoryPerShellMB=\"300\"}",
+    "winrm set winrm/config",
+    "@{MaxTimeoutms=\"1800000\"}",
+    "</script>",
+    "PowerShell script",
+    "<powershell>",
+    "# Install IIS and Web",
+    "# Management Tools.",
+    "Import-Module ServerManager",
+    "Install-WindowsFeature",
+    "web-server, web-webserver",
+    "Install-WindowsFeature",
+    "web-mgmt-tools",
+    "</powershell>"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-19.jpg"
+  },
+  {
+   "id": "P020",
+   "texts": [
+    "Amazon EC2 instance metadata",
+    "• Data about your instance that you can use to configure or manage the running instance",
+    "• Metadata service is provided for every instance at the IP address 169.254.169.254",
+    "• Query instance metadata",
+    "export INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instanceid)",
+    "aws ec2 describe-instances --instance-id $INSTANCE_ID",
+    "Linux",
+    "$INSTANCE_ID=(new-object net.webclient).DownloadString(",
+    "'http://169.254.169.254/latest/meta-data/instance-id')",
+    "aws ec2 describe-instances --instance-id $INSTANCE_ID",
+    "Windows"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-20.jpg"
+  },
+  {
+   "id": "P021",
+   "texts": [
+    "User data and Amazon EC2 instance metadata",
+    "• It might be useful to reference properties of the instance in user data.",
+    "• Query instance metadata and use in a user data script at launch.",
+    "To change hostname of Amazon Linux AMI to instance-id at launch:",
+    "User Data Script",
+    "#!/bin/bash",
+    "Linux",
+    "#Get hostname from instance-id metadata = $newhost",
+    "newhost=$(curl http://169.254.169.254/latest/meta-data/instance-id/)",
+    "#change hostname in /etc/hosts & /etc/sysconfig/network",
+    "sudo sed -i \"s/\\<localhost\\>/$newhost/g\" /etc/hosts",
+    "sudo sed -i \"s/\\<localhost\\>/$newhost/g\" /etc/sysconfig/network",
+    "#Reboot instance",
+    "sudo reboot"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-21.jpg"
+  },
+  {
+   "id": "P022",
+   "texts": [
+    "Retrieve EC2 instance user data",
+    "Examples of EC2 instance metadata include:",
+    "[ec2-user ~]$ curl http://169.254.169.254/latest/meta-data/",
+    "ami-id",
+    "ami-launch-index",
+    "ami-manifest-path",
+    "block-device-mapping/",
+    "events/",
+    "hostname",
+    "iam/",
+    "instance-action"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-22.jpg"
+  },
+  {
+   "id": "P023",
+   "texts": [
+    "EC2 instance user data",
+    "Example, with result:",
+    "[ec2-user ~]$ curl http://169.254.169.254/latest/user-data",
+    "#!/bin/bash",
+    "yum update -y",
+    "service httpd start",
+    "chkconfig httpd on"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-23.jpg"
+  },
+  {
+   "id": "P024",
+   "texts": [
+    "Additional metadata examples",
+    "Example of retrieving the publichostname:",
+    "[ec2-user ~]$ curl http://169.254.169.254/latest/metadata/public-hostname",
+    "ec2-203-0-113-25.compute-1.amazonaws.com",
+    "Example of retrieving the subnet",
+    "ID for an instance:",
+    "[ec2-user ~]$ curl http://169.254.169.254/latest/metadata/network/interfaces/macs/02:29:96:8f:6a:2d/subnet-id",
+    "subnet-be9b61d7"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-24.jpg"
+  },
+  {
+   "id": "P025",
+   "texts": [
+    "Key pairs",
+    "Remote Access",
+    "SSH",
+    "Linux",
+    "Windows",
+    "RDP",
+    "• Use RDP to log into instances.",
+    "• Use SSH to log into an instance.",
+    "• Password-only authentication is",
+    "disabled on Linux by default.",
+    "• Port 22",
+    "• Uses an encrypted random",
+    "password that can only be",
+    "decrypted by using a private",
+    "secret access key.",
+    "• Port 3389"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-25.jpg"
+  },
+  {
+   "id": "P026",
+   "texts": [
+    "Setting your own instance security",
+    "Change users and permissions after instances are created",
+    "• Windows:",
+    "• Integrate with AWS Directory Service",
+    "• Linux:",
+    "• Uses Kerberos-based single sign-on (SSO)",
+    "• Generate a public/private key pair for the user using ssh-keygen",
+    "• Add the user's public key to their ~/.ssh/authorized_keys",
+    "Devise a strategy for fleet-wide user management:",
+    "• Creating AMIs",
+    "• Using configuration software"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-26.jpg"
+  },
+  {
+   "id": "P027",
+   "texts": [
+    "Configuration management applications",
+    "Configuration management applications can:",
+    "• Simplify the process of granting and revoking access across a large number",
+    "of machines",
+    "• Reduce the process down to a few simple commands",
+    "Configuration management applications:",
+    "• Chef",
+    "• Puppet",
+    "• Ansible"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-27.jpg"
+  },
+  {
+   "id": "P028",
+   "texts": [
+    "Post-launch configuration options",
+    "Get instance screenshot",
+    "Enable termination",
+    "protection",
+    "Disable",
+    "source/destination check",
+    "(enabled by default) if the",
+    "instance is performing a",
+    "NAT function as a router or",
+    "firewall"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-28.jpg"
+  },
+  {
+   "id": "P029",
+   "texts": [
+    "Launch Amazon EC2 in the AWS CLI",
+    "aws ec2 run-instances",
+    "--image-id ami-0123456789012345",
+    "--instance-type t2.micro",
+    "--key-name mykeypair",
+    "--security-group-ids sg-0123456789012345",
+    "--subnet-id subnet-0123456789012345",
+    "--iam-instance-profile Name=EC2Admin",
+    "--user-data file://UserData.txt",
+    "--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]'"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-29.jpg"
+  },
+  {
+   "id": "P030",
+   "texts": [
+    "Demo: Launch Amazon EC2 instance"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-30.jpg"
+  },
+  {
+   "id": "P031",
+   "texts": [
+    "Key Takeaway",
+    "• Do not store permanent access keys on EC2",
+    "instance profile",
+    "• Choose an instance type that best suits your",
+    "application requirement. If required, change",
+    "instance type in future.",
+    "• Elastic Block Storage (EBS) options include:",
+    "• Solid state drives (SSD)",
+    "• Hard disk drives (HDD)",
+    "• EC2 instance metadata can be accessed",
+    "programmatically to configure or manage the",
+    "instance."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-31.jpg"
+  },
+  {
+   "id": "P032",
+   "texts": [
+    "Module 3: Computing (Servers)",
+    "Managing your AWS instances"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-32.jpg"
+  },
+  {
+   "id": "P033",
+   "texts": [
+    "Lifecycle states of an EC2 instance",
+    "Rebooting",
+    "Pending",
+    "Running",
+    "Stopped",
+    "Terminating",
+    "Terminated",
+    "Shutting down",
+    "State",
+    "Running",
+    "Stopped",
+    "Terminated",
+    "Charged?",
+    "Charged",
+    "Not charged",
+    "Not charged",
+    "Instance Store",
+    "Retained",
+    "Lost",
+    "Lost",
+    "EBS Volumes",
+    "Retained",
+    "Retained",
+    "Deleted if DeleteOnTermination",
+    "is set",
+    "Public IP Address",
+    "Retained",
+    "Released",
+    "Released",
+    "Elastic IP Address",
+    "Retained",
+    "Retained",
+    "Disassociated"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-33.jpg"
+  },
+  {
+   "id": "P034",
+   "texts": [
+    "Hibernation of an EC2 instance",
+    "Hibernation",
+    "Start",
+    "Stopping",
+    "Running",
+    "StoppedHibernate",
+    "Stop-Hibernate",
+    "Charged?",
+    "Instance Store",
+    "Running",
+    "Stop-Hibernate",
+    "Charged",
+    "Not charged*",
+    "You cannot stop or hibernate instance store-backed instances.",
+    "EBS Volumes",
+    "Retained",
+    "Retained",
+    "Public IP Address",
+    "Retained",
+    "Released",
+    "Elastic IP Address",
+    "Retained",
+    "Retained",
+    "Private IP",
+    "Retained",
+    "Retained",
+    "*Charged while in stopping state"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-34.jpg"
+  },
+  {
+   "id": "P035",
+   "texts": [
+    "Hibernation: Prerequisites",
+    "To enable",
+    "hibernation",
+    "at launch,",
+    "you require:",
+    "A supported instance type and AMI",
+    "An encrypted root EBS volume",
+    "On-Demand, Spot, or Reserved Instances",
+    "NOTE: Hibernation cannot be enabled on an existing Amazon EC2 instance after launch."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-35.jpg"
+  },
+  {
+   "id": "P036",
+   "texts": [
+    "Launch a new instance",
+    "Common reasons why instances might need to be relaunched:",
+    "Auto Scaling",
+    "Best Practice",
+    "Cost savings",
+    "Downgrading",
+    "Repairing",
+    "impaired",
+    "instances",
+    "Upgrading OS",
+    "architecture or",
+    "image type",
+    "Design your instances for easy build-up and tear-down."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-36.jpg"
+  },
+  {
+   "id": "P037",
+   "texts": [
+    "Transitioning to a new instance size",
+    "To modify instance type:",
+    "• Stop the",
+    "instance.",
+    "#1",
+    "#2",
+    "• Modify the",
+    "instance.",
+    "• Start the",
+    "instance.",
+    "#3",
+    "aws ec2 modify-instance-attribute --instance-type m5.xlarge"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-37.jpg"
+  },
+  {
+   "id": "P038",
+   "texts": [
+    "AMI deprecation",
+    "AMI deprecation does not affect running instances:",
+    "• Windows AMIs",
+    "• Deprecated soon after release of new image",
+    "• AMIs released within 5 days of Microsoft’s patch",
+    "• Find by name, not AMI ID",
+    "• Amazon Linux AMIs",
+    "• Available for years",
+    "Query the latest Amazon Linux AMI",
+    "aws ssm get-parameters-by-path --path \"/aws/service/ami-amazon-linux-latest\"",
+    "--query \"Parameters[?Name=='/aws/service/ami-amazon-linux-latest/amzn-amihvm-x86_64-gp2'].Value\" --output text"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-38.jpg"
+  },
+  {
+   "id": "P039",
+   "texts": [
+    "Updating running EC2 instances",
+    "• Windows:",
+    "Additional tools for managing",
+    "• The instance can use Windows Amazon EC2 instance updates:",
+    "Update",
+    "• Or, update manually",
+    "• Amazon Linux:",
+    "• The instance will install security",
+    "updates on initial launch.",
+    "• AWS Systems Manager or AWS",
+    "OpsWorks",
+    "• Third-party configuration",
+    "management tools",
+    "AWS Systems Manager",
+    "AWS OpsWorks"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-39.jpg"
+  },
+  {
+   "id": "P040",
+   "texts": [
+    "Key Takeaway",
+    "• Understand the different states of an EC2",
+    "instance:",
+    "• Running",
+    "• Stopped",
+    "• Terminated",
+    "• Hibernation",
+    "• Know the implication of instance state on",
+    "billing.",
+    "• If the hibernation option is needed, it must",
+    "be configured at launch."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-40.jpg"
+  },
+  {
+   "id": "P041",
+   "texts": [
+    "Module 3: Computing (Servers)",
+    "Securing your AWS instances"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-41.jpg"
+  },
+  {
+   "id": "P042",
+   "texts": [
+    "The AWS shared responsibility model",
+    "C",
+    "u",
+    "s",
+    "t",
+    "o",
+    "m",
+    "e",
+    "r",
+    "s",
+    "Customer applications and content",
+    "Platform, applications, identity and access management",
+    "Amazon EC2 operating system, network, and firewall configuration",
+    "Client-side data encryption",
+    "Server-side data",
+    "encryption",
+    "Network traffic protection",
+    "AWS Foundation Services",
+    "Compute",
+    "AWS global infrastructure",
+    "Storage",
+    "Database",
+    "Networking",
+    "Availability Zones",
+    "Edge locations",
+    "Regions"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-42.jpg"
+  },
+  {
+   "id": "P043",
+   "texts": [
+    "Module 3: Computing (Servers)",
+    "Amazon EC2 purchasing options"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-43.jpg"
+  },
+  {
+   "id": "P044",
+   "texts": [
+    "Amazon EC2 purchasing options (1 of 2)",
+    "Instance",
+    "Type",
+    "Benefit",
+    "Use Case",
+    "On-Demand",
+    "• Low cost and flexibility",
+    "• Short term, spiky, or",
+    "unpredictable workloads",
+    "• Applications being developed or",
+    "tested",
+    "Reserved",
+    "• No Upfront RI does not require an upfront",
+    "payment",
+    "• Up to 75% discount compared to On-Demand",
+    "pricing and capacity reservations",
+    "• Steady state or predictable usage",
+    "• Require reserved capacity",
+    "• Flexible start and end times",
+    "• Feasible at very low compute prices",
+    "• Urgent computing needs with",
+    "steep discounts",
+    "• Large amounts of additional",
+    "capacity",
+    "Spot"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-44.jpg"
+  },
+  {
+   "id": "P045",
+   "texts": [
+    "Amazon EC2 purchasing options (2 of 2)",
+    "Instance",
+    "Type",
+    "Benefit",
+    "Use Case",
+    "Dedicated",
+    "Hosts",
+    "• Physical host fully dedicated to running your",
+    "instances",
+    "• You can bring your per-socket or per-VM",
+    "software licenses to reduce cost",
+    "• You want to use your existing",
+    "per-socket, per-core, or per-VM",
+    "software licenses",
+    "Dedicated",
+    "Instances",
+    "• Instances run on hardware that is dedicated to a",
+    "single account",
+    "• When regulatory restrictions that",
+    "require physical isolation apply",
+    "i3.metal",
+    "• Physical host on which you can run the",
+    "operating system or virtualization layer of your",
+    "choice",
+    "• Workloads that require access to",
+    "hardware feature sets (such as",
+    "Intel® VT-x)"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-45.jpg"
+  },
+  {
+   "id": "P046",
+   "texts": [
+    "Spot Instance mechanics",
+    "• Specify interruption behavior:",
+    "• Hibernate: saves memory state to disk (up to 122GB)",
+    "• Stop",
+    "• Terminate",
+    "• Interruption warning: Instance receives 2 minute notice.",
+    "• Hook operating system shutdown events to clean up:",
+    "• Linux: Hook into runlevels (/etc/rc0.d, /etc/rc6.d)",
+    "• Windows: Add script to Shutdown event in local computer policy",
+    "Best Practice",
+    "Use encrypted root Amazon EBS volumes",
+    "to secure state information."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-46.jpg"
+  },
+  {
+   "id": "P047",
+   "texts": [
+    "Summary",
+    "• Amazon EC2 virtualization",
+    "• Instance types and storage options available for EC2 instances",
+    "• Networking components that must be specified when launching an EC2 instance",
+    "• Amazon EC2 user data and metadata",
+    "• The lifecycle states for an EC2 instance",
+    "• The shared responsibility model",
+    "• How to create Amazon EC2 instances",
+    "To finish this module:",
+    "Complete:",
+    "Knowledge check"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-47.jpg"
+  },
+  {
+   "id": "P048",
+   "texts": [
+    "Test Strategies"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-48.jpg"
+  },
+  {
+   "id": "P049",
+   "texts": [
+    "Module 3 scenario:",
+    "A SysOps engineer working at a local university has decided to launch Amazon",
+    "EC2 instances to reduce their hardware footprint. They are new to AWS and will",
+    "only need to launch in one region until their business grows.",
+    "What is the first step when you launch an Amazon Elastic Compute Cloud (Amazon",
+    "EC2) instance?",
+    "A. Determine the Amazon Machine Image (AMI) that will be used.",
+    "B. Launch access and control permissions.",
+    "C. Provide configuration details.",
+    "D. Select instance type and size."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-49.jpg"
+  },
+  {
+   "id": "P050",
+   "texts": [
+    "Module 3 scenario:",
+    "A SysOps engineer working at a local university has decided to launch Amazon",
+    "EC2 instances to reduce their hardware footprint. They are new to AWS and will",
+    "only need to launch in one region until their business grows.",
+    "What is the first step when you launch an Amazon Elastic Compute Cloud (Amazon",
+    "EC2) instance?",
+    "A. Determine the Amazon Machine Image (AMI) that will be used.",
+    "B. Launch access and control permissions.",
+    "C. Provide configuration details.",
+    "D. Select instance type and size."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-50.jpg"
+  },
+  {
+   "id": "P051",
+   "texts": [
+    "Module 3 scenario:",
+    "A SysOps engineer working at a local university has decided to launch Amazon",
+    "EC2 instances to reduce their hardware footprint. They are new to AWS and will",
+    "only need to launch in one region until their business grows.",
+    "What is the first step when you launch an Amazon Elastic Compute Cloud (Amazon",
+    "EC2) instance?",
+    "A. Determine the Amazon Machine Image (AMI) that will be used.",
+    "B. Launch access and control permissions.",
+    "C. Provide configuration details.",
+    "D. Select instance type and size."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-51.jpg"
+  },
+  {
+   "id": "P052",
+   "texts": [
+    "Lab 2:",
+    "Creating",
+    "Amazon EC2",
+    "instances",
+    "~ 45 min."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-52.jpg"
+  },
+  {
+   "id": "P053",
+   "texts": [
+    "Lab 2: Creating Amazon EC2 instances",
+    "In this lab, you will:",
+    "• Launch an Amazon EC2 instance using the AWS Management Console.",
+    "• Launch an Amazon EC2 instance using the AWS Command Line Interface (AWS CLI)."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-53.jpg"
+  },
+  {
+   "id": "P054",
+   "texts": [
+    "Lab 2: Amazon EC2",
+    "1. Launch an Amazon EC2 instance by using the AWS",
+    "Management Console.",
+    "2. Launch an Amazon EC2 instance by using the AWS Command",
+    "Line Interface (AWS CLI).",
+    "3. Can also complete two additional challenges to diagnose and",
+    "fix problems"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-54.jpg"
+  },
+  {
+   "id": "P055",
+   "texts": [
+    "Lab 2: Creating Amazon EC2 instances",
+    "AWS",
+    "Management",
+    "Console",
+    "Internet",
+    "gateway",
+    "VPC",
+    "Subnet",
+    "Launch via",
+    "AWS CLI",
+    "Bastion host",
+    "Web server",
+    "Public subnet: 10.0.0.0/24",
+    "Lab VPC: 10.0.0.0/16"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-55.jpg"
+  },
+  {
+   "id": "P056",
+   "texts": [
+    "Systems Operations Project Scenario",
+    "Mom & Pop Café & Bakery"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-56.jpg"
+  },
+  {
+   "id": "P057",
+   "texts": [
+    "AWS and the real world",
+    "Amazon Web Services (AWS) provides a",
+    "broad array of service categories, such as:",
+    "• Compute",
+    "• Storage",
+    "• Database",
+    "• Analytics",
+    "AWS provides large organizations and small",
+    "businesses cloud-based solutions to move",
+    "their operations forward:",
+    "• Faster",
+    "• At reduced costs",
+    "• With the ability to scale based on demand"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-57.jpg"
+  },
+  {
+   "id": "P058",
+   "texts": [
+    "Project objectives",
+    "On completion of this project, you will be able to:",
+    "• Experience the communication challenges faced when",
+    "attempting to apply technology as the solution to business",
+    "problems.",
+    "• Translate customer requirements into a proposed technical",
+    "solution.",
+    "• Present the proposed solution to the customer.",
+    "• Use AWS Best Practices for a frugal, resilient, and secure",
+    "solution."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-58.jpg"
+  },
+  {
+   "id": "P059",
+   "texts": [
+    "Mom & Pop Café &",
+    "Bakery",
+    "Customer Meeting",
+    "Preparation"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-59.jpg"
+  },
+  {
+   "id": "P060",
+   "texts": [
+    "Mom & Pop Café & Baker y",
+    "Request for the ability to place online",
+    "orders"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-60.jpg"
+  },
+  {
+   "id": "P061",
+   "texts": [
+    "Business need: Ability to order online",
+    "Darsh thought back to when Matt stopped by the",
+    "other day for his coffee. Darsh knows that Matt is",
+    "always running between meetings, and thought it",
+    "would be helpful if customers could order online.",
+    "Darsh mentions his idea to Phillip, Emma, and",
+    "Sophie to get their thoughts."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-61.jpg"
+  },
+  {
+   "id": "P062",
+   "texts": [
+    "Online ordering is a requested feature",
+    "While in the café, customers have",
+    "expressed:",
+    "• Appreciation for the website and the",
+    "information it provides",
+    "• Interest in being able to place orders",
+    "online"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-62.jpg"
+  },
+  {
+   "id": "P063",
+   "texts": [
+    "Online ordering is live",
+    "Sophie and Darsh",
+    "redeployed the website so",
+    "that it:",
+    "• Has a database backend",
+    "• Maintains order history",
+    "However, there were some",
+    "issues when trying to deploy",
+    "it."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-63.jpg"
+  },
+  {
+   "id": "P064",
+   "texts": [
+    "Matt offers to help",
+    "Matt comes back at lunch to walk Sophie and",
+    "Darsh through some troubleshooting procedures",
+    "so they can find the issues.",
+    "Matt explains that what they created was a Linux,",
+    "Apache, MariaDB, PHP (LAMP) stack:",
+    "• Based on a set of open source software",
+    "• Installed on a Linux server",
+    "• Used to create a website that has a database",
+    "backend",
+    "Learn more about",
+    "the LAMP stack"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-64.jpg"
+  },
+  {
+   "id": "P065",
+   "texts": [
+    "Activity 3:",
+    "Troubleshoot",
+    "creating a LAMP",
+    "instance via the AWS",
+    "CLI"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-65.jpg"
+  },
+  {
+   "id": "P066",
+   "texts": [
+    "Activity 3: Troubleshoot creating a LAMP",
+    "instance via the AWS CLI",
+    "This activity will require some troubleshooting to successful deploy the version of the",
+    "Mom & Pop Café website that supports online orders.",
+    "AWS Cloud",
+    "VPC",
+    "Subnet",
+    "Security group",
+    "Linux",
+    "Client",
+    "Apache HTTP Server",
+    "Mom & Pop",
+    "Café web",
+    "application",
+    "PHP",
+    "mom_pop_db",
+    "MariaDB",
+    "(MySQL)",
+    "database",
+    "mompopcafeserver EC2 LAMP instance",
+    "mompopcafeSG security group"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-66.jpg"
+  },
+  {
+   "id": "P067",
+   "texts": [
+    "Begin Activity",
+    "#3: Deploy a",
+    "LAMP Instance"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-67.jpg"
+  },
+  {
+   "id": "P068",
+   "texts": [
+    "Database backend features",
+    "What feature enhancements might be",
+    "gained by the fact that the website",
+    "now has a database backend?",
+    "Enhancement #1",
+    "Enhancement #2",
+    "Enhancement #3"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-68.jpg"
+  },
+  {
+   "id": "P069",
+   "texts": [
+    "Database backend features",
+    "What feature enhancements might be",
+    "gained by the fact that the website",
+    "now has a database backend?",
+    "Enhancement #1",
+    "Customer orders",
+    "can be placed and",
+    "tracked.",
+    "Enhancement #2",
+    "Enhancement #3",
+    "The business will have",
+    "The website can",
+    "prompt for customer a record of sales, and",
+    "could glean insight",
+    "names and contact",
+    "from the data.",
+    "info, which could help",
+    "marketing."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-69.jpg"
+  },
+  {
+   "id": "P070",
+   "texts": [
+    "Project time:",
+    "Troubleshooting",
+    "knowledge base",
+    "~ 30 min."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-70.jpg"
+  },
+  {
+   "id": "P071",
+   "texts": [
+    "Thank you",
+    "Web Services, Inc. Commercial copying, lending, or selling is prohibited. Corrections or feedback on the course, please email us at: aws-course-feedback@amazon.com. For all other",
+    "questions, contact us at: https://aws.amazon.com/contact-us/aws-training/. All trademarks are the property of their owners."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-71.jpg"
+  }
+ ]
+}

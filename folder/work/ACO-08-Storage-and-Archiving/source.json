@@ -1,0 +1,1655 @@
+{
+ "file": "ACO-08-Storage-and-Archiving.pdf",
+ "units": [
+  {
+   "id": "P001",
+   "texts": [
+    "Module 8: Storage and Archiving"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-01.jpg"
+  },
+  {
+   "id": "P002",
+   "texts": [
+    "Module objectives",
+    "At the end of this module, students will be able to:",
+    "• Differentiate the AWS data storage options and explain their purpose and",
+    "benefits.",
+    "• Create and manage Amazon EBS snapshots.",
+    "• Store, retrieve and archive Amazon S3 objects.",
+    "• Identify AWS data migration services."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-02.jpg"
+  },
+  {
+   "id": "P003",
+   "texts": [
+    "Module overview",
+    "Topics:",
+    "• Cloud storage overview",
+    "• Lab:",
+    "Lab 5: Managing storage in AWS",
+    "• Amazon EBS",
+    "• Instance Store",
+    "• Amazon Elastic File System (Amazon EFS)",
+    "• Amazon S3",
+    "• Exercises/Project:",
+    "• Hands-on Activity 8: Work with Amazon S3",
+    "• Project: Troubleshooting playbook",
+    "• Amazon S3 Glacier",
+    "• AWS Storage Gateway",
+    "• AWS data transfer and migration services",
+    "Knowledge Check"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-03.jpg"
+  },
+  {
+   "id": "P004",
+   "texts": [
+    "Troubleshooting",
+    "knowledge base –",
+    "Module 8 focus",
+    "• Have your copy of the",
+    "troubleshooting knowledge base",
+    "template open for editing",
+    "• Create new entries as you encounter",
+    "troubleshooting situations",
+    "• Categories of focus for this module:",
+    "• Storage & Data Management",
+    "©",
+    "4 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-04.jpg"
+  },
+  {
+   "id": "P005",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "Cloud storage overview"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-05.jpg"
+  },
+  {
+   "id": "P006",
+   "texts": [
+    "Cloud storage in AWS",
+    "Amazon Elastic File",
+    "System",
+    "Block storage service",
+    "Hybrid cloud storage service",
+    "Amazon Elastic Block",
+    "Store (EBS) Instance",
+    "Store",
+    "AWS Storage Gateway",
+    "File storage services",
+    "Object storage services",
+    "Amazon FSx",
+    "for Lustre",
+    "Amazon FSx for Windows",
+    "File Server",
+    "Amazon Simple Storage",
+    "Service (S3)",
+    "Amazon S3 Glacier"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-06.jpg"
+  },
+  {
+   "id": "P007",
+   "texts": [
+    "Data transfer and migration in AWS",
+    "AWS Transfer for SFTP",
+    "Corporate data",
+    "center",
+    "Data",
+    "AWS DataSync",
+    "AWS Snowball",
+    "AWS Cloud"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-07.jpg"
+  },
+  {
+   "id": "P008",
+   "texts": [
+    "AWS cloud storage scenarios (1 of 2)",
+    "If you need:",
+    "Consider using:",
+    "Persistent block storage for Amazon EC2. Ideal for databases and",
+    "applications.",
+    "Amazon Elastic Block",
+    "Store (Amazon EBS)",
+    "A scalable, durable platform to make data accessible from any",
+    "Internet location. Ideal for user-generated content, active archive,",
+    "serverless computing, big data storage or backup and recovery.",
+    "Amazon Simple",
+    "Storage Service",
+    "(Amazon S3)",
+    "Secure, durable, and extremely low-cost cloud storage service for",
+    "data archiving and long-term backup.",
+    "Amazon S3 Glacier"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-08.jpg"
+  },
+  {
+   "id": "P009",
+   "texts": [
+    "AWS cloud storage scenarios (2 of 2)",
+    "If you need:",
+    "Consider using:",
+    "A simple, scalable, NFS file system for Linux-based workloads for use",
+    "with AWS Cloud services and on-premises resources",
+    "Amazon Elastic File",
+    "System (Amazon EFS)",
+    "Hybrid storage cloud augmenting your on-premises environment",
+    "with Amazon cloud storage, for disaster recovery, tiering or migration",
+    "AWS Storage Gateway"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-09.jpg"
+  },
+  {
+   "id": "P010",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "Amazon Elastic Block Store (Amazon EBS)"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-10.jpg"
+  },
+  {
+   "id": "P011",
+   "texts": [
+    "Amazon EBS",
+    "Amazon EBS volumes are:",
+    "• Network-attached",
+    "• Persistent block storage",
+    "• Boot and data volumes supported",
+    "AWS Cloud",
+    "Region",
+    "Availability Zone",
+    "Instance 1",
+    "Instance 2",
+    "VM host computer",
+    "Amazon EBS volume"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-11.jpg"
+  },
+  {
+   "id": "P012",
+   "texts": [
+    "Amazon EBS volume types",
+    "Solid State Drives (SSD)",
+    "Hard Disk Drives (HDD)",
+    "Provisioned IOPS",
+    "SSD (io1) volumes",
+    "Throughput",
+    "Optimized HDD (st1)",
+    "volumes",
+    "General Purpose",
+    "SSD (gp2) volumes",
+    "Cold HDD",
+    "(sc1) volumes"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-12.jpg"
+  },
+  {
+   "id": "P013",
+   "texts": [
+    "Create an Amazon EBS volume",
+    "• A volume exists in an Availability Zone.",
+    "• AWS Command Line Interface (AWS CLI) example:",
+    "• Use the create-volume command",
+    "• Use the –-availability-zone option to specify the Availability Zone",
+    "$ aws ec2 create-volume –-size 80 \\",
+    "–-availability-zone us-east-1a --volume-type gp2"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-13.jpg"
+  },
+  {
+   "id": "P014",
+   "texts": [
+    "Describe new volume just created",
+    "CLI command for describing the volume created:",
+    "$ aws ec2 describe-volumes --volume-ids vol-0e5e5193f8d093d5f"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-14.jpg"
+  },
+  {
+   "id": "P015",
+   "texts": [
+    "Attach an Amazon EBS volume",
+    "• Attach volumes to logical mount points in the operating system",
+    "• AWS CLI example:",
+    "• Use the attach-volume command.",
+    "• Use the –- device option to specify the mount point.",
+    "$ aws ec2 attach-volume –-volume-id vol-12345678 \\",
+    "--instance-id i-abc1234 –-device /dev/sdf"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-15.jpg"
+  },
+  {
+   "id": "P016",
+   "texts": [
+    "Amazon EBS-optimized instances",
+    "• Certain EC2 instance types can be EBS-optimized.",
+    "• Provides a dedicated network connection to EBS",
+    "volume",
+    "• Increases performance of Amazon EBS I/O",
+    "• For EBS-optimized instance types, optimization is",
+    "enabled by default.",
+    "• For other instances types that support it,",
+    "optimization must be manually enabled.",
+    "• Additional performance is achieved if using an",
+    "Amazon EC2 Nitro System based instance type.",
+    "AWS Cloud",
+    "Region",
+    "Availability zone",
+    "“Standard”",
+    "instance",
+    "VM host computer",
+    "Dedicated",
+    "network",
+    "connection",
+    "Amazon EBS",
+    "Volume 1",
+    "EBS-optimized",
+    "instance",
+    "Amazon EBS",
+    "Volume 2"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-16.jpg"
+  },
+  {
+   "id": "P017",
+   "texts": [
+    "Amazon EBS incremental snapshots",
+    "G",
+    "A H",
+    "B C D",
+    "E",
+    "F",
+    "Snapshot",
+    "EBS volume data",
+    "Snapshot 1 = ABC",
+    "A",
+    "B",
+    "C",
+    "Snapshot 2 = ABCDEF",
+    "D",
+    "E",
+    "F",
+    "Snapshot 3 = GHCDEF",
+    "G H",
+    "EBS snapshot data in",
+    "Amazon S3"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-17.jpg"
+  },
+  {
+   "id": "P018",
+   "texts": [
+    "Create a snapshot of an EBS volume",
+    "• Use the AWS CLI command create-snapshot. The command returns",
+    "asynchronously.",
+    "• Consider stopping the instance or unmounting the volume first:",
+    "• For completeness (otherwise, no subsequent writes are captured.)",
+    "• Strongly recommended for volumes that serve as a root device",
+    "• Critical for database servers and Redundant Array of Independent Disks (RAID)",
+    "configurations",
+    "aws ec2 create-snapshot –-volume-id vol-1234567890abcdef0",
+    "--description \"This is my root volume snapshot\""
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-18.jpg"
+  },
+  {
+   "id": "P019",
+   "texts": [
+    "Copy a snapshot and proof of copy",
+    "• Use the AWS CLI command",
+    "copy-snapshot.",
+    "• Data in transit is automatically",
+    "encrypted.",
+    "• New snapshot has a different ID",
+    "from the original.",
+    "CLI command: Copy a snapshot",
+    "$ aws ec2 copy-snapshot –-region us-east-1 \\",
+    "--source-region us-west-2 \\",
+    "–-source-snapshot-id snap-1234567890abcdef0 \\",
+    "--description \"This is my copied snapshot\"",
+    "CLI command: Proof of copy to a new Region",
+    "$ aws ec2 describe-snapshots \\",
+    "--snapshot-ids snap-0b3c2a7c2a7e4eec6 \\",
+    "--region us-east-1"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-19.jpg"
+  },
+  {
+   "id": "P020",
+   "texts": [
+    "Restore a snapshot",
+    "• Snapshot is stored in Amazon S3 but is",
+    "not directly accessible. Managed by AWS.",
+    "• Find the snapshot ID and restore to a new",
+    "volume using the create-volume",
+    "command.",
+    "• Volumes restored from snapshots have a",
+    "first-access penalty. Consider reading all",
+    "the blocks to eliminate penalty in",
+    "production.",
+    "CLI command: Copy a snapshot",
+    "$ aws ec2 create-volume \\",
+    "–-size 80 \\",
+    "–-availability-zone us-east-1a \\",
+    "--volume-type gp2 \\",
+    "–-snapshot-id snap-1234567890abcdef0"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-20.jpg"
+  },
+  {
+   "id": "P021",
+   "texts": [
+    "Restore a snapshot",
+    "• Snapshot is stored in Amazon S3 but is not",
+    "directly accessible. Managed by AWS.",
+    "• Find the snapshot ID, and restore it to a new",
+    "volume using the",
+    "create-volume command.",
+    "• Volumes restored from snapshots have a firstaccess penalty. Consider reading all the blocks",
+    "to eliminate the penalty in production.",
+    "CLI command: Proof of copy to",
+    "a new Region",
+    "$ aws ec2 \\",
+    "describe-volume-status \\",
+    "--volume-ids vol-0c108c43c627cb26d"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-21.jpg"
+  },
+  {
+   "id": "P022",
+   "texts": [
+    "Lifecycle management for snapshots",
+    "Use Amazon Data Lifecycle Manager (Amazon DLM) to automate",
+    "the creation, retention, and deletion of snapshots.",
+    "Amazon DLM uses tags to identify EBS volumes to back up.",
+    "Define the desired backup and retention actions to Amazon DLM in a",
+    "lifecycle policy.",
+    "Resource type",
+    "Target tag",
+    "Schedule"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-22.jpg"
+  },
+  {
+   "id": "P023",
+   "texts": [
+    "EC2 snapshot management using Amazon",
+    "DLM",
+    "AWS CLI command for EC2 snapshot management",
+    "using Amazon DLM:",
+    "$ aws dlm create-default-role"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-23.jpg"
+  },
+  {
+   "id": "P024",
+   "texts": [
+    "Manage EBS volumes with lifecycle policy",
+    "Create a lifecycle policy to manage the backups of your EBS volumes. A JSON file will",
+    "need to be generated to cover the details of the policy.",
+    "Create lifecycle policy to",
+    "manage backups of EBS",
+    "volumes",
+    "Generate a JSON file",
+    "before creating the",
+    "policy-to-policy details"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-24.jpg"
+  },
+  {
+   "id": "P025",
+   "texts": [
+    "Manage EBS volumes with lifecycle policy",
+    "Command to create the lifecycle policy:",
+    "$ aws dlm create-lifecycle-policy \\",
+    "--description \"My backup policy\" \\",
+    "--state ENABLED \\",
+    "--execution-role-arn\\",
+    "arn:aws:iam::197757065544:role/AWSDataLifecycleManagerDefaultRole \\",
+    "--policy-details file://policyDetails.json"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-25.jpg"
+  },
+  {
+   "id": "P026",
+   "texts": [
+    "Key Takeaways",
+    "• Amazon EBS is network-attached",
+    "block storage.",
+    "• Amazon EBS is persistent local",
+    "storage that can store data for",
+    "applications and databases.",
+    "• Amazon EBS snapshots:",
+    "• Incremental",
+    "• Stored in Amazon S3",
+    "©",
+    "262019 Amazon Web Services, Inc. or its Affiliates. All rights reserved."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-26.jpg"
+  },
+  {
+   "id": "P027",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "Instance store"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-27.jpg"
+  },
+  {
+   "id": "P028",
+   "texts": [
+    "Instance store",
+    "Instance store definition:",
+    "• Non-persistent block-level storage on a",
+    "shared-disk subsystem",
+    "• Fast",
+    "• Reclaimed when instance terminated",
+    "• Complimentary with certain instances",
+    "Use cases:",
+    "• Buffers",
+    "• Cache",
+    "• Scratch data",
+    "Instance 1",
+    "Ephemeral",
+    "Instance 2",
+    "Ephemeral Ephemeral",
+    "Instances",
+    "Instance store",
+    "VM host computer in AWS"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-28.jpg"
+  },
+  {
+   "id": "P029",
+   "texts": [
+    "Instance store volumes",
+    "• Instance store is available for many instance types but not all.",
+    "• Number, size, and type (HDD vs. SSD) differs by instance type:",
+    "• Instance stores that use NVMe have higher I/O performance.",
+    "• Mounting:",
+    "• Instance store must be mounted before you can access it.",
+    "• Auto-mounted by Windows EC2Launch service",
+    "• Typically manually mounted on Linux"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-29.jpg"
+  },
+  {
+   "id": "P030",
+   "texts": [
+    "Key Takeaways",
+    "• Instance store is temporary block storage",
+    "physically attached to an instance that is",
+    "physically attached to a host.",
+    "• Use an instance store to store information",
+    "that does not need to be kept beyond",
+    "instance life.",
+    "©",
+    "302019 Amazon Web Services, Inc. or its Affiliates. All rights reserved."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-30.jpg"
+  },
+  {
+   "id": "P031",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "Amazon Elastic File System"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-31.jpg"
+  },
+  {
+   "id": "P032",
+   "texts": [
+    "Amazon EFS",
+    "Amazon Elastic File",
+    "System",
+    "File system storage for Linux-based workloads",
+    "Shared file",
+    "storage",
+    "Petabyte-scale",
+    "file system",
+    "Supports",
+    "Network File",
+    "System version",
+    "4.0 and 4.1",
+    "protocols",
+    "Compatible with",
+    "all Linux-based",
+    "AMIs for Amazon",
+    "EC2"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-32.jpg"
+  },
+  {
+   "id": "P033",
+   "texts": [
+    "Amazon EFS file system setup",
+    "Region",
+    "VPC",
+    "Availability zone",
+    "Subnet",
+    "Instance",
+    "Network",
+    "interface",
+    "Network",
+    "interface",
+    "Mount target",
+    "Amazon Elastic File System"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-33.jpg"
+  },
+  {
+   "id": "P034",
+   "texts": [
+    "Amazon EFS use cases",
+    "Home directories",
+    "Amazon EFS is designed",
+    "to provide performance",
+    "for a broad spectrum of",
+    "workloads and",
+    "applications.",
+    "File system for enterprise applications",
+    "Application testing and development",
+    "Database backups",
+    "Web serving and content management",
+    "Media workflows",
+    "Big Data analytics"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-34.jpg"
+  },
+  {
+   "id": "P035",
+   "texts": [
+    "Amazon EFS performance attributes",
+    "Performance",
+    "modes",
+    "• General purpose",
+    "• Max I/O",
+    "Storage",
+    "classes",
+    "• Standard",
+    "• Infrequent access",
+    "Throughput",
+    "modes",
+    "• Bursting throughput",
+    "• Provisioned throughput"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-35.jpg"
+  },
+  {
+   "id": "P036",
+   "texts": [
+    "Key Takeaways",
+    "• Amazon EFS is a fully managed file",
+    "system storage service that uses the",
+    "NFS protocol.",
+    "• Use Amazon EFS to support Linuxbased workloads in AWS or onpremises that require shared file",
+    "system storage.",
+    "• The performance of an Amazon EFS",
+    "file system can be controlled through",
+    "its performance attributes."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-36.jpg"
+  },
+  {
+   "id": "P037",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "Amazon S3"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-37.jpg"
+  },
+  {
+   "id": "P038",
+   "texts": [
+    "Amazon S3",
+    "• Fast, durable, highly available key-based access to objects",
+    "• Object storage built to store and retrieve data",
+    "• Not a file system",
+    "Amazon S3",
+    "Bucket",
+    "Client",
+    "CLI sends GET request via S3 API à",
+    "ß Object returned"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-38.jpg"
+  },
+  {
+   "id": "P039",
+   "texts": [
+    "Amazon S3 characteristics",
+    "Amazon S3 characteristics include:",
+    "• Can be accessed anywhere",
+    "(both inside and outside of AWS)",
+    "• Highly durable (designed for 99.999999999% durability) through",
+    "redundant storage",
+    "Amazon Simple Storage",
+    "Service (S3)",
+    "• Highly available (designed for 99.99% availability)",
+    "• No limit to the amount of data stored",
+    "• Up to 5 TB per object"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-39.jpg"
+  },
+  {
+   "id": "P040",
+   "texts": [
+    "Amazon S3 versioning",
+    "Amazon S3 versioning protects objects from accidental overwrites and deletes.",
+    "Action",
+    "Upload object with",
+    "the same Key",
+    "Delete",
+    "Versioning Enabled",
+    "Versioning Disabled/",
+    "Versioning Suspended",
+    "Creates a new object with",
+    "a different version ID. Both",
+    "are retrievable by version",
+    "ID.",
+    "Overwrites the original",
+    "object, and previous object",
+    "is no longer retrievable.",
+    "Adds a Delete marker, but",
+    "the object is still",
+    "retrievable by version ID.",
+    "Deletes the object, and it is",
+    "no longer retrievable."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-40.jpg"
+  },
+  {
+   "id": "P041",
+   "texts": [
+    "Object storage classes",
+    "Intelligent",
+    "tiering",
+    "General purpose",
+    "Amazon S3",
+    "Standard",
+    "Infrequent",
+    "access",
+    "Archive",
+    "Amazon S3",
+    "StandardInfrequent Access",
+    "(S3 Standard-IA)",
+    "Amazon S3 Glacier",
+    "Amazon S3 One",
+    "Zone-Infrequent",
+    "Access (S3 One",
+    "Zone-IA)",
+    "Amazon S3 –",
+    "Glacier Deep",
+    "Archive",
+    "Amazon S3",
+    "Intelligent-Tiering"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-41.jpg"
+  },
+  {
+   "id": "P042",
+   "texts": [
+    "Intelligent tiering",
+    "Intelligent tiering automatically moves data to the most cost-effective access tier.",
+    "Monitors",
+    "objects access",
+    "patterns",
+    "Moves objects",
+    "between",
+    "Frequent access",
+    "and Infrequent",
+    "access tiers",
+    "Encrypts data in",
+    "transit and at",
+    "rest",
+    "No",
+    "performance",
+    "impact or",
+    "operational",
+    "overhead"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-42.jpg"
+  },
+  {
+   "id": "P043",
+   "texts": [
+    "Amazon S3 block public access"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-43.jpg"
+  },
+  {
+   "id": "P044",
+   "texts": [
+    "Amazon S3 public access settings",
+    "Block new public ACLs and uploading public objects",
+    "Remove public access granted through public ACLs",
+    "Block new public bucket policies",
+    "Block public and cross-account access to buckets that have public policies"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-44.jpg"
+  },
+  {
+   "id": "P045",
+   "texts": [
+    "Amazon S3 object lock",
+    "• Store objects using “write once, read many” (WORM) model",
+    "• Enable at time of bucket creation",
+    "Two ways to",
+    "manage object",
+    "retention:",
+    "• Retention",
+    "• Legal hold",
+    "Two retention",
+    "modes:",
+    "• Compliance",
+    "• Governance"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-45.jpg"
+  },
+  {
+   "id": "P046",
+   "texts": [
+    "Event notification for Amazon S3",
+    "Region",
+    "Configure buckets so notifications are",
+    "issued when an object is:",
+    "• Added",
+    "• Deleted",
+    "• Overwritten",
+    "Incoming Objects",
+    "Amazon S3 Bucket",
+    "Queue",
+    "Topic",
+    "Lambda function",
+    "Message",
+    "Invocation",
+    "Notifications can be issued directly to:",
+    "• Amazon SQS queues",
+    "• Amazon SNS topics",
+    "• AWS Lambda functions",
+    "Message"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-46.jpg"
+  },
+  {
+   "id": "P047",
+   "texts": [
+    "Additional Amazon S3 features",
+    "Feature",
+    "Purpose/Benefit",
+    "How to use it",
+    "Object lifecycle management",
+    "To manage your objects so that",
+    "they are stored cost effectively",
+    "throughout their lifecycle",
+    "Create a lifecycle configuration",
+    "with rules that define when",
+    "objects should transition to",
+    "another storage class and when",
+    "they should be deleted.",
+    "Presigned object URL",
+    "To share a private object with",
+    "someone who does not have AWS",
+    "security credentials or permissions",
+    "Generate a presigned object URL",
+    "programmatically and provide it to",
+    "the recipient to access the object.",
+    "To allow an Amazon S3 bucket",
+    "hosting a static website to support",
+    "CORS",
+    "Create a CORS configuration on the",
+    "bucket with rules that identify the",
+    "authorized origins and HTTP",
+    "operations.",
+    "Cross-Origin Resource Sharing",
+    "(CORS)",
+    "Many origins to one bucket"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-47.jpg"
+  },
+  {
+   "id": "P048",
+   "texts": [
+    "Create and list Amazon S3 buckets",
+    "•",
+    "Create a new bucket:",
+    "aws s3 mb s3://mybucket",
+    "• List all buckets in the AWS account:",
+    "aws s3 ls"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-48.jpg"
+  },
+  {
+   "id": "P049",
+   "texts": [
+    "Work with Amazon S3 objects",
+    "• Copy a local file to Amazon S3:",
+    "$ aws s3 cp file.txt s3://mybucket/myprefix/file.txt",
+    "• Sync objects under a specified bucket and prefix to the current local directory:",
+    "$ aws s3 sync s3://mybucket/myprefix/",
+    "• Remove an object from a bucket:",
+    "$ aws s3 rm s3://mybucket/myprefix/file.txt"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-49.jpg"
+  },
+  {
+   "id": "P050",
+   "texts": [
+    "Create an object with a specific storage",
+    "class",
+    "Use the –-storage-class parameter with the copy command to specify",
+    "the storage class.",
+    "$ aws s3 cp file.txt s3://mybucket/myprefix/file.txt \\",
+    "--storage-class INTELLIGENT_TIERING"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-50.jpg"
+  },
+  {
+   "id": "P051",
+   "texts": [
+    "s3api command",
+    "The s3api command:",
+    "• Provides direct access to the Amazon S3 APIs",
+    "• Enables operations not exposed by aws s3",
+    "aws s3api",
+    "create-multipart-upload",
+    "put-object-acl",
+    "put-bucket-policy",
+    "list-object-versions"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-51.jpg"
+  },
+  {
+   "id": "P052",
+   "texts": [
+    "Key Takeaways",
+    "• Amazon S3 is a regionally provisioned",
+    "object storage service.",
+    "• Use Amazon S3 for durability and",
+    "high availability.",
+    "• Amazon S3 offers multiple storage",
+    "classes, versioning, object locking,",
+    "and event notification features."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-52.jpg"
+  },
+  {
+   "id": "P053",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "Amazon S3 Glacier"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-53.jpg"
+  },
+  {
+   "id": "P054",
+   "texts": [
+    "Amazon S3 Glacier",
+    "• Extremely low-cost data archiving",
+    "and long-term backup",
+    "On-premises",
+    "server",
+    "• Retrieval by request",
+    "Instance",
+    "• Can configure lifecycle archiving of",
+    "Amazon S3 content to Amazon S3",
+    "Glacier",
+    "Archive",
+    "via API",
+    "Amazon Simple Storage",
+    "Service (S3)",
+    "Archive via",
+    "AWS CLI",
+    "Use lifecycle",
+    "rules",
+    "or…",
+    "Amazon S3 Glacier"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-54.jpg"
+  },
+  {
+   "id": "P055",
+   "texts": [
+    "How Amazon S3 Glacier stores data",
+    "• Amazon S3 Glacier stores data in an archive.",
+    "• A basic unit of data in Amazon Glacier (document, video, image, etc.)",
+    "• A vault is a collection of archives.",
+    "API application",
+    "Vault",
+    "https://glacier.us-east-1.amazonaws.com",
+    "/111122223333/vaults/examplevault",
+    "Archive",
+    "$VAULT_URL/archives/",
+    "<archive_id>"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-55.jpg"
+  },
+  {
+   "id": "P056",
+   "texts": [
+    "Interact with Amazon S3 Glacier",
+    "Interact with Amazon S3 Glacier using:",
+    "Amazon S3 lifecycle policies",
+    "• Archived files are accessed via the Amazon S3 console or Amazon S3 API",
+    "Amazon S3 Glacier API",
+    "• Directly add files",
+    "• To retrieve files:",
+    "1. Initiate a job request.",
+    "2. Select the archive retrieval operation.",
+    "3. Optionally specify a date range or a byte range filter.",
+    "4. Poll for job completion, or receive SNS notification."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-56.jpg"
+  },
+  {
+   "id": "P057",
+   "texts": [
+    "Archive retrieval options",
+    "Archive retrieval options",
+    "Expedited",
+    "1-5 minutes",
+    "Standard",
+    "3-5 hours",
+    "Bulk",
+    "5-12 hours"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-57.jpg"
+  },
+  {
+   "id": "P058",
+   "texts": [
+    "Key Takeaways",
+    "• Amazon S3 Glacier is a long-term",
+    "storage service for content that does",
+    "not need to be immediately",
+    "available.",
+    "• Use Amazon S3 Glacier as an",
+    "affordable long-term storage solution",
+    "for data archiving or backup.",
+    "• Amazon S3 Glacier offers three",
+    "archive retrieval options."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-58.jpg"
+  },
+  {
+   "id": "P059",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "AWS Storage Gateway"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-59.jpg"
+  },
+  {
+   "id": "P060",
+   "texts": [
+    "AWS Storage Gateway",
+    "AWS Storage Gateway",
+    "Hybrid cloud storage solution that allows on-premises applications",
+    "to access data in AWS Cloud.",
+    "File gateway",
+    "Volume gateway",
+    "Tape gateway"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-60.jpg"
+  },
+  {
+   "id": "P061",
+   "texts": [
+    "File gateway",
+    "Customer premises",
+    "AWS Cloud",
+    "Corporate data center",
+    "NFS and/or SMB",
+    "Server",
+    "File gateway",
+    "HTTPS",
+    "Archive",
+    "Amazon Simple",
+    "Storage Service (S3)",
+    "Amazon S3",
+    "Glacier"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-61.jpg"
+  },
+  {
+   "id": "P062",
+   "texts": [
+    "Volume gateway",
+    "Customer premises",
+    "AWS Cloud",
+    "Corporate data center",
+    "iSCSI",
+    "Server",
+    "HTTPS",
+    "Volume gateway",
+    "Backup",
+    "Amazon Simple",
+    "Storage Service (S3)",
+    "Amazon Elastic",
+    "Block Store",
+    "(EBS) snapshots"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-62.jpg"
+  },
+  {
+   "id": "P063",
+   "texts": [
+    "Tape gateway",
+    "Customer premises",
+    "AWS Cloud",
+    "Corporate data center",
+    "iSCSI",
+    "Backup",
+    "Server",
+    "Archive",
+    "HTTPS",
+    "Tape gateway",
+    "Amazon Simple",
+    "Storage Service (S3)",
+    "Vault",
+    "Virtual tapes",
+    "stored in",
+    "Amazon S3",
+    "Archived tapes",
+    "stored in",
+    "Amazon S3 Glacier"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-63.jpg"
+  },
+  {
+   "id": "P064",
+   "texts": [
+    "Key Takeaways",
+    "• AWS Storage Gateway sits onpremises and links the environment",
+    "to the AWS Cloud.",
+    "• Use AWS Storage Gateway for hybrid",
+    "scenarios where some storage is",
+    "needed on-premises. Offload to",
+    "Amazon S3, Amazon S3 Glacier, or",
+    "Amazon EBS.",
+    "• AWS Storage Gateway provides three",
+    "options—file, volume, and tape."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-64.jpg"
+  },
+  {
+   "id": "P065",
+   "texts": [
+    "Module 8: Storage and Archiving",
+    "AWS data transfer and migration services"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-65.jpg"
+  },
+  {
+   "id": "P066",
+   "texts": [
+    "AWS Transfer for SFTP",
+    "• Managed, highly available SFTP server used to send data to and from Amazon",
+    "S3",
+    "AWS Transfer",
+    "for SFTP",
+    "Secure",
+    "transfer using",
+    "SFTP into and",
+    "out of AWS",
+    "Retain",
+    "existing",
+    "workflows",
+    "Simple to use",
+    "Data stored in",
+    "Amazon S3",
+    "bucket"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-66.jpg"
+  },
+  {
+   "id": "P067",
+   "texts": [
+    "AWS DataSync",
+    "Managed",
+    "service",
+    "AWS DataSync",
+    "Agent (NFS",
+    "protocol)",
+    "Sync between on-premises and",
+    "AWS",
+    "Connect via",
+    "internet or AWS",
+    "Direct Connect",
+    "Efficient and",
+    "fast",
+    "AWS DataSync"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-67.jpg"
+  },
+  {
+   "id": "P068",
+   "texts": [
+    "Using AWS DataSync",
+    "Corporate data center",
+    "AWS Cloud",
+    "NFS",
+    "Shared file",
+    "system",
+    "Amazon S3",
+    "Bucket",
+    "TLS",
+    "AWS DataSync",
+    "Agent",
+    "AWS DataSync",
+    "Amazon",
+    "Elastic File",
+    "System"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-68.jpg"
+  },
+  {
+   "id": "P069",
+   "texts": [
+    "AWS Snowball",
+    "Secure enclosure",
+    "Large customer",
+    "dataset",
+    "50/80TB",
+    "Shipped in parallel",
+    "Simplified logistics",
+    "End-to-end",
+    "Custody (escorted)",
+    "Strong encryption,",
+    "end-to-end",
+    "Customer dataset",
+    "loaded"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-69.jpg"
+  },
+  {
+   "id": "P070",
+   "texts": [
+    "Summary",
+    "In summary, you learned about:",
+    "• AWS data storage options, and their purpose and benefits",
+    "• How to create and manage Amazon EBS snapshots",
+    "• How to store, retrieve, and archive Amazon S3 objects",
+    "• Main AWS data migration services",
+    "To finish this module:",
+    "Complete:",
+    "Knowledge Check"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-70.jpg"
+  },
+  {
+   "id": "P071",
+   "texts": [
+    "Test Strategies"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-71.jpg"
+  },
+  {
+   "id": "P072",
+   "texts": [
+    "Module 8 Scenario:",
+    "The local power company has recently installed a new power grid within the community. They are working",
+    "with the local government to acquire funding for a second power grid, but must show data that shows the",
+    "cost reductions and how that translates to increased consumption time windows. This data needs to be kept",
+    "for a minimum of 10 years in case of audit or by inquiry of a government agency. The power company wants",
+    "to engage the community and gain their support, as their individual and communal power consumption is",
+    "reflected in the data.",
+    "The CEO has decided that the company will now begin processing the big data in real time through the use",
+    "of Amazon Kinesis. The architecture has been developed with an intermediate and backup Amazon Simple",
+    "Storage Service (Amazon S3) bucket for potential delivery failures and source records.",
+    "What other services should be used for transformed records after they are processed by Amazon",
+    "Kinesis Data Firehose? Select two responses.",
+    "A. Amazon Elastic Block Store (Amazon EBS)",
+    "B. Amazon Elasticsearch Service (Amazon ES)",
+    "C. Amazon Glacier",
+    "D. Amazon Simple Storage Service (Amazon S3)",
+    "E. Amazon Redshift cluster"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-72.jpg"
+  },
+  {
+   "id": "P073",
+   "texts": [
+    "Module 8 Scenario:",
+    "The local power company has recently installed a new power grid within the community. They are working",
+    "with the local government to acquire funding for a second power grid, but must show data that shows the",
+    "cost reductions and how that translates to increased consumption time windows. This data needs to be kept",
+    "for a minimum of 10 years in case of audit or by inquiry of a government agency. The power company wants",
+    "to engage the community and gain their support, as their individual and communal power consumption is",
+    "reflected in the data.",
+    "The CEO has decided that the company will now begin processing the big data in real time through the use",
+    "of Amazon Kinesis. The architecture has been developed with an intermediate and backup Amazon Simple",
+    "Storage Service (Amazon S3) bucket for potential delivery failures and source records.",
+    "What other services should be used for transformed records after they are processed by Amazon",
+    "Kinesis Data Firehose? Select two responses.",
+    "A. Amazon Elastic Block Store (Amazon EBS)",
+    "B. Amazon Elasticsearch Service (Amazon ES)",
+    "C. Amazon Glacier",
+    "D. Amazon Simple Storage Service (Amazon S3)",
+    "E. Amazon Redshift cluster"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-73.jpg"
+  },
+  {
+   "id": "P074",
+   "texts": [
+    "Module 8 Scenario:",
+    "The local power company has recently installed a new power grid within the community. They are working",
+    "with the local government to acquire funding for a second power grid, but must show data that shows the",
+    "cost reductions and how that translates to increased consumption time windows. This data needs to be kept",
+    "for a minimum of 10 years in case of audit or by inquiry of a government agency. The power company wants",
+    "to engage the community and gain their support, as their individual and communal power consumption is",
+    "reflected in the data.",
+    "The CEO has decided that the company will now begin processing the big data in real time through the use",
+    "of Amazon Kinesis. The architecture has been developed with an intermediate and backup Amazon Simple",
+    "Storage Service (Amazon S3) bucket for potential delivery failures and source records.",
+    "What other services should be used for transformed records after they are processed by Amazon",
+    "Kinesis Data Firehose? Select two responses.",
+    "A. Amazon Elastic Block Store (Amazon EBS)",
+    "B. Amazon Elasticsearch Service (Amazon ES)",
+    "C. Amazon Glacier",
+    "D. Amazon Simple Storage Service (Amazon S3)",
+    "E. Amazon Redshift cluster"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-74.jpg"
+  },
+  {
+   "id": "P075",
+   "texts": [
+    "Lab 5:",
+    "Managing",
+    "Storage in AWS",
+    "(Linux)",
+    "~ 45 minutes",
+    "©",
+    "752019 Amazon Web Services, Inc. or its Affiliates. All rights reserved."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-75.jpg"
+  },
+  {
+   "id": "P076",
+   "texts": [
+    "Lab 5: Managing storage in AWS",
+    "In this lab, you will create and maintain Amazon EBS snapshots by completing",
+    "the following tasks:",
+    "1. Create an Amazon EC2",
+    "instance.",
+    "2. Create an Amazon S3",
+    "bucket.",
+    "3. Create Amazon EBS",
+    "snapshots.",
+    "4. Schedule snapshot creation.",
+    "VPC",
+    "Upload and",
+    "manage",
+    "data",
+    "Subnet",
+    "Snapshot",
+    "Command",
+    "Host",
+    "Amazon S3",
+    "Bucket",
+    "Processor",
+    "Archive",
+    "Public Subnet: 10.50.0.0/24",
+    "Lab VPC: 10.50.0.0/16",
+    "Amazon S3",
+    "Glacier"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-76.jpg"
+  },
+  {
+   "id": "P077",
+   "texts": [
+    "Systems Operations Project Scenario",
+    "Mom & Pop Café & Bakery"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-77.jpg"
+  },
+  {
+   "id": "P078",
+   "texts": [
+    "AWS & the Real World",
+    "Amazon Web Services (AWS) provides a",
+    "broad array of service categories, such as:",
+    "• Compute",
+    "• Storage",
+    "• Database",
+    "• Analytics",
+    "AWS provides large organizations and small",
+    "businesses cloud-based solutions to move",
+    "their operations forward:",
+    "• Faster",
+    "• At reduced costs",
+    "• With the ability to scale based on demand"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-78.jpg"
+  },
+  {
+   "id": "P079",
+   "texts": [
+    "Project Objectives",
+    "On completion of this project, you will be able to:",
+    "• Experience the communication challenges faced when",
+    "attempting to apply technology as the solution to business",
+    "problems.",
+    "• Translate customer requirements into a proposed technical",
+    "solution.",
+    "• Present the proposed solution to the customer.",
+    "• Use AWS Best Practices for a frugal, resilient, and secure",
+    "solution."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-79.jpg"
+  },
+  {
+   "id": "P080",
+   "texts": [
+    "Customer",
+    "Meeting",
+    "Preparation"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-80.jpg"
+  },
+  {
+   "id": "P081",
+   "texts": [
+    "Mom & Pop Café & Baker y",
+    "Working with S3"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-81.jpg"
+  },
+  {
+   "id": "P082",
+   "texts": [
+    "Business need: Sharing files with an external",
+    "partner",
+    "Natalia suggests using",
+    "Amazon Simple",
+    "Storage Service",
+    "(Amazon S3) to share",
+    "files with an external",
+    "partner."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-82.jpg"
+  },
+  {
+   "id": "P083",
+   "texts": [
+    "Natalia discusses Amazon S3 file sharing",
+    "benefits",
+    "Natalia discusses the benefits of Amazon S3 for",
+    "storing image files:",
+    "1. Share access with other users.",
+    "2. Configure different levels of access security.",
+    "3. Create event notifications.",
+    "4. Store a lot of data in a reliable, fast, and redundant way."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-83.jpg"
+  },
+  {
+   "id": "P084",
+   "texts": [
+    "Activity 8: Work with Amazon S3",
+    "AWS Management",
+    "Console",
+    "mompopuser",
+    "AWS Cloud",
+    "Region",
+    "VPC",
+    "SysOps",
+    "user",
+    "CLI Host",
+    "SSH client",
+    "mediacouser",
+    "mompopcafe",
+    "Amazon S3",
+    "bucket",
+    "s3NotificationTopic",
+    "Amazon SNS topic",
+    "AWS Management",
+    "Console"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-84.jpg"
+  },
+  {
+   "id": "P085",
+   "texts": [
+    "Begin Activity #8:",
+    "Work with Amazon",
+    "S3"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-85.jpg"
+  },
+  {
+   "id": "P086",
+   "texts": [
+    "Benefits of using S3 for sharing files",
+    "What are two benefits of using",
+    "Amazon S3 to share files?",
+    "Answer #1",
+    "Answer #2"
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-86.jpg"
+  },
+  {
+   "id": "P087",
+   "texts": [
+    "Benefits of using S3 for sharing files",
+    "What are two benefits of using",
+    "Amazon S3 to share files?",
+    "Answer #1",
+    "Answer #2",
+    "Configure different",
+    "levels of access",
+    "security.",
+    "Create event",
+    "notifications."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-87.jpg"
+  },
+  {
+   "id": "P088",
+   "texts": [
+    "Project time:",
+    "Troubleshooting",
+    "knowledge base",
+    "~ 30 min.",
+    "©",
+    "882019 Amazon Web Services, Inc. or its Affiliates. All rights reserved."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-88.jpg"
+  },
+  {
+   "id": "P089",
+   "texts": [
+    "Thank You",
+    "Web Services, Inc. Commercial copying, lending, or selling is prohibited. Corrections or feedback on the course, please email us at: aws-course-feedback@amazon.com. For all other",
+    "questions, contact us at: https://aws.amazon.com/contact-us/aws-training/. All trademarks are the property of their owners."
+   ],
+   "notes": [],
+   "hidden": false,
+   "img": "img/p-89.jpg"
+  }
+ ]
+}
