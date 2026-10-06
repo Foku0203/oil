@@ -41,7 +41,8 @@ li { margin: 0 0 1pt; }
 .box { border-left: 1.5pt solid #888; padding: 0 0 0 5pt; margin: 2pt 0 3pt; }
 pre { font-family: "Liberation Mono", monospace; font-size: 7pt; line-height: 1.25; border: 0.5pt solid #bbb;
       padding: 2pt 4pt; white-space: pre-wrap; word-break: break-all; margin: 2pt 0 3pt; }
-code { font-family: "Liberation Mono", monospace; font-size: 7pt; }
+code { font-family: "Liberation Mono", monospace; font-size: 7pt; overflow-wrap: anywhere; word-break: break-all; }
+p, li, td, .box { overflow-wrap: anywhere; }
 table { border-collapse: collapse; margin: 2pt 0 3pt; break-inside: avoid; }
 th, td { border: 0.5pt solid #999; padding: 1pt 3pt; text-align: left; vertical-align: top; }
 th { font-weight: bold; }
