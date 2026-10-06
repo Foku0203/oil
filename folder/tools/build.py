@@ -152,7 +152,6 @@ def main(stem, title):
         block = ['<section class="unit">']
         if not is_lab:
             block.append(f'<div class="tag">{label} {int(u["id"][1:])} / {n}</div>')
-            block.append(f'<img src="{u["img"]}">')
         block.append(render_lines(t["body"]))
         if any(x.strip() for x in t["notes"]):
             block.append('<div class="notes"><h3>คำบรรยายประกอบสไลด์ (Speaker notes)</h3>'
