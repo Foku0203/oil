@@ -13,14 +13,14 @@ from pptx.enum.shapes import MSO_SHAPE_TYPE
 
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / "work"
-FOOTER = re.compile(r"^©\s*20\d\d Amazon Web Services.*$|^\d{1,3}$")
+FOOTER = re.compile(r"^©$|^\d{1,3}$|Amazon Web Services, Inc\. or its Affiliates\. All rights reserved")
 
 
 def clean(lines):
     out = []
     for ln in lines:
         ln = ln.replace("\u000b", " ").strip()
-        if ln and not FOOTER.match(ln):
+        if ln and not FOOTER.search(ln):
             out.append(ln)
     return out
 
