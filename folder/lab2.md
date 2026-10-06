@@ -1,0 +1,621 @@
+# Module 3: Lab 2 - Creating Amazon EC2 Instances
+
+<!---
+Note to localization: This ACO lab is based on ILT-TF-100-SYSOPS-3, Lab 2L & ILT-TF-200-ARCHIT-6, Lab 1. You should be able to copy a lot of translated text from that lab. -->
+
+## Lab overview and objectives
+
+Traditional methods of deploying servers and configuring security are complex and often involve multiple teams and long delays. Fortunately, it is quick and easy to deploy secure infrastructure in the cloud. As a Systems Operator, you can automate many of these processes using the AWS Command-Line Interface.
+
+After completing this lab, you should be able to do the following:
+
+- Launch an Amazon EC2 instance using the management console
+
+- Launch an Amazon EC2 instance using the AWS Command-Line Interface (AWS CLI)
+
+  
+
+The final architecture will be:
+
+<img src="images/architecture.png" alt="Architecture" width="800">
+
+If you have time, an **optional Challenge section** will then have you troubleshoot some issues with Amazon EC2 instances.
+&nbsp;
+
+## Duration
+
+This lab will require approximately **45 minutes** to complete.
+
+
+
+## AWS service restrictions
+
+In this lab environment, access to AWS services and service actions might be restricted to the ones that are needed to complete the lab instructions. You might encounter errors if you attempt to access other services or perform actions beyond the ones that are described in this lab.
+
+
+
+## Accessing the AWS Management Console
+
+1. At the top of these instructions, choose <span id="ssb_voc_grey">Start Lab</span> to launch your lab.
+
+    A Start Lab panel opens displaying the lab status.
+
+    
+
+2. Wait until you see the message "**Lab status: ready**", then choose the **X** to close the Start Lab panel.
+
+    
+
+3. At the top of these instructions, choose <span id="ssb_voc_grey">AWS</span>
+
+    This will open the AWS Management Console in a new browser tab. The system will automatically log you in.
+
+    **Tip**: If a new browser tab does not open, there will typically be a banner or icon at the top of your browser indicating that your browser is preventing the site from opening pop-up windows. Choose the banner or icon and choose "Allow pop ups."
+
+    
+
+4. Arrange the AWS Management Console tab so that it displays along side these instructions. Ideally, you will be able to see both browser tabs at the same time, to make it easier to follow the lab steps.
+
+    <i class="fas fa-exclamation-triangle"></i> Please do not change the Region during this lab.
+
+&nbsp;
+
+## Task 1: Launch an Amazon EC2 Instance using the Management Console
+
+### Step 1: Start creating the instance and assign a name
+
+In this task, you will launch an Amazon EC2 instance using the management console. The instance will be a Bastion Server, from which you can use the AWS Command-Line Interface (AWS CLI).
+
+
+
+5. Choose the **Services** menu, locate the **Compute** services, and select **EC2**.
+
+    
+
+6. Choose the **Launch instance** button in the middle of the page, and then select **Launch instance** from the dropdown menu.
+
+    
+
+7. Name the instance:
+
+   - Give it the name `Bastion Server`
+
+   *Tags* allow you to categorize your AWS resources in different ways, such as by purpose, owner, or environment. This is useful when you have many resources of the same type &mdash; you can quickly identify a specific resource by their tags. Each tag consists of a _Key_ and a _Value_, both of which you define.
+
+   **Note**: *Name* is simply another tag. The *key* for this tag is `Name`, and the *value* is `Web Server 1`. This name will appear on the instance in the EC2 management console.
+
+
+
+### Step 2: Application and OS Images 
+
+This step allows you to choose an AMI, which contains a copy of the disk volume that will be used to launch the instance.
+
+<i class="fas fa-comment"></i> Examine the list of AMIs that are displayed, showing many versions of Microsoft Windows and Linux. These disk images are regularly updated to incorporate security patches and software that helps you use AWS services. You can also create your own AMI that includes your own data and applications, or you can select pre-built commercial applications from the **AWS Marketplace**.
+
+8. Choose an AMI from which to create the instance:
+
+   - In the list of available *Quick Start* AMIs, keep the default **Amazon Linux** AMI selected. 
+
+   - Also keep the default **Amazon Linux 2023 AMI** selected.
+     &nbsp;
+
+### Step 3: Choose an Instance Type
+
+This step allows you to choose an **Instance Type**, which determines the resources that will be allocated to your EC2 instance. Each Instance Type allocates a combination of virtual CPUs, memory, disk storage and network performance.
+
+Instance Types are divided into **families** such as Compute-optimized, Memory-optimized and Storage-Optimized. The name of the Instance Type includes a family identifier, such as **t3** and **m4**. The number indicates the _generation_ of the instance, so **m5** is newer than **m4**.
+
+9. Specify an Instance type:
+
+   - In the *Instance type* panel, keep the default **t3.micro** selected.
+
+     This instance type has 1 virtual central processing unit (CPU) and 1 GiB of memory. It is an instance that can burst above baseline performance when it is busy. It is ideal for development, testing and for applications that have bursty workloads.
+
+     
+
+
+### Step 4: Choose a key pair
+
+10. Select the key pair to associate with the instance:
+
+    - From the **Key pair name** menu, select **vockey**.
+
+    The *vockey* key pair you selected will allow you to connect to this instance via SSH after it has launched. 
+
+&nbsp;
+
+### Step 5: Network settings
+
+You will launch the instance in a public subnet within the _Lab VPC_ network.
+
+
+
+11. Next to Network settings, choose **Edit**.
+
+    
+
+12. For **VPC**, choose the **Lab VPC**.
+
+    
+
+13. For **Subnet** accept the Public Subnet.
+
+    
+
+14. Keep the **Auto-assign public IP** setting set to **Enable**.
+
+    
+
+15. Under *Firewall (security groups)*, keep the default <i class="far fa-dot-circle"></i> **Create security group** option chosen.
+
+    You will create a new Security Group that permits SSH connections. This security group will allow you to log in to the Bastion Server via SSH.
+
+    
+
+16. Configure the security group:
+
+    - **Security group name:** `Bastion security group`
+    - **Description:** `Permit SSH connections`
+    - Permissions to allow inbound access via SSH (port 22) have already been configured by default. Keep these settings.
+      &nbsp;
+
+
+### Step 6: Configure storage
+
+This step can be used to add additional Amazon Elastic Block Store (EBS) disk volumes and configure their size and performance. You can hover over the <i class="fas fa-info-circle"></i> icons to view a description of each field.
+
+17. In the *Configure storage* section, keep the default settings.
+
+
+
+### Step 7: Advanced details
+
+18. Expand the **Advanced details** panel and for **IAM instance profile**, choose **Bastion-Role**
+
+    The _Bastion-Role_ grants permission to applications running on the instance to make requests to the Amazon EC2 service. This is required for the second half of this lab, where you will use the AWS CLI to communicate with the EC2 service.
+
+    
+
+### Step 8: Launch the instance
+
+19. At the bottom of the **Summary** panel on the right side of the screen choose <span id="ssb_orange">Launch instance</span>
+
+    You will see a Success message.
+
+    
+
+20. Choose <span id="ssb_orange">View all instances</span>
+
+    The **Bastion Server** instance will first appear in the *Pending* state, which means it is being launched. The state will then change to *Running*, which indicates that the instance has started booting. It takes a few minutes for the instance to boot.
+
+    
+
+21. Select the **Bastion Server** instance, and review the information in the **Details** tab that displays in the lower pane.
+
+    Notice that the instance has a **Public IPv4 address**. You can use this IP address to communicate with the instance from the internet.
+
+    
+
+22. Before you continue, wait for your instance to display the following:
+
+    - **Instance state:** *Running*
+
+    - **Status check:** *2/2 checks passed*
+
+      <i class="fas fa-comment"></i> This may take a few minutes. Choose the refresh <i class="fas fa-sync"></i> icon at the top of the page every 30 seconds or so to more quickly become aware of the latest status of the instance.
+      &nbsp;
+
+## Task 2: Log into the Bastion Server
+
+In this task, you will log into the Bastion Server that you just created.
+
+
+
+23. Copy the **IPv4 Public IP** (shown in the lower half of the page) to your clipboard.
+
+    <i class="fas fa-comment"></i> It might take a minute until the _IPv4 Public IP_ value is displayed.
+
+    The following instructions now vary slightly depending on whether you are using Windows or Mac/Linux.
+
+
+### <i class="fab fa-windows"></i> Windows Users: Using SSH to Connect
+
+<i class="fas fa-comment"></i> These instructions are for Windows users only.
+
+If you are using macOS or Linux, <a href="#ssh-MACLinux">skip to the next section</a>.
+
+
+
+24. Read through the three bullet points in this step before you start to complete the actions, because you will not be able see these instructions when the Details panel is open.
+
+    * Choose the <span id="ssb_voc_grey">Details</span> drop down menu above these instructions you are currently reading, and then choose <span id="ssb_voc_grey">Show</span>. A Credentials window will open.
+
+    * Choose the **Download PPK** button and save the **labsuser.ppk** file. Typically your browser will save it to the Downloads directory.
+
+    * Then exit the Details panel by choosing the **X**.
+
+      
+
+25. Download needed software.
+
+    * You will use **PuTTY** to SSH to Amazon EC2 instances. If you do not have PuTTY installed on your computer, <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">download it here</a>.
+
+      
+
+26. Open **putty.exe**
+
+    
+
+27. Configure PuTTY to not timeout:
+
+    * Choose **Connection**
+    * Set **Seconds between keepalives** to `30`
+
+    This allows you to keep the PuTTY session open for a longer period of time.
+
+    
+
+28. Configure your PuTTY session:
+    * Choose **Session**
+    * **Host Name (or IP address):** Paste the *Public DNS or IPv4 address* of the Bastion Host instance that you noted earlier. 
+    * Back in PuTTY, in the **Connection** list, expand <i class="fa fa-plus-square"></i> **SSH**
+    * Choose **Auth** and expand <i class="fa fa-plus-square"></i> **Credentials**
+    * Under **Private key file for authentication:** Choose **Browse**
+    * Browse to the *labsuser.ppk* file that you downloaded, select it, and choose **Open**
+    * Choose **Open** again
+
+
+29. To trust and connect to the host, choose **Accept**.
+
+    
+
+30. When prompted **login as**, enter: `ec2-user`
+
+    This will connect you to the EC2 instance.
+
+    
+
+31. <a href="#ssh-after">Windows Users: Choose here to skip ahead to the next task.</a>
+
+<a id='ssh-MACLinux'></a>
+
+
+### Mac <i class="fab fa-apple"></i> and Linux <i class="fab fa-linux"></i> Users
+
+These instructions are for Mac/Linux users only. If you are a Windows user, <a href="#ssh-after">skip ahead to the next task.</a>
+
+32. Read through the three bullet points in this step before you start to complete the actions, because you will not be able see these instructions when the Details panel is open.
+
+    * Choose the <span id="ssb_voc_grey">Details</span> drop down menu above these instructions you are currently reading, and then choose <span id="ssb_voc_grey">Show</span>. A Credentials window will open.
+
+    * Choose the **Download PEM** button and save the **labsuser.pem** file.
+
+    * Then exit the Details panel by choosing the **X**.
+    
+      
+    
+33. Open a terminal window, and change directory `cd` to the directory where the labsuser.pem file was downloaded.
+
+    For example, run this command, if it was saved to your Downloads directory:
+
+    ```bash
+    cd ~/Downloads
+    ```
+    
+     
+    
+34. Change the permissions on the key to be read only, by running this command:
+
+    ```bash
+    chmod 400 labsuser.pem
+    ```
+    
+      
+    
+35. Return to the terminal window and run this command (replace **<public-ip\>** with the **Public IPv4 address** value you copied to your clipboard earlier in the lab):
+
+    ```bash
+    ssh -i labsuser.pem ec2-user@<public-ip>
+    ```
+    
+36. Type `yes` when prompted to allow a first connection to this remote SSH server.
+
+    Because you are using a key pair for authentication, you will not be prompted for a password.
+
+<a id='ssh-after'></a>
+
+Now that you are connected to the Bastion Server, you can use the AWS CLI to call AWS services.
+
+
+
+
+## Task 3: Launch an Instance using the AWS CLI
+
+In this task, you will launch an Amazon EC2 instance using the AWS Command-Line Interface (CLI). The AWS CLI makes it easy to automate the provision and configuration of AWS resources.
+
+The new instance will be configured as a Web Server.
+
+
+
+
+### Obtain the AMI to Use
+
+One of the parameters required when launching an instance is the Amazon Machine Image (AMI), which will populate the boot disk of the instance. AMIs are continually patched and updated by AWS, so it is recommended to always use the latest AMI when launching instances.
+
+You will use the **AWS Systems Manager Parameter Store** to obtain the ID of the most recent _Amazon Linux 2023_ AMI. AWS maintains a list of standard AMIs in the Parameter Store, making this task easy to automate.
+
+
+
+37. Paste this script into your PuTTY/ssh session:
+
+    ```bash
+    # Get token
+    TOKEN=$(curl --request PUT "http://169.254.169.254/latest/api/token" --header "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+    
+    # Set the Region
+    AZ=$(curl --write-out "\n" --request GET "http://169.254.169.254/latest/meta-data/placement/availability-zone" --header "X-aws-ec2-metadata-token: $TOKEN")
+    export AWS_DEFAULT_REGION=${AZ::-1}
+    
+    # Obtain latest Linux AMI
+    AMI=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 --query 'Parameters[0].[Value]' --output text)
+    
+    echo $AMI
+    ```
+    
+    This command did the following:
+    
+    - Generated a token that can be used by the Instance Metadata Service v2 (IMDSv2)
+    - Obtained the Region where the instance is running
+    - Called the AWS Systems Manager (_ssm_) and used the **get-parameters** command to retrieve a value from the Parameter Store
+    - The AMI requested was for Amazon Linux 2023 (_al2023-ami_)
+    - The AMI ID has been stored in an Environment Variable called _AMI_
+    
+      <i class="fas fa-exclamation-triangle"></i> If your SSH session disconnects, it will lose the information stored in environment variables. Once you reconnect, you will need to re-run all of the steps in this task, starting with the above commands to obtain the AMI ID.
+      
+      
+
+
+### Obtain the Subnet to Use
+
+You will be launching the new instance in the Public Subnet. When launching an instance, the **SubnetId** can be specified.
+
+The following command will retrieve the _SubnetId_ for the Public Subnet:
+
+38. Paste this command:
+
+    ```bash
+    SUBNET=$(aws ec2 describe-subnets --filters 'Name=tag:Name,Values=Public Subnet' --query Subnets[].SubnetId --output text)
+    
+    echo $SUBNET
+    ```
+
+    This uses the AWS CLI to retrieve the Subnet ID of the subnet named _Public Subnet_.
+    &nbsp;
+
+### Obtain the Security Group to Use
+
+A _Web Security Group_ has been provided as part of this lab, which allows inbound HTTP requests.
+
+39. Paste this command:
+
+    ```bash
+    SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=WebSecurityGroup --query SecurityGroups[].GroupId --output text)
+    
+    echo $SG
+    ```
+
+    The command retrieves the _Security Group ID_ of the Web Security Group.
+    
+    
+
+
+### Download a User Data script
+
+You will be launching an instance that will act as a Web Server. To install and configure the web server, you will provide a **User Data script** that will be automatically run when the instance launches.
+
+40. Paste this command to download the User Data script:
+
+    ```bash
+    wget https://aws-tc-largeobjects.s3.amazonaws.com/ILT-TF-200-ACSOPS-1/lab-2-ec2-linux/UserData.txt
+    ```
+    
+    
+    
+41. Paste this command to view the contents of the script:
+
+    ```bash
+    cat UserData.txt
+    ```
+
+    The script does the following:
+
+    - Installs a web server
+    
+    - Downloads a zip file containing the web application
+    
+    - Installs the web application
+    
+      
+
+
+### Launch the Instance
+
+You now have all the necessary information require to launch the Web Server instance!
+
+42. Paste this command:
+
+    ```bash
+    INSTANCE=$(\
+    aws ec2 run-instances \
+    --image-id $AMI \
+    --subnet-id $SUBNET \
+    --security-group-ids $SG \
+    --user-data file:///home/ec2-user/UserData.txt \
+    --instance-type t3.micro \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Web Server}]' \
+    --query 'Instances[*].InstanceId' \
+    --output text \
+    )
+    
+    echo $INSTANCE
+    ```
+    
+    
+    
+    The command launches a new instance (_run_instances_) using these parameters:
+    
+    - **Image:** Uses the AMI value obtained earlier from the Parameter Store
+    - **Subnet:** Specifies the _Public Subnet_ obtained earlier and, by association, the VPC in which to launch the instance
+    - **Security Group:** Uses the _Web Security Group_ obtained earlier, which permits HTTP access
+    - **User Data:** References the User Data script you downloaded, which installs the web application
+    - **Instance Type:** Specifies the type of instance to launch
+    - **Tags:** Assigns a _Name_ tag with the value of _Web Server_
+    
+    The **query** parameter specifies that the command should return the _Instance ID_ once the instance is launched.
+    
+    The **output** parameter specifies that the output of the command should be in _text_. Other output options are _json_ and _table_.
+    
+    The ID of the new instance has been stored in the _INSTANCE_ environment variable.
+    
+    
+
+
+### Wait for the Instance to be Ready
+
+You can monitor the status of the instance via the Management Console, but you can also query the status via the AWS CLI.
+
+
+
+43. Paste this command:
+
+    ```bash
+    aws ec2 describe-instances --instance-ids $INSTANCE
+    ```
+
+    All information related to the instance will be displayed in JSON format. Amongst this information is the instance status.
+
+    Specific information can be obtained by using the **query** parameter.
+
+    
+
+44. Paste this command:
+
+    ```bash
+    aws ec2 describe-instances --instance-ids $INSTANCE --query 'Reservations[].Instances[].State.Name' --output text
+    ```
+
+    This is the same command but, rather than displaying all information about the instance, only displays the name of the instance _State_.
+
+    This will display a status of **pending** or **running**.
+
+    Repeat the above command until it returns a status of **running**.
+    
+    
+
+
+### Test the Web Server
+
+You can now test that the web server is working. You can retrieve a URL to the instance via the AWS CLI.
+
+45. Paste this command:
+
+    ```bash
+    aws ec2 describe-instances --instance-ids $INSTANCE --query Reservations[].Instances[].PublicDnsName --output text
+    ```
+
+    This returns the **DNS Name** of the instance.
+
+    
+
+46. Copy the DNS name that is displayed.
+
+    It should look similar to: _ec2-35-11-22-33.compute-1.amazonaws.com_
+
+    
+
+47. Paste the DNS name into a new web browser tab, then press Enter.
+
+    A web page should be displayed, demonstrating that the web server was successfully launched and configured.
+
+    You can also see the instance in the EC2 management console.
+
+    
+
+48. Return to the web browser tab containing the EC2 management console.
+
+    
+
+49. In the **Instances** page, choose <i class="fas fa-sync"></i> Refresh.
+
+    The list should now include the _Web Server_ instance that was launched via the AWS CLI command.
+
+    As seen in this task, the AWS CLI makes it possible to programmatically access and control AWS services. These commands can be placed in a script and run as a standard process to deploy consistent, reliable infrastructure with minimal scope for human error.
+
+    **Which method should you use?**
+
+    - **Launch from the management console** when you quickly need to launch a one-off or temporary instance.
+
+    - **Launch via a script** when you need to automate the creation of an instance in a repeatable, reliable manner.
+
+    - **Launch via CloudFormation** when you wish to launch related resources together.
+
+      
+
+
+## Challenge 1: Connect to an Amazon EC2 Instance
+
+<i class="fas fa-comment"></i> _This challenge is **optional** and is provided in case you still have lab time remaining._
+
+In this challenge, your mission is to troubleshoot an instance called _Misconfigured Web Server_:
+
+50. Your tasks are:
+
+    - Obtain the DNS name of the **Misconfigured Web Server**
+    - Try to establish an **SSH connection** to the instance
+    - Diagnose why this does not work and **fix the misconfiguration**
+
+    At the end of the lab, your instructor will ask you:
+
+    - What was the problem?
+    
+    - What did you do to fix the problem?
+    
+      
+
+
+## Challenge 2: Fix the Web Server Installation
+
+In this challenge, your mission is to troubleshoot the the web server installation on the _Misconfigured Web Server_:
+
+51. Your tasks are:
+
+    - Point your web browser to the public IP address of the _Misconfigured Web Server_
+    - Why does the web site not appear?
+    - Diagnose the problem and try to fix it on the instance, or use **Launch More Like This** to launch another instance with a fixed configuration
+
+    At the end of the lab, your instructor will ask you:
+
+    - What was the problem?
+    
+    - What did you do to fix the problem?
+    
+      
+
+
+## Lab Complete
+
+<i class="icon-flag-checkered"></i> Congratulations! You have completed the lab.
+
+
+
+52. Choose <span id="ssb_voc_grey">End Lab</span> at the top of this page and then choose <span id="ssb_blue">Yes</span> to confirm that you want to end the lab.  
+
+    A panel will appear, indicating that "DELETE has been initiated... You may close this message box now."
+
+    
+
+53. Choose the **X** in the top right corner to close the panel.
+
+
+
+© 2022, Amazon Web Services, Inc. and its affiliates. All rights reserved. This work may not be reproduced or redistributed, in whole or in part, without prior written permission from Amazon Web Services, Inc. Commercial copying, lending, or selling is prohibited.
