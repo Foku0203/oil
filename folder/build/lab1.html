@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lab 1 - Using AWS Systems Manager</title>
+<style>
+  @page { size: A4; margin: 1.5cm; }
+  html { font-size: 11pt; }
+  body {
+    margin: 0;
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.45;
+    color: #111;
+  }
+  h1 { font-size: 18pt; margin: 0 0 8pt; line-height: 1.2; }
+  h2 {
+    font-size: 14pt; margin: 16pt 0 6pt; line-height: 1.25;
+    padding-bottom: 3pt; border-bottom: 1px solid #999;
+    break-after: avoid;
+  }
+  h3 { font-size: 12pt; margin: 10pt 0 4pt; break-after: avoid; }
+  p { margin: 0 0 6pt; }
+  ul, ol { margin: 0 0 6pt; padding-left: 1.6em; }
+  li { margin: 0 0 4pt; }
+  li > p { margin: 3pt 0; }
+  ol.steps > li::marker { font-weight: bold; }
+  ul.config { list-style: none; padding-left: 1em; margin: 3pt 0; }
+  ul.config ul { list-style: none; padding-left: 1.4em; margin: 2pt 0 0; }
+  ul.config li { margin: 1pt 0; }
+  .note {
+    border-left: 3pt solid #888; background: #f3f3f3;
+    padding: 4pt 8pt; margin: 4pt 0 6pt; break-inside: avoid;
+  }
+  .note b { margin-right: 3pt; }
+  pre {
+    font-family: "Liberation Mono", "DejaVu Sans Mono", monospace;
+    font-size: 11pt; line-height: 1.35;
+    background: #f3f3f3; border: 1px solid #ccc;
+    padding: 6pt 8pt; margin: 4pt 0 6pt;
+    white-space: pre-wrap; word-break: break-all;
+    break-inside: avoid;
+  }
+  code { font-family: "Liberation Mono", "DejaVu Sans Mono", monospace; font-size: 11pt; }
+  .ui { font-weight: bold; }
+  .copyright { margin-top: 18pt; font-size: 11pt; color: #444; border-top: 1px solid #999; padding-top: 6pt; }
+</style>
+</head>
+<body>
+
+<h1>Module 2: Lab 1 - Using AWS Systems Manager</h1>
+
+<p>AWS Systems Manager is a collection of capabilities for configuring and managing your Amazon EC2 instances, on-premises servers and virtual machines, and other AWS resources at scale. Systems Manager includes a unified interface that allows you to easily centralize operational data and automate tasks across your AWS resources.</p>
+
+<p>In this lab you will:</p>
+<ul>
+  <li>Use AWS Systems Manager Inventory to verify configurations and permissions</li>
+  <li>Use AWS Systems Manager Run Command to run tasks on multiple servers</li>
+  <li>Use AWS Systems Manager Parameter Store to update application settings or configurations</li>
+  <li>Use AWS Systems Manager Session Manager to access the command line on an instance</li>
+</ul>
+
+<h3>Duration</h3>
+<p>This lab will require approximately <b>30 minutes</b> to complete.</p>
+
+<h2>Accessing the AWS Management Console</h2>
+<ol class="steps" start="1">
+  <li>At the top of these instructions, click <span class="ui">Start Lab</span> to launch your lab.
+    <p>A <b>Start Lab</b> panel opens displaying the lab status.</p></li>
+  <li>Wait until you see the message "<b>Lab status: ready</b>", then click the <span class="ui">X</span> to close the Start Lab panel.</li>
+  <li>At the top of these instructions, click <span class="ui">AWS</span>
+    <p>This will open the AWS Management Console in a new browser tab. The system will automatically log you in.</p>
+    <div class="note"><b>Tip:</b> If a new browser tab does not open, there will typically be a banner or icon at the top of your browser indicating that your browser is preventing the site from opening pop-up windows. Click on the banner or icon and choose "Allow pop-ups."</div></li>
+  <li>Arrange the AWS Management Console tab so that it displays alongside these instructions. Ideally, you will be able to see both browser tabs at the same time, to make it easier to follow the lab steps.
+    <div class="note"><b>Note:</b> Do not change the Region unless instructed to do so.</div></li>
+</ol>
+
+<h2>Task 1: Generate Inventory Lists for Managed Instances</h2>
+<p>You can use AWS Systems Manager Inventory to collect operating system, application, and instance metadata from your Amazon EC2 instances and your on-premises servers or virtual machines in your hybrid environment. You can query the metadata to quickly understand which instances are running the software and configurations required by your software policy, and which instances need to be updated.</p>
+<p>In this task, you will use the AWS Systems Manager Inventory to gather inventory from an Amazon EC2 instance.</p>
+<ol class="steps" start="5">
+  <li>In the AWS Management Console, on the <span class="ui">Services</span> menu, click <span class="ui">Systems Manager</span>.</li>
+  <li>In the left navigation pane, click <span class="ui">Fleet Manager</span>.</li>
+  <li>Under <b>Managed Instances</b>, select the instance named <b>Managed Instance</b>.</li>
+  <li>From the <span class="ui">Account management</span> menu, choose <span class="ui">Set up inventory</span> and configure:
+    <p>You will now create an association that will collect information about software and settings for your managed instance.</p>
+    <ul class="config">
+      <li><b>Name:</b> <code>Inventory-Association</code></li>
+      <li><b>Targets:</b> Manually selecting instances
+        <ul><li>Select <b>Managed Instance</b></li></ul></li>
+    </ul></li>
+  <li>Click <span class="ui">Setup Inventory</span> (at the bottom of the page).
+    <p>AWS Systems Manager Inventory will now regularly inventory the instance for the selected properties.</p></li>
+  <li>Click the <b>Instance ID</b> link displayed in the Managed Instance row.</li>
+  <li>Click the <span class="ui">Inventory</span> tab.</li>
+</ol>
+<p>A list of all of the applications on the instance will be displayed. If nothing appears, wait a minute, then refresh the page.</p>
+<p>Take a moment to review the installed applications and other options in the <b>Inventory type</b> pull-down menu.</p>
+<p>You have successfully created an AWS Systems Manager inventory association for your instance. Using AWS Systems Manager Inventory, you can review and validate software configurations on your instances without needing to SSH into each instance.</p>
+<div class="note"><b>Optional:</b> In the next task we will install a web application. You can copy the <b>ServerIP</b> value by clicking on the <span class="ui">Details</span> drop down menu above these instructions, and then click <span class="ui">Show</span> and verify that no web application is installed at this stage.</div>
+
+<h2>Task 2: Install a Custom Application using Run Command</h2>
+<p>In this task, you will install a custom web application (Widget Manufacturing Dashboard) using the AWS Systems Manager Run Command without logging into the instance.</p>
+<h3>Run Shell Script</h3>
+<ol class="steps" start="12">
+  <li>In the left navigation pane, click <span class="ui">Run Command</span>.</li>
+  <li>Click <span class="ui">Run command</span>
+    <p>You will see a list of pre-configured documents for running common commands. You will run a pre-configured command.</p></li>
+  <li>Click the search box, then:
+    <ul class="config">
+      <li><b>Owner</b></li>
+      <li><b>Owned by me</b></li>
+    </ul>
+    <p>A document will appear with <b>InstallDashboardApp</b> in its name.</p></li>
+  <li>Click the name of the document.
+    <p>A new tab will open with the description of the document.</p></li>
+  <li>Click the <span class="ui">Content</span> tab.
+    <p>The contents will be displayed. It contains a script that:</p>
+    <ul>
+      <li>Installs an Apache web server and PHP</li>
+      <li>Activates the web server</li>
+      <li>Installs the AWS SDK for PHP</li>
+      <li>Installs an application</li>
+    </ul>
+    <p>These commands will install an application and all the support files required by the application.</p></li>
+  <li>Close the current web browser tab to return to the <b>Run a command</b> tab.</li>
+  <li>Select the document (click the circle, not the name).</li>
+  <li>For <b>Targets</b>, select <span class="ui">Choose instances manually</span></li>
+  <li>Select <b>Managed Instance</b>.
+    <p>The Managed Instance has the Systems Manager agent installed. The agent has registered the instance to the service, which allows it to be selected for the Run Command.</p>
+    <div class="note"><b>Note:</b> It is also possible to identify target instances by using Tags. This makes it easy to run a single command on a whole fleet of matching instances.</div></li>
+  <li>Expand <span class="ui">AWS command line interface command</span> (at the bottom of the page).
+    <div class="note"><b>Note:</b> This section displays the CLI command that will invoke the Run Command. You could copy this command and use it in future within a script rather than having to use the management console.</div></li>
+  <li>Click <span class="ui">Run</span>
+    <p>The progress of your command will be displayed. You will see an <b>In Progress</b> message in the <b>Overall status</b> column.</p></li>
+  <li>Wait for the <b>Overall status</b> to change to <b>Success</b>. You can occasionally click <span class="ui">refresh</span> in the top right to update the status.
+    <p>You will now validate that the custom application was installed.</p></li>
+  <li>Copy the <b>ServerIP</b> value by clicking on the <span class="ui">Details</span> drop down menu above these instructions, and then click <span class="ui">Show</span></li>
+  <li>Open a new web browser tab, paste the IP address you just copied and press Enter.
+    <p>The Widget Manufacturing Dashboard that you installed will now appear.</p></li>
+</ol>
+<p>You have successfully run a Run Command via AWS Systems Manager that has installed a custom application onto your instance without needing to remotely access the instance via SSH.</p>
+
+<h2>Task 3: Use Parameter Store to Manage Application Settings</h2>
+<p>AWS Systems Manager Parameter Store provides secure, hierarchical storage for configuration data management and secrets management. You can store data such as passwords, database strings, and license codes as parameter values. You can store values as plain text or encrypted data. You can then reference values by using the unique name that you specified when you created the parameter.</p>
+<p>In this task you will use AWS Systems Manager Parameter Store to store a parameter that will be used to activate a feature in an application.</p>
+<ol class="steps" start="26">
+  <li>Keep the Dashboard tab open, but return to the Management Console tab.</li>
+  <li>In the left navigation pane, under <b>Application Management</b>, click <span class="ui">Parameter Store</span>.</li>
+  <li>Click <span class="ui">Create parameter</span> and configure:
+    <ul class="config">
+      <li><b>Name:</b> <code>/dashboard/show-beta-features</code></li>
+      <li><b>Description:</b> <code>Display beta features</code></li>
+      <li><b>Value:</b> <code>True</code></li>
+      <li>Click <span class="ui">Create parameter</span></li>
+    </ul>
+    <p>The parameter can be specified as a hierarchical path, such as: <code>/dashboard/&lt;option&gt;</code></p>
+    <p>The application that is running on the EC2 instance will automatically check for the existence of this parameter. If it finds the parameter, then additional features will be displayed.</p></li>
+  <li>Return to the web browser tab displaying the application.
+    <p>If the tab is not available, copy the <b>ServerIP</b> value by clicking on the <span class="ui">Details</span> drop down menu above these instructions, and then click <span class="ui">Show</span></p>
+    <p>Notice that the application is only displaying two charts.</p></li>
+  <li>Refresh the web page.
+    <p>You should now notice that three charts are displayed. This is because the application is checking the Parameter Store to determine whether the additional chart (which is still in beta) should be displayed. This is a common method that applications can be configured to display "dark features" that are installed but not yet activated.</p>
+    <div class="note"><b>Optional:</b> Remove the parameter, then refresh the application. The third chart should disappear again!</div></li>
+</ol>
+
+<h2>Task 4: Use Session Manager to Access Instances</h2>
+<p>AWS Systems Manager Session Manager lets you manage your Amazon EC2 instances through an interactive one-click browser-based shell or through the AWS CLI. Session Manager provides secure and auditable instance management without the need to open inbound ports, maintain bastion hosts, or manage SSH keys. Session Manager also makes it easy to comply with corporate policies that require controlled access to instances, strict security practices, and fully auditable logs with instance access details, while still providing end users with simple one-click cross-platform access to your Amazon EC2 instances.</p>
+<div class="note"><b>Note:</b> When used with Microsoft Windows, the AWS Systems Manager Session Manager provides access to a PowerShell console on the instance.</div>
+<h3>Browser Command Session</h3>
+<p>In this task, you will access the Amazon EC2 instance via Session Manager.</p>
+<ol class="steps" start="31">
+  <li>In the Management Console, in the left navigation pane, click <span class="ui">Session Manager</span>.</li>
+  <li>Click <span class="ui">Start Session</span></li>
+  <li>Select <b>Managed Instance</b>.</li>
+  <li>Click <span class="ui">Start session</span>
+    <p>A session window will open in your browser.</p></li>
+  <li>Click in the session to activate the cursor.</li>
+  <li>Run this command in the session window:
+<pre>ls /var/www/html</pre>
+    <p>You will see application files that were installed on the instance.</p></li>
+  <li>Run this command in the session window:
+<pre># Get region
+AZ=`curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone`
+export AWS_DEFAULT_REGION=${AZ::-1}
+
+# List information about EC2 instances
+aws ec2 describe-instances</pre>
+    <p>This demonstrates how AWS Systems Manager Session Manager can be used to login to an instance without using SSH. In fact, this instance does not have SSH port 22 opened in its Security Group.</p>
+    <div class="note"><b>Optional:</b> You could verify the same by browsing to the Security Group used by the instance.</div></li>
+</ol>
+<p>Access to the Session Manager can be restricted via IAM policies and usage is logged in AWS CloudTrail. This provides much better security and auditing than traditional SSH access.</p>
+
+<h2>Lab Complete</h2>
+<p>Congratulations! You have completed the lab.</p>
+<ol class="steps" start="38">
+  <li>Click <span class="ui">End Lab</span> at the top of this page and then click <span class="ui">Yes</span> to confirm that you want to end the lab.
+    <p>A panel will appear, indicating that "DELETE has been initiated... You may close this message box now."</p></li>
+  <li>Click the <span class="ui">X</span> in the top right corner to close the panel.</li>
+</ol>
+
+<p class="copyright">©2020 Amazon Web Services, Inc. and its affiliates. All rights reserved. This work may not be reproduced or redistributed, in whole or in part, without prior written permission from Amazon Web Services, Inc. Commercial copying, lending, or selling is prohibited.</p>
+
+</body>
+</html>
