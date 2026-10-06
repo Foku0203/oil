@@ -66,9 +66,9 @@ def main(stem):
                 warnings.append(f"{u['id']} {part}: tokens not found verbatim: {lost}")
 
     pdf = ROOT / "output" / f"{stem}-TH.pdf"
-    if pdf.exists() and src.get("kind") != "lab":
+    if pdf.exists():
         txt = subprocess.run(["pdftotext", str(pdf), "-"], capture_output=True, text=True).stdout
-        found = {int(n) for n in re.findall(r"(?:สไลด์|หน้า)\s+(\d+)\s*/\s*" + str(len(ids)), txt)}
+        found = {int(n) for n in re.findall(r"(?:สไลด์|หน้า|ส่วน)\s+(\d+)\s*/\s*" + str(len(ids)), txt)}
         absent = sorted(set(range(1, len(ids) + 1)) - found)
         if absent:
             problems.append(f"PDF missing unit tags: {absent}")

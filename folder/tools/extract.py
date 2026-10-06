@@ -74,18 +74,41 @@ def from_pdf(path: Path):
     return units, path
 
 
+def from_md(path: Path):
+    """Lab markdown: one unit per '## ' section (the title block before the first one is unit 1)."""
+    units, cur = [], []
+    for ln in path.read_text().split("\n"):
+        if ln.startswith("## ") and cur:
+            units.append(cur)
+            cur = []
+        cur.append(ln)
+    units.append(cur)
+    out = []
+    for i, lines in enumerate(units, 1):
+        text = "\n".join(lines)
+        text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+        text = re.sub(r"<img[^>]*>", "[image]", text)
+        text = re.sub(r"<[^>]+>", "", text).replace("&nbsp;", "")
+        out.append({"id": f"L{i:03d}", "texts": [l.strip() for l in text.split("\n") if l.strip()], "notes": [], "hidden": False, "rendered": []})
+    return out
+
+
 def main(files):
     for f in files:
         path = (ROOT / f).resolve()
-        units, pdf = from_pptx(path) if path.suffix == ".pptx" else from_pdf(path)
         d = WORK / path.stem
         d.mkdir(parents=True, exist_ok=True)
-        render(pdf, d / "img")
-        imgs = sorted((d / "img").glob("*.jpg"))
-        assert len(imgs) == len(units), f"{f}: {len(imgs)} images vs {len(units)} units"
-        for u, img in zip(units, imgs):
-            u["img"] = f"img/{img.name}"
-        (d / "source.json").write_text(json.dumps({"file": path.name, "units": units}, ensure_ascii=False, indent=1))
+        if path.suffix == ".md":
+            units = from_md(path)
+        else:
+            units, pdf = from_pptx(path) if path.suffix == ".pptx" else from_pdf(path)
+            render(pdf, d / "img")
+            imgs = sorted((d / "img").glob("*.jpg"))
+            assert len(imgs) == len(units), f"{f}: {len(imgs)} images vs {len(units)} units"
+            for u, img in zip(units, imgs):
+                u["img"] = f"img/{img.name}"
+        kind = "lab" if path.stem.startswith("lab") else "deck"
+        (d / "source.json").write_text(json.dumps({"file": path.name, "kind": kind, "units": units}, ensure_ascii=False, indent=1))
         words = sum(len(" ".join(u["texts"] + u["notes"]).split()) for u in units)
         print(f"{path.name}: {len(units)} units, {words} words, hidden={sum(u['hidden'] for u in units)}")
 

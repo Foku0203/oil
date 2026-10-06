@@ -19,6 +19,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+LABELS = {"S": "สไลด์", "P": "หน้า", "L": "ส่วน"}
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 
 CSS = """
@@ -143,15 +144,14 @@ def main(stem, title):
     is_lab = src.get("kind") == "lab"
     parts = [f"<h1>{html.escape(title)}</h1>",
              f'<p class="sub">แปลและเรียบเรียงจากไฟล์ต้นฉบับ <b>{html.escape(src["file"])}</b>'
-             + ("" if is_lab else f' · ครบทั้ง {len(src["units"])} {"สไลด์" if stem.startswith("ACO-0") and src["units"][0]["id"].startswith("S") else "หน้า"}')
+             + f' · ครบทั้ง {len(src["units"])} {LABELS[src["units"][0]["id"][0]]}' 
              + "</p>", '<div class="cols">']
     n = len(src["units"])
     for u in src["units"]:
         t = th.get(u["id"], {"body": ["(ยังไม่ได้แปล)"], "notes": []})
-        label = "สไลด์" if u["id"].startswith("S") else "หน้า"
+        label = LABELS[u["id"][0]]
         block = ['<section class="unit">']
-        if not is_lab:
-            block.append(f'<div class="tag">{label} {int(u["id"][1:])} / {n}</div>')
+        block.append(f'<div class="tag">{label} {int(u["id"][1:])} / {n}</div>')
         block.append(render_lines(t["body"]))
         if any(x.strip() for x in t["notes"]):
             block.append('<div class="notes"><h3>คำบรรยายประกอบสไลด์ (Speaker notes)</h3>'
