@@ -86,6 +86,7 @@ def from_md(path: Path):
     out = []
     for i, lines in enumerate(units, 1):
         text = "\n".join(lines)
+        text = re.sub(r"<(style|header|script)[^>]*>.*?</\1>", "", text, flags=re.S)
         text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
         text = re.sub(r"<img[^>]*>", "[image]", text)
         text = re.sub(r"<[^>]+>", "", text).replace("&nbsp;", "")
