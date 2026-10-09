@@ -12,11 +12,11 @@ rng = random.Random(203)
 # --- palette ---------------------------------------------------------------
 SKIN = (236, 196, 160)
 SKIN_SHADE = (214, 170, 136)
-LIP = (190, 120, 100)
+LIP = (204, 134, 118)
 HAIR = (22, 22, 26)
-HAIR_HI = (48, 48, 56)
+HAIR_HI = (36, 36, 42)
 SHAVED = (120, 104, 96)  # two-block undercut (stubble)
-BROW = (30, 24, 22)
+BROW = (26, 26, 30)
 EYE_WHITE = (245, 245, 245)
 EYE_BLACK = (12, 12, 14)
 SHIRT = (246, 246, 246)
@@ -53,7 +53,7 @@ def faces(u, v, w, h, d):
     }
 
 
-def paint(rect, fn, jitter=4):
+def paint(rect, fn, jitter=2):
     x0, y0, w, h = rect
     for y in range(h):
         for x in range(w):
@@ -71,16 +71,16 @@ paint(head["bottom"], lambda *a: SKIN_SHADE)
 
 FACE = [
     "HHHHHHHH",
-    "HHHHHSSH",
-    "SHHHSSSS",
+    "HHHHHHHH",
+    "SHHSHHHS",
     "SBBSSBBS",
     "SWESSEWS",
-    "SSSNNSSS",
+    "SSSSSSSS",
     "SSSLLSSS",
     "SSSSSSSS",
 ]
-KEY = {"H": HAIR, "S": SKIN, "B": BROW, "W": EYE_WHITE, "E": EYE_BLACK,
-       "N": SKIN_SHADE, "L": LIP}
+KEY = {"H": HAIR, "S": SKIN, "B": BROW, "E": EYE_BLACK, "W": EYE_WHITE,
+       "L": LIP}
 paint(head["front"], lambda x, y, w, h: KEY[FACE[y][x]])
 
 
@@ -104,11 +104,15 @@ paint(head["left"], side(front_at_right=False))
 paint(head["back"], lambda x, y, w, h: HAIR if y <= 3 else (SKIN if y == 7 else SHAVED))
 
 # hat layer: extra volume on top so the hair sits over the shaved sides
-paint(hat["top"], lambda x, y, w, h: HAIR if (x * y) % 5 else HAIR_HI)
-paint(hat["front"], lambda x, y, w, h: HAIR if y == 0 or (y == 1 and x in (1, 2, 3)) else None)
-paint(hat["right"], lambda x, y, w, h: HAIR if y <= 1 else None)
-paint(hat["left"], lambda x, y, w, h: HAIR if y <= 1 else None)
-paint(hat["back"], lambda x, y, w, h: HAIR if y <= 2 else None)
+def hair_tex(x, y):
+    return HAIR_HI if (x * 3 + y * 5) % 11 == 0 else HAIR
+
+
+paint(hat["top"], lambda x, y, w, h: hair_tex(x, y))
+paint(hat["front"], lambda x, y, w, h: hair_tex(x, y) if y == 0 or (y == 1 and x not in (3,)) else None)
+paint(hat["right"], lambda x, y, w, h: hair_tex(x, y) if y <= 1 or (y == 2 and x >= 2) else None)
+paint(hat["left"], lambda x, y, w, h: hair_tex(x, y) if y <= 1 or (y == 2 and x <= 5) else None)
+paint(hat["back"], lambda x, y, w, h: hair_tex(x, y) if y <= 2 else None)
 
 # --- body (8x12x4) ---------------------------------------------------------
 body = faces(16, 16, 8, 12, 4)
@@ -125,8 +129,8 @@ def shirt_front(x, y, w, h):
         return TIE_HI if (x == 3 and y in (2, 5)) else TIE
     if y == 0 and x in (2, 5):
         return SHIRT_SHADE  # collar points
-    if x in (2, 5) and y >= 1:
-        return SHIRT_SHADE if y % 3 == 0 else SHIRT
+    if y == 10:
+        return SHIRT_SHADE  # tucked-in fold
     return SHIRT
 
 
@@ -143,7 +147,7 @@ def sleeve(x, y, w, h):
         return SKIN if y == 10 else SKIN_SHADE
     if y == 9:
         return SHIRT_SHADE  # cuff
-    return SHIRT_SHADE if (x == 0 and y % 4 == 2) else SHIRT
+    return SHIRT
 
 
 for u, v in ((40, 16), (32, 48)):  # right arm, left arm
